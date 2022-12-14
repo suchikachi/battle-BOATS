@@ -122,6 +122,9 @@ namespace Calculator
                         grid[intcoords4[0] - 1, intcoords4[1] - 1] = "▢";
                         grid[intcoords5[0] - 1, intcoords5[1] - 1] = "▢";
 
+                        string[,] gridfinal = new string[8, 8];
+                        Array.Copy(grid, gridfinal, grid.Length);
+
                         // looping through array
                         for (int i = 0; i < 8; i++)
                         {
@@ -151,14 +154,15 @@ namespace Calculator
                         int[] computercoords3 = {computervalues.Next(1, 9), computervalues.Next(1, 9)};
                         int[] computercoords4 = {computervalues.Next(1, 9), computervalues.Next(1, 9)};
                         int[] computercoords5 = {computervalues.Next(1, 9), computervalues.Next(1, 9)};
-                        for (int i = 0; i < computercoords1.Length; i++)
+
+                        /*for (int i = 0; i < computercoords1.Length; i++)
                         {
                             Console.WriteLine(computercoords1[i]);
                             Console.WriteLine(computercoords2[i]);
                             Console.WriteLine(computercoords3[i]);
                             Console.WriteLine(computercoords4[i]);
                             Console.WriteLine(computercoords5[i]);
-                        }
+                        }*/
 
                         int userguesses = 0;
                         int computerguesses = 0;
@@ -170,10 +174,10 @@ namespace Calculator
                             Console.WriteLine("Guess computer code in format x,y");
                             string userguess = Console.ReadLine();
 
-                            //split the user guess into an array
+                            // split the user guess into an array
                             string[] userguessarray = userguess.Split(',');
 
-                            //make array to validate user input
+                            // make array to validate user input
                             int[] uservalidator = {Int32.Parse(userguessarray[0]),Int32.Parse(userguessarray[1])};
                             //Console.WriteLine($"{uservalidator[0]} {uservalidator[1]}");
 
@@ -183,10 +187,46 @@ namespace Calculator
                             {
                                 Console.WriteLine("You hit one of the computer's ships!");
                                 userguesses += 1;
+                                Thread.Sleep(1000);
+                                // re print grid with a H on the place hit
+                                gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "H";
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        // loop through and print all elements of 2d array
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.Write($"{gridfinal[i, j]} ");
+                                    }
+                                    // new line between each row
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("");
+                                }
+                                
                             }
                             else
                             {
                                 Console.WriteLine("nope");
+
+                                // re print grid with a M on the place hit
+                                Thread.Sleep(500);
+                                gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "M";
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        // loop through and print all elements of 2d array
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.Write($"{gridfinal[i, j]} ");
+                                    }
+                                    // new line between each row
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("");
+                                }
                             }
                             if (userguesses == 5)
                             {
