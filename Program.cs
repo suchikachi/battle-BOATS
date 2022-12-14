@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using System.Linq;
 
 namespace Calculator
 {
@@ -7,6 +9,7 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            // support advanced unicode characters
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -99,8 +102,8 @@ namespace Calculator
                         for(int i = 0; i < arrsize5; i++) intcoords5[i] = Int32.Parse(coordinatearray5[i]);
                          
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("\nYour coordinates are displayed as follows:");
-                            
+                        Console.WriteLine("\nYour coordinates are displayed as follows:\n");
+                        
                         // create 2d array to display updated grid
                         string[,] grid = new string[8, 8]
                         {
@@ -126,8 +129,10 @@ namespace Calculator
                         Array.Copy(grid, gridfinal, grid.Length);
 
                         // looping through array
+                        Console.WriteLine(" 1 2 3 4 5 6 7 8");
                         for (int i = 0; i < 8; i++)
                         {
+                            Console.Write(i + 1);
                             for (int j = 0; j < 8; j++)
                             {
                                 // loop through and print all elements of 2d array
@@ -136,16 +141,29 @@ namespace Calculator
                                 Console.Write($"{grid[i, j]} ");
                             }
                             // new line between each row
-                            Console.BackgroundColor = ConsoleColor.Black;
-                            Console.ForegroundColor = ConsoleColor.White;
+                            ResetColors();
                             Console.WriteLine("");
                         }
 
                         // new line to clear coloring
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.White;
+                        ResetColors();
                         Console.WriteLine("");
                         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         // generate computer's coordinates
                         Random computervalues = new Random();
@@ -170,8 +188,15 @@ namespace Calculator
 
                         do
                         {
+                            Thread.Sleep(500);
+
                             // user guesses
-                            Console.WriteLine("Guess computer code in format x,y");
+                            Console.Write("\nGuess the location computer's ships in ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("x,y ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("format.\n\n");
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             string userguess = Console.ReadLine();
 
                             // split the user guess into an array
@@ -185,13 +210,16 @@ namespace Calculator
                             for(int i = 0; i < 2; i++) userguessint[i] = Int32.Parse(userguessarray[i]);
                             if ((userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1]) || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1]) || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1]) || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1]) || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1]))
                             {
-                                Console.WriteLine("You hit one of the computer's ships!");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Hit!\n");
                                 userguesses += 1;
                                 Thread.Sleep(1000);
                                 // re print grid with a H on the place hit
                                 gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "H";
+                                Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
+                                    Console.Write(i + 1);
                                     for (int j = 0; j < 8; j++)
                                     {
                                         // loop through and print all elements of 2d array
@@ -200,21 +228,22 @@ namespace Calculator
                                         Console.Write($"{gridfinal[i, j]} ");
                                     }
                                     // new line between each row
-                                    Console.BackgroundColor = ConsoleColor.Black;
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                    ResetColors();
                                     Console.WriteLine("");
                                 }
                                 
                             }
                             else
                             {
-                                Console.WriteLine("nope");
+                                Console.WriteLine("Miss!\n");
 
                                 // re print grid with a M on the place hit
                                 Thread.Sleep(500);
                                 gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "M";
+                                Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
+                                    Console.Write(i + 1);
                                     for (int j = 0; j < 8; j++)
                                     {
                                         // loop through and print all elements of 2d array
@@ -223,8 +252,7 @@ namespace Calculator
                                         Console.Write($"{gridfinal[i, j]} ");
                                     }
                                     // new line between each row
-                                    Console.BackgroundColor = ConsoleColor.Black;
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                    ResetColors();
                                     Console.WriteLine("");
                                 }
                             }
@@ -315,6 +343,22 @@ namespace Calculator
                         Console.WriteLine("");
                     }
                 }
+
+                static void ResetColors()
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                /*static int RandomNumberExcluding(int values)
+                {
+                    var exclude = new HashSet<int>() { 5, 7, 1};
+                    var range = Enumerable.Range(1, 8).Where(i => !exclude.Contains(i));
+
+                    var rand = new System.Random();
+                    int index = rand.Next(0, 8 - exclude.Count);
+                    return range.ElementAt(index);
+                }*/
             }
         }
     }
