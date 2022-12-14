@@ -164,12 +164,19 @@ namespace Calculator
                         int computerguesses = 0;
                         bool gamedone = false;
 
-                        // user guesses
                         do
                         {
+                            // user guesses
                             Console.WriteLine("Guess computer code in format x,y");
                             string userguess = Console.ReadLine();
+
+                            //split the user guess into an array
                             string[] userguessarray = userguess.Split(',');
+
+                            //make array to validate user input
+                            int[] uservalidator = {Int32.Parse(userguessarray[0]),Int32.Parse(userguessarray[1])};
+                            //Console.WriteLine($"{uservalidator[0]} {uservalidator[1]}");
+
                             int[] userguessint = new int[2];
                             for(int i = 0; i < 2; i++) userguessint[i] = Int32.Parse(userguessarray[i]);
                             if ((userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1]) || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1]) || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1]) || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1]) || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1]))
@@ -187,7 +194,7 @@ namespace Calculator
                                 gamedone = true;
                             }
                         } while (!gamedone);
-                        
+
                         // computer guesses
 
 
