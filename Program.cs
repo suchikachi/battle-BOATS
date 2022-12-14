@@ -52,7 +52,7 @@ namespace Calculator
                         
                         Console.Write("\nPlease enter the coordinates of your ships in ");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("x, y ");
+                        Console.Write("x,y ");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write("format.\n\n");
                         Console.ForegroundColor = ConsoleColor.Blue;
@@ -60,7 +60,7 @@ namespace Calculator
 
                         // get input of first coordinates and split characters into array
                         string coordinate1 = Console.ReadLine();
-                        string[] coordinatearray1 = coordinate1.Split(", ");
+                        string[] coordinatearray1 = coordinate1.Split(',');
                         // initialize new integer array and convert the string array to int array
                         int arrsize1 = coordinatearray1.Length;
                         int[] intcoords1 = new int[arrsize1];
@@ -70,33 +70,30 @@ namespace Calculator
                         }
                         //Console.WriteLine(intcoords1);
 
-                    
-
-
                         // Repeat 2
                         string coordinate2 = Console.ReadLine();
-                        string[] coordinatearray2 = coordinate2.Split(", ");
+                        string[] coordinatearray2 = coordinate2.Split(',');
                         int arrsize2 = coordinatearray2.Length;
                         int[] intcoords2 = new int[arrsize2];
                         for(int i = 0; i < arrsize2; i++) intcoords2[i] = Int32.Parse(coordinatearray2[i]);
                         
                         // Repeat 3
                         string coordinate3 = Console.ReadLine();
-                        string[] coordinatearray3 = coordinate3.Split(", ");
+                        string[] coordinatearray3 = coordinate3.Split(',');
                         int arrsize3 = coordinatearray3.Length;
                         int[] intcoords3 = new int[arrsize3];
                         for(int i = 0; i < arrsize3; i++) intcoords3[i] = Int32.Parse(coordinatearray3[i]);
                         
                         // Repeat 4
                         string coordinate4 = Console.ReadLine();
-                        string[] coordinatearray4 = coordinate4.Split(", ");
+                        string[] coordinatearray4 = coordinate4.Split(',');
                         int arrsize4 = coordinatearray4.Length;
                         int[] intcoords4 = new int[arrsize4];
                         for(int i = 0; i < arrsize4; i++) intcoords4[i] = Int32.Parse(coordinatearray4[i]);
 
                         // Repeat 5
                         string coordinate5 = Console.ReadLine();
-                        string[] coordinatearray5 = coordinate5.Split(", ");
+                        string[] coordinatearray5 = coordinate5.Split(',');
                         int arrsize5 = coordinatearray5.Length;
                         int[] intcoords5 = new int[arrsize5];
                         for(int i = 0; i < arrsize5; i++) intcoords5[i] = Int32.Parse(coordinatearray5[i]);
@@ -118,6 +115,7 @@ namespace Calculator
                         };
                         
                         // edit user defined locations of array and mark it
+                        Console.ForegroundColor = ConsoleColor.Red;
                         grid[intcoords1[0] - 1, intcoords1[1] - 1] = "▢";
                         grid[intcoords2[0] - 1, intcoords2[1] - 1] = "▢";
                         grid[intcoords3[0] - 1, intcoords3[1] - 1] = "▢";
@@ -169,9 +167,9 @@ namespace Calculator
                         // user guesses
                         do
                         {
-                            Console.WriteLine("Guess computer code in format x, y");
+                            Console.WriteLine("Guess computer code in format x,y");
                             string userguess = Console.ReadLine();
-                            string[] userguessarray = userguess.Split(", ");
+                            string[] userguessarray = userguess.Split(',');
                             int[] userguessint = new int[2];
                             for(int i = 0; i < 2; i++) userguessint[i] = Int32.Parse(userguessarray[i]);
                             if ((userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1]) || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1]) || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1]) || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1]) || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1]))
@@ -203,7 +201,22 @@ namespace Calculator
                         break;
 
                     case "4":
-                        Console.WriteLine("Goodbye!");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write("\nG");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("o");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.Write("o");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write("d");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.Write("b");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("y");
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.Write("e");
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.Write("!");
                         Thread.Sleep(1000);
                         Environment.Exit(0);
                         break;
@@ -211,9 +224,7 @@ namespace Calculator
                     default:
                         Console.WriteLine("Please re-enter a valid choice");
                         break;
-                    
                 }
-
 
 
 
@@ -236,6 +247,7 @@ namespace Calculator
                     Console.WriteLine("Done!");
                     Thread.Sleep(1500);
                 }
+
 
                 static void CreateBaseGrid()
                 {
