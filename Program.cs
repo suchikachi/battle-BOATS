@@ -117,6 +117,9 @@ namespace Calculator
                             {".", ".", ".", ".", ".", ".", ".", "."}
                         };
                         
+                        string[,] gridfinal = new string[8, 8];
+                        Array.Copy(grid, gridfinal, grid.Length);
+
                         // edit user defined locations of array and mark it
                         Console.ForegroundColor = ConsoleColor.Red;
                         grid[intcoords1[0] - 1, intcoords1[1] - 1] = "▢";
@@ -125,13 +128,12 @@ namespace Calculator
                         grid[intcoords4[0] - 1, intcoords4[1] - 1] = "▢";
                         grid[intcoords5[0] - 1, intcoords5[1] - 1] = "▢";
 
-                        string[,] gridfinal = new string[8, 8];
-                        Array.Copy(grid, gridfinal, grid.Length);
-
                         // looping through array
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(" 1 2 3 4 5 6 7 8");
                         for (int i = 0; i < 8; i++)
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write(i + 1);
                             for (int j = 0; j < 8; j++)
                             {
@@ -148,22 +150,6 @@ namespace Calculator
                         // new line to clear coloring
                         ResetColors();
                         Console.WriteLine("");
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                         // generate computer's coordinates
                         Random computervalues = new Random();
@@ -203,7 +189,7 @@ namespace Calculator
                             string[] userguessarray = userguess.Split(',');
 
                             // make array to validate user input
-                            int[] uservalidator = {Int32.Parse(userguessarray[0]),Int32.Parse(userguessarray[1])};
+                            //int[] uservalidator = {Int32.Parse(userguessarray[0]),Int32.Parse(userguessarray[1])};
                             //Console.WriteLine($"{uservalidator[0]} {uservalidator[1]}");
 
                             int[] userguessint = new int[2];
@@ -216,9 +202,29 @@ namespace Calculator
                                 Thread.Sleep(1000);
                                 // re print grid with a H on the place hit
                                 gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "H";
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(i + 1);
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        // loop through and print all elements of 2d array
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.Write($"{grid[i, j]} ");
+                                    }
+                                    // new line between each row
+                                    ResetColors();
+                                    Console.WriteLine("");
+                                }
+
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(" 1 2 3 4 5 6 7 8");
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write(i + 1);
                                     for (int j = 0; j < 8; j++)
                                     {
@@ -240,9 +246,29 @@ namespace Calculator
                                 // re print grid with a M on the place hit
                                 Thread.Sleep(500);
                                 gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "M";
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(i + 1);
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        // loop through and print all elements of 2d array
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.Write($"{grid[i, j]} ");
+                                    }
+                                    // new line between each row
+                                    ResetColors();
+                                    Console.WriteLine("");
+                                }
+
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(" 1 2 3 4 5 6 7 8");
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write(i + 1);
                                     for (int j = 0; j < 8; j++)
                                     {
@@ -328,8 +354,12 @@ namespace Calculator
                 {
                     // nested for-loop matrix for base grid 
                     Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" 1 2 3 4 5 6 7 8");
                     for (int i = 0; i < 8; i++)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(i + 1);
                         for (int j = 0; j < 8; j++)
                         {
                             // make it look pretty
