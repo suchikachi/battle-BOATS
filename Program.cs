@@ -105,7 +105,7 @@ namespace Calculator
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
                         
                         // create 2d array to display updated grid
-                        string[,] grid = new string[8, 8]
+                        string[,] primarygrid = new string[8, 8]
                         {
                             {".", ".", ".", ".", ".", ".", ".", "."},
                             {".", ".", ".", ".", ".", ".", ".", "."},
@@ -117,16 +117,16 @@ namespace Calculator
                             {".", ".", ".", ".", ".", ".", ".", "."}
                         };
                         
-                        string[,] gridfinal = new string[8, 8];
-                        Array.Copy(grid, gridfinal, grid.Length);
+                        string[,] secondarygrid = new string[8, 8];
+                        Array.Copy(primarygrid, secondarygrid, primarygrid.Length);
 
                         // edit user defined locations of array and mark it
                         Console.ForegroundColor = ConsoleColor.Red;
-                        grid[intcoords1[0] - 1, intcoords1[1] - 1] = "▢";
-                        grid[intcoords2[0] - 1, intcoords2[1] - 1] = "▢";
-                        grid[intcoords3[0] - 1, intcoords3[1] - 1] = "▢";
-                        grid[intcoords4[0] - 1, intcoords4[1] - 1] = "▢";
-                        grid[intcoords5[0] - 1, intcoords5[1] - 1] = "▢";
+                        primarygrid[intcoords1[0] - 1, intcoords1[1] - 1] = "▢";
+                        primarygrid[intcoords2[0] - 1, intcoords2[1] - 1] = "▢";
+                        primarygrid[intcoords3[0] - 1, intcoords3[1] - 1] = "▢";
+                        primarygrid[intcoords4[0] - 1, intcoords4[1] - 1] = "▢";
+                        primarygrid[intcoords5[0] - 1, intcoords5[1] - 1] = "▢";
 
                         // looping through array
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -140,7 +140,7 @@ namespace Calculator
                                 // loop through and print all elements of 2d array
                                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                                 Console.ForegroundColor = ConsoleColor.Gray;
-                                Console.Write($"{grid[i, j]} ");
+                                Console.Write($"{primarygrid[i, j]} ");
                             }
                             // new line between each row
                             ResetColors();
@@ -193,6 +193,10 @@ namespace Calculator
                             //Console.WriteLine($"{uservalidator[0]} {uservalidator[1]}");
 
                             int[] userguessint = new int[2];
+
+
+                            //check if hit with abnormally big statement
+
                             for(int i = 0; i < 2; i++) userguessint[i] = Int32.Parse(userguessarray[i]);
                             if ((userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1]) || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1]) || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1]) || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1]) || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1]))
                             {
@@ -201,7 +205,7 @@ namespace Calculator
                                 userguesses += 1;
                                 Thread.Sleep(1000);
                                 // re print grid with a H on the place hit
-                                gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "H";
+                                secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "H";
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
@@ -213,7 +217,7 @@ namespace Calculator
                                         // loop through and print all elements of 2d array
                                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        Console.Write($"{grid[i, j]} ");
+                                        Console.Write($"{primarygrid[i, j]} ");
                                     }
                                     // new line between each row
                                     ResetColors();
@@ -231,7 +235,7 @@ namespace Calculator
                                         // loop through and print all elements of 2d array
                                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        Console.Write($"{gridfinal[i, j]} ");
+                                        Console.Write($"{secondarygrid[i, j]} ");
                                     }
                                     // new line between each row
                                     ResetColors();
@@ -245,7 +249,7 @@ namespace Calculator
 
                                 // re print grid with a M on the place hit
                                 Thread.Sleep(500);
-                                gridfinal[userguessint[0] - 1, userguessint[1] - 1] = "M";
+                                secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "M";
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
@@ -257,7 +261,7 @@ namespace Calculator
                                         // loop through and print all elements of 2d array
                                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        Console.Write($"{grid[i, j]} ");
+                                        Console.Write($"{primarygrid[i, j]} ");
                                     }
                                     // new line between each row
                                     ResetColors();
@@ -275,7 +279,7 @@ namespace Calculator
                                         // loop through and print all elements of 2d array
                                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        Console.Write($"{gridfinal[i, j]} ");
+                                        Console.Write($"{secondarygrid[i, j]} ");
                                     }
                                     // new line between each row
                                     ResetColors();
@@ -288,6 +292,10 @@ namespace Calculator
                                 gamedone = true;
                             }
                         } while (!gamedone);
+
+
+
+
 
                         // computer guesses
 
