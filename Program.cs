@@ -177,7 +177,7 @@ namespace Calculator
                             Thread.Sleep(500);
 
                             // user guesses
-                            Console.Write("\nGuess the location of a computer's ships in ");
+                            Console.Write("\nGuess the location of a computer's ship in ");
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("x,y ");
                             Console.ForegroundColor = ConsoleColor.White;
