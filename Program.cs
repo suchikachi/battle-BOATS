@@ -129,11 +129,11 @@ namespace Calculator
                         primarygrid[intcoords5[0] - 1, intcoords5[1] - 1] = "▢";
 
                         // looping through array
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine(" 1 2 3 4 5 6 7 8");
                         for (int i = 0; i < 8; i++)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.Write(i + 1);
                             for (int j = 0; j < 8; j++)
                             {
@@ -206,7 +206,7 @@ namespace Calculator
                                 Thread.Sleep(1000);
                                 // re print grid with a H on the place hit
                                 secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "H";
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -224,7 +224,7 @@ namespace Calculator
                                     Console.WriteLine("");
                                 }
 
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -251,7 +251,7 @@ namespace Calculator
                                 // re print grid with a M on the place hit
                                 Thread.Sleep(500);
                                 secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "M";
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -269,7 +269,7 @@ namespace Calculator
                                     Console.WriteLine("");
                                 }
 
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -299,7 +299,7 @@ namespace Calculator
 
                             // the computer is guessing animation
                             ComputerIsGuessing();
-                            Thread.Sleep(2750);
+                            Thread.Sleep(1250);
 
                             // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
@@ -310,7 +310,7 @@ namespace Calculator
                                 Thread.Sleep(1000);
                                 // re print primary grid with a H on the place hit
                                 primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "H";
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -328,7 +328,7 @@ namespace Calculator
                                     Console.WriteLine("");
                                 }
 
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -351,7 +351,7 @@ namespace Calculator
                             {
                                 // the computer is guessing again
                                 ComputerIsGuessing();
-                                Thread.Sleep(2750);
+                                Thread.Sleep(1250);
 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine(" The computer misses!\n");
@@ -359,7 +359,7 @@ namespace Calculator
                                 // re print grid with a M on the place hit
                                 Thread.Sleep(500);
                                 primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "M";
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -377,7 +377,7 @@ namespace Calculator
                                     Console.WriteLine("");
                                 }
 
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
                                 {
@@ -473,11 +473,11 @@ namespace Calculator
                 {
                     // nested for-loop matrix for base grid 
                     Console.WriteLine("");
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(" 1 2 3 4 5 6 7 8");
                     for (int i = 0; i < 8; i++)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write(i + 1);
                         for (int j = 0; j < 8; j++)
                         {
@@ -502,7 +502,7 @@ namespace Calculator
                 static void ComputerIsGuessing()
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    string[] guessidentifiers = {"The computer is making a calculated guess", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code"};
+                    string[] guessidentifiers = {"The computer is making a calculated guess", "A fan is whirring somewhere", "The computer begins overclocking itself for extra efficiency", "The computer is undergoing a situational analysis", "The computer begins reading change in potential energy", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code", "The computer is analysing its choices"};
                     Random r = new Random();
                     string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
 
@@ -517,7 +517,7 @@ namespace Calculator
                     Console.SetCursorPosition(sentenceinuse.Length + 2, Console.CursorTop - 1);
                     Console.WriteLine(".");
                     Thread.Sleep(1000);
-                    Console.SetCursorPosition(sentenceinuse.Length + 2, Console.CursorTop - 1);
+                    Console.SetCursorPosition(sentenceinuse.Length + 3, Console.CursorTop - 1);
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
 
