@@ -205,7 +205,7 @@ namespace Calculator
                                 userguesses += 1;
                                 Thread.Sleep(1000);
                                 // re print grid with a H on the place hit
-                                secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "H";
+                                secondarygrid[userguessint[1] - 1, userguessint[0] - 1] = "H";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
@@ -251,7 +251,7 @@ namespace Calculator
                                 Thread.Sleep(1000);
 
                                 // re print grid with a M on the place hit
-                                secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "M";
+                                secondarygrid[userguessint[1] - 1, userguessint[0] - 1] = "M";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
@@ -290,16 +290,57 @@ namespace Calculator
                             }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             // generate random computer guess coordinates
                             Random r = new Random();
                             int[] computerguess = new int[2];
 
-                            // assign random value 
-                            computerguess[0] = r.Next(1, 9);
-                            computerguess[1] = r.Next(1, 9);
+                            // check if the number pair has already been generated
+                            List<Tuple<int, int>> generatedNumbers = new List<Tuple<int, int>>();
+                            while (true)
+                            {
+                                // assign random computer value
+                                computerguess[0] = r.Next(1, 9);
+                                computerguess[1] = r.Next(1, 9);
 
+                                if (!generatedNumbers.Contains(Tuple.Create(computerguess[0], computerguess[1])))
+                                {
+                                    // if the number pair has not been generated, add it to the list
+                                    generatedNumbers.Add(Tuple.Create(computerguess[0], computerguess[1]));
+                                    break;
+                                }
+                            }
+
+                            // print values in tuple
+                            foreach (var i in generatedNumbers)
+                            {
+                                Console.WriteLine("generated numbers = " + i);
+                            }
+
+                            
                             // the computer is guessing animation
-                            ComputerIsGuessing();
+                            //ComputerIsGuessing();
 
                             // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
@@ -309,7 +350,7 @@ namespace Calculator
                                 computerguesses += 1;
                                 Thread.Sleep(1000);
                                 // re print primary grid with a H on the place hit
-                                primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "H";
+                                primarygrid[computerguess[1] - 1, computerguess[0] - 1] = "H";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
@@ -350,14 +391,14 @@ namespace Calculator
                             else
                             {
                                 // the computer is guessing again
-                                ComputerIsGuessing();
+                                //ComputerIsGuessing();
 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine(" The computer misses!\n");
                                 Thread.Sleep(500);
 
                                 // re print grid with a M on the place hit
-                                primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "M";
+                                primarygrid[computerguess[1] - 1, computerguess[0] - 1] = "M";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
