@@ -307,37 +307,21 @@ namespace Calculator
 
 
 
-
-
-
-
-
                             // generate random computer guess coordinates
                             Random r = new Random();
                             int[] computerguess = new int[2];
-
-                            // check if the number pair has already been generated
-                            List<List<int>> generatedNumbers = new List<List<int>>();
 
                             // assign random computer value
                             computerguess[0] = r.Next(1, 9);
                             computerguess[1] = r.Next(1, 9);
 
-                            // add the new pair of coordinates to the list
-                            generatedNumbers.Add(new List<int>() {computerguess[0], computerguess[1]});
-
-                            // print values in list
-                            foreach (List<int> innerList in generatedNumbers)
+                            // check if the grid 
+                            if ((primarygrid[computerguess[0], computerguess[1]] != "▢"))
                             {
-                                foreach (int element in innerList)
-                                {
-                                    Console.Write(element + " ");
-                                }
-                                Console.WriteLine();
+                                Console.WriteLine("place already exists");
                             }
+                            else Console.WriteLine("fine");
 
-
-                            
                             // the computer is guessing animation
                             //ComputerIsGuessing();
 
