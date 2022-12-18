@@ -177,7 +177,7 @@ namespace Calculator
                             Thread.Sleep(500);
 
                             // user guesses
-                            Console.Write("\nGuess the location computer's ships in ");
+                            Console.Write("\nGuess the location of a computer's ships in ");
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("x,y ");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -248,8 +248,9 @@ namespace Calculator
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("You missed your shot.\n");
 
+                                Thread.Sleep(1000);
+
                                 // re print grid with a M on the place hit
-                                Thread.Sleep(500);
                                 secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "M";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
@@ -299,7 +300,7 @@ namespace Calculator
 
                             // the computer is guessing animation
                             ComputerIsGuessing();
-                            Thread.Sleep(1250);
+                            Thread.Sleep(500);
 
                             // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
@@ -351,13 +352,13 @@ namespace Calculator
                             {
                                 // the computer is guessing again
                                 ComputerIsGuessing();
-                                Thread.Sleep(1250);
+                                Thread.Sleep(1000);
 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine(" The computer misses!\n");
+                                Thread.Sleep(500);
 
                                 // re print grid with a M on the place hit
-                                Thread.Sleep(500);
                                 primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "M";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
@@ -502,7 +503,7 @@ namespace Calculator
                 static void ComputerIsGuessing()
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    string[] guessidentifiers = {"The computer is making a calculated guess", "A fan is whirring somewhere", "The computer begins overclocking itself for extra efficiency", "The computer is undergoing a situational analysis", "The computer begins reading change in potential energy", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code", "The computer is analysing its choices"};
+                    string[] guessidentifiers = {"The computer prepares for battle", "The computer is adjusting its tactics", "The computer is scanning the battlefield", "The computer is broadcasting a message to you: 010001000100100101000101", "The computer is making a calculated guess", "A fan is whirring somewhere", "The computer begins overclocking itself for extra efficiency", "The computer is undergoing a situational analysis", "The computer begins measuring change in potential energy", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code", "The computer is analysing its choices"};
                     Random r = new Random();
                     string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
 
