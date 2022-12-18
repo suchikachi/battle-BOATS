@@ -34,3 +34,21 @@ C:\Users\richa\Downloads\boats\battle-BOATS\obj\Debug\net5.0\refint\battle BOATS
 C:\Users\richa\Downloads\boats\battle-BOATS\obj\Debug\net5.0\battle BOATS.pdb
 C:\Users\richa\Downloads\boats\battle-BOATS\obj\Debug\net5.0\battle BOATS.genruntimeconfig.cache
 C:\Users\richa\Downloads\boats\battle-BOATS\obj\Debug\net5.0\ref\battle BOATS.dll
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\battle BOATS.exe
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\battle BOATS.deps.json
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\battle BOATS.runtimeconfig.json
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\battle BOATS.runtimeconfig.dev.json
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\battle BOATS.dll
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\battle BOATS.pdb
+C:\Users\richa\Downloads\battle-boats\bin\Debug\net5.0\Colorful.Console.dll
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.csproj.AssemblyReference.cache
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.AssemblyInfoInputs.cache
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.AssemblyInfo.cs
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.csproj.CoreCompileInputs.cache
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.csproj.CopyComplete
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.dll
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\refint\battle BOATS.dll
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.pdb
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\battle BOATS.genruntimeconfig.cache
+C:\Users\richa\Downloads\battle-boats\obj\Debug\net5.0\ref\battle BOATS.dll

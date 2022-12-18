@@ -286,18 +286,35 @@ namespace Calculator
                                     Console.WriteLine("");
                                 }
                             }
+
+
+                            // generate random computer guess coordinates
+                            Random r = new Random();
+                            int[] computerguess = new int[1];
+
+                            // assign random value 
+                            computerguess[0] = r.Next(1, 9);
+                            computerguess[1] = r.Next(1, 9);
+
+                            // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
+                            if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
+                            {
+                                
+                            }
+
+
                             if (userguesses == 5)
                             {
                                 Console.WriteLine("You found all the computer's ships and won!");
                                 gamedone = true;
                             }
+
+                            if (computerguesses == 5)
+                            {
+                                Console.WriteLine("The computer hit all your ships and won!");
+                                gamedone = true;
+                            }
                         } while (!gamedone);
-
-
-
-
-
-                        // computer guesses
 
 
                         break;

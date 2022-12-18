@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\richa\\Downloads\\boats\\battle-BOATS\\battle BOATS.csproj": {}
+    "C:\\Users\\richa\\Downloads\\battle-boats\\battle BOATS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\richa\\Downloads\\boats\\battle-BOATS\\battle BOATS.csproj": {
+    "C:\\Users\\richa\\Downloads\\battle-boats\\battle BOATS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\richa\\Downloads\\boats\\battle-BOATS\\battle BOATS.csproj",
+        "projectUniqueName": "C:\\Users\\richa\\Downloads\\battle-boats\\battle BOATS.csproj",
         "projectName": "battle BOATS",
-        "projectPath": "C:\\Users\\richa\\Downloads\\boats\\battle-BOATS\\battle BOATS.csproj",
+        "projectPath": "C:\\Users\\richa\\Downloads\\battle-boats\\battle BOATS.csproj",
         "packagesPath": "C:\\Users\\richa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\richa\\Downloads\\boats\\battle-BOATS\\obj\\",
+        "outputPath": "C:\\Users\\richa\\Downloads\\battle-boats\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\richa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\richa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -51,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -66,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
