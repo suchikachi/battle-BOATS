@@ -475,7 +475,7 @@ namespace Calculator
                         break;
                         
                     default:
-                        Console.WriteLine("Please re-enter a valid choice");
+                        Console.WriteLine("\n\nPlease re-enter a valid choice\n");
                         break;
                 }
 
