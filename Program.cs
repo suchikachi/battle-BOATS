@@ -317,26 +317,25 @@ namespace Calculator
                             int[] computerguess = new int[2];
 
                             // check if the number pair has already been generated
-                            List<Tuple<int, int>> generatedNumbers = new List<Tuple<int, int>>();
-                            while (true)
-                            {
-                                // assign random computer value
-                                computerguess[0] = r.Next(1, 9);
-                                computerguess[1] = r.Next(1, 9);
+                            List<List<int>> generatedNumbers = new List<List<int>>();
 
-                                if (!generatedNumbers.Contains(Tuple.Create(computerguess[0], computerguess[1])))
+                            // assign random computer value
+                            computerguess[0] = r.Next(1, 9);
+                            computerguess[1] = r.Next(1, 9);
+
+                            // add the new pair of coordinates to the list
+                            generatedNumbers.Add(new List<int>() {computerguess[0], computerguess[1]});
+
+                            // print values in list
+                            foreach (List<int> innerList in generatedNumbers)
+                            {
+                                foreach (int element in innerList)
                                 {
-                                    // if the number pair has not been generated, add it to the list
-                                    generatedNumbers.Add(Tuple.Create(computerguess[0], computerguess[1]));
-                                    break;
+                                    Console.Write(element + " ");
                                 }
+                                Console.WriteLine();
                             }
 
-                            // print values in tuple
-                            foreach (var i in generatedNumbers)
-                            {
-                                Console.WriteLine("generated numbers = " + i);
-                            }
 
                             
                             // the computer is guessing animation
