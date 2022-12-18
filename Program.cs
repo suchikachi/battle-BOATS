@@ -400,13 +400,23 @@ namespace Calculator
 
                             if (userguesses == 5)
                             {
-                                Console.WriteLine("You found all the computer's ships and won!");
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("\nYou found all the computer's ships and won!");
+                                Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\n\nGame over!");
+                                Thread.Sleep(500);
                                 gamedone = true;
                             }
 
                             if (computerguesses == 5)
                             {
-                                Console.WriteLine("The computer hit all your ships and won!");
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("\nThe computer hit all your ships and won!");
+                                Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\n\nGame over!");
+                                Thread.Sleep(500);
                                 gamedone = true;
                             }
                         } while (!gamedone);
