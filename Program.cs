@@ -201,7 +201,7 @@ namespace Calculator
                             if ((userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1]) || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1]) || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1]) || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1]) || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1]))
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("Hit!\n");
+                                Console.WriteLine("You hit one of the computer's ships!\n");
                                 userguesses += 1;
                                 Thread.Sleep(1000);
                                 // re print grid with a H on the place hit
@@ -245,7 +245,8 @@ namespace Calculator
                             }
                             else
                             {
-                                Console.WriteLine("Miss!\n");
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("You missed your shot.\n");
 
                                 // re print grid with a M on the place hit
                                 Thread.Sleep(500);
@@ -290,21 +291,25 @@ namespace Calculator
 
                             // generate random computer guess coordinates
                             Random r = new Random();
-                            int[] computerguess = new int[1];
+                            int[] computerguess = new int[2];
 
                             // assign random value 
                             computerguess[0] = r.Next(1, 9);
                             computerguess[1] = r.Next(1, 9);
 
+                            // the computer is guessing animation
+                            ComputerIsGuessing();
+                            Thread.Sleep(2750);
+
                             // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("One of your ships was struck!\n");
+                                Console.WriteLine(" One of your ships were struck!\n");
                                 computerguesses += 1;
                                 Thread.Sleep(1000);
-                                // re print grid with a H on the place hit
-                                secondarygrid[userguessint[0] - 1, userguessint[1] - 1] = "H";
+                                // re print primary grid with a H on the place hit
+                                primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "H";
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
@@ -341,6 +346,54 @@ namespace Calculator
                                     Console.WriteLine("");
                                 }
                                 
+                            }
+                            else
+                            {
+                                // the computer is guessing again
+                                ComputerIsGuessing();
+                                Thread.Sleep(2750);
+
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(" The computer misses!\n");
+
+                                // re print grid with a M on the place hit
+                                Thread.Sleep(500);
+                                primarygrid[computerguess[0] - 1, computerguess[1] - 1] = "M";
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(" 1 2 3 4 5 6 7 8");
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(i + 1);
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        // loop through and print all elements of 2d array
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.Write($"{primarygrid[i, j]} ");
+                                    }
+                                    // new line between each row
+                                    ResetColors();
+                                    Console.WriteLine("");
+                                }
+
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(" 1 2 3 4 5 6 7 8");
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(i + 1);
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        // loop through and print all elements of 2d array
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.Write($"{secondarygrid[i, j]} ");
+                                    }
+                                    // new line between each row
+                                    ResetColors();
+                                    Console.WriteLine("");
+                                }
                             }
 
 
@@ -444,6 +497,28 @@ namespace Calculator
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                static void ComputerIsGuessing()
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    string[] guessidentifiers = {"The computer is making a calculated guess", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code"};
+                    Random r = new Random();
+                    string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
+
+                    Console.WriteLine("\n" + sentenceinuse);
+
+                    Console.SetCursorPosition(sentenceinuse.Length, Console.CursorTop - 1);
+                    Console.WriteLine(".");
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(sentenceinuse.Length + 1, Console.CursorTop - 1);
+                    Console.WriteLine(".");
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(sentenceinuse.Length + 2, Console.CursorTop - 1);
+                    Console.WriteLine(".");
+                    Thread.Sleep(1000);
+                    Console.SetCursorPosition(sentenceinuse.Length + 2, Console.CursorTop - 1);
+                    Console.ForegroundColor = ConsoleColor.Green;
                 }
 
                 /*static int RandomNumberExcluding(int values)
