@@ -316,11 +316,11 @@ namespace Calculator
                             computerguess[1] = r.Next(1, 9);
 
                             // check if the grid 
-                            if ((primarygrid[computerguess[0], computerguess[1]] != "▢"))
+                            if ((primarygrid[computerguess[1], computerguess[0]] == "▢"))
                             {
-                                Console.WriteLine("place already exists");
+                                Console.WriteLine("we have identified that the computer landed on a square");
                             }
-                            else Console.WriteLine("fine");
+                            else Console.WriteLine("computer did not hit a square !!!");
 
                             // the computer is guessing animation
                             //ComputerIsGuessing();
