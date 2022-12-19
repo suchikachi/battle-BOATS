@@ -315,25 +315,15 @@ namespace Calculator
                             computerguess[0] = r.Next(1, 9);
                             computerguess[1] = r.Next(1, 9);
 
+                            Console.WriteLine($"{computerguess[0]} {computerguess[1]} ");
+
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                            if (computerguess[0] >= 0 && computerguess[0] < primarygrid.GetLength(0) && computerguess[1] >= 0 && computerguess[1] < primarygrid.GetLength(1))
+                            while ((primarygrid[computerguess[0], computerguess[1]] == "▢") || (primarygrid[computerguess[0], computerguess[1]] == "M") || (primarygrid[computerguess[0], computerguess[1]] == "H"))
                             {
-                                if ((primarygrid[computerguess[1], computerguess[0]] == "▢") || (primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
-                                {
                                     // generate new coordinates
                                     computerguess[0] = r.Next(1, 9);
                                     computerguess[1] = r.Next(1, 9);
-                                }
-                                //else Console.WriteLine("computer did not hit an affected square");
                             }
-                            else // generate new coordinates
-                            {
-                                //Console.WriteLine("was a index bounds error");
-                                computerguess[0] = r.Next(1, 9);
-                                computerguess[1] = r.Next(1, 9);
-                            }
-                            
-
 
 
                             // the computer is guessing animation
@@ -439,8 +429,10 @@ namespace Calculator
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nYou found all the computer's ships and won!");
                                 Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n\nGame over!");
+                                Console.WriteLine("\nGame over!");
                                 Thread.Sleep(500);
                                 gamedone = true;
                             }
@@ -450,8 +442,10 @@ namespace Calculator
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nThe computer hit all your ships and won!");
                                 Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n\nGame over!");
+                                Console.WriteLine("\nGame over!\n");
                                 Thread.Sleep(500);
                                 gamedone = true;
                             }
