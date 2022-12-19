@@ -202,7 +202,9 @@ namespace Calculator
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.WriteLine("Error: Invalid input string");
+                                    int tryint;
+                                    if (!regex.IsMatch(userguess) || Int32.TryParse(uservalidator[0], out tryint) || Int32.TryParse(uservalidator[1], out tryint)) Console.WriteLine("Error: Bad input string");
+                                    if (Convert.ToInt32(uservalidator[0]) > 8 || Convert.ToInt32(uservalidator[0]) < 1 || Convert.ToInt32(uservalidator[1]) > 8 && Convert.ToInt32(uservalidator[1]) < 1) Console.WriteLine("Error: Input string was out of bounds");
                                 }
                             }
 
