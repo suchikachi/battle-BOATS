@@ -176,14 +176,30 @@ namespace Calculator
                         {
                             Thread.Sleep(500);
 
-                            // user guesses
-                            Console.Write("\nGuess the location of a computer's ship in ");
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("x,y ");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("format.\n\n");
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            string userguess = Console.ReadLine();
+                            // user guess
+                            while (true)
+                            {
+                                Console.Write("\nGuess the location of a computer's ship in ");
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("x,y ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write("format.\n\n");
+                                Console.ForegroundColor = ConsoleColor.Blue;
+                                
+                                string userguess = Console.ReadLine();
+                                
+                                string[] coordinates = userguess.Split(',');
+                                if (coordinates.Length == 2 && int.TryParse(coordinates[0], out int x) && int.TryParse(coordinates[1], out int y))
+                                {
+                                    // userguess is in x, y format and x and y are digits
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Please try again.");
+                                }
+                            }
+
 
                             // split the user guess into an array
                             string[] userguessarray = userguess.Split(',');
