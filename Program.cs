@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Calculator
 {
@@ -177,8 +178,12 @@ namespace Calculator
                             Thread.Sleep(500);
                             string userguess = "";
                             // user guess
+                            string pattern = @"^\d+,\d+$";
+                            Regex regex = new Regex(pattern);
+
                             while (true)
                             {
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write("\nGuess the location of a computer's ship in ");
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write("x,y ");
@@ -188,27 +193,20 @@ namespace Calculator
                                 
                                 userguess = Console.ReadLine();
                                 
-                                string[] coordinates = userguess.Split(',');
-                                if (coordinates.Length == 2 && int.TryParse(coordinates[0], out int x) && int.TryParse(coordinates[1], out int y) && (Convert.ToInt32(coordinates[0]) < 1) && (Convert.ToInt32(coordinates[0]) > 8) && (Convert.ToInt32(coordinates[1]) < 1) && (Convert.ToInt32(coordinates[1]) > 8))
+                                if (regex.IsMatch(userguess))
                                 {
-                                    // userguess is in x, y format and x and y are digits
+                                    // userguess is in x, y format
                                     break;
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.WriteLine("\nError: Please re-enter a valid choice\n");
-                                    Thread.Sleep(1000);
+                                    Console.WriteLine("Error: Invalid input string");
                                 }
                             }
 
-
                             // split the user guess into an array
                             string[] userguessarray = userguess.Split(',');
-
-                            // make array to validate user input
-                            //int[] uservalidator = {Int32.Parse(userguessarray[0]),Int32.Parse(userguessarray[1])};
-                            //Console.WriteLine($"{uservalidator[0]} {uservalidator[1]}");
 
                             int[] userguessint = new int[2];
 
@@ -501,8 +499,8 @@ namespace Calculator
                         break;
                         
                     default:
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\n\nError: Please re-enter a valid choice\n");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Error: Invalid input string");
                         break;
                 }
 
