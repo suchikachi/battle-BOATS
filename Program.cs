@@ -316,13 +316,25 @@ namespace Calculator
                             computerguess[1] = r.Next(1, 9);
 
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                            if ((primarygrid[computerguess[1], computerguess[0]] == "▢") || (primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
+                            if (computerguess[0] >= 0 && computerguess[0] < primarygrid.GetLength(0) && computerguess[1] >= 0 && computerguess[1] < primarygrid.GetLength(1))
                             {
-                                Console.WriteLine("computer hit an affected square");
+                                if ((primarygrid[computerguess[1], computerguess[0]] == "▢") || (primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
+                                {
+                                    // generate new coordinates
+                                    computerguess[0] = r.Next(1, 9);
+                                    computerguess[1] = r.Next(1, 9);
+                                }
+                                //else Console.WriteLine("computer did not hit an affected square");
+                            }
+                            else // generate new coordinates
+                            {
+                                //Console.WriteLine("was a index bounds error");
                                 computerguess[0] = r.Next(1, 9);
                                 computerguess[1] = r.Next(1, 9);
                             }
-                            else Console.WriteLine("computer did not hit an affected square");
+                            
+
+
 
                             // the computer is guessing animation
                             //ComputerIsGuessing();
