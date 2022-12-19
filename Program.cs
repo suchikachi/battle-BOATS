@@ -202,9 +202,7 @@ namespace Calculator
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    int tryint;
-                                    if (!regex.IsMatch(userguess) || Int32.TryParse(uservalidator[0], out tryint) || Int32.TryParse(uservalidator[1], out tryint)) Console.WriteLine("Error: Bad input string");
-                                    if (Convert.ToInt32(uservalidator[0]) > 8 || Convert.ToInt32(uservalidator[0]) < 1 || Convert.ToInt32(uservalidator[1]) > 8 && Convert.ToInt32(uservalidator[1]) < 1) Console.WriteLine("Error: Input string was out of bounds");
+                                    Console.WriteLine("Error: Bad input string");
                                 }
                             }
 
@@ -340,8 +338,8 @@ namespace Calculator
                             while ((primarygrid[computerguess[0], computerguess[1]] == "▢") || (primarygrid[computerguess[0], computerguess[1]] == "M") || (primarygrid[computerguess[0], computerguess[1]] == "H"))
                             {
                                     // generate new coordinates
-                                    computerguess[0] = r.Next(1, 9);
-                                    computerguess[1] = r.Next(1, 9);
+                                    computerguess[0] = r.Next(1, 7);
+                                    computerguess[1] = r.Next(1, 7);
                             }
 
 
