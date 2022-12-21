@@ -329,17 +329,17 @@ namespace Calculator
                             int[] computerguess = new int[2];
 
                             // assign random computer value
-                            computerguess[0] = r.Next(1, 9);
-                            computerguess[1] = r.Next(1, 9);
+                            computerguess[0] = r.Next(0, 8);
+                            computerguess[1] = r.Next(0, 8);
 
-                            Console.WriteLine($"{computerguess[0]} {computerguess[1]} ");
+                            //Console.WriteLine($"{computerguess[0]} {computerguess[1]}");
 
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                            while ((primarygrid[computerguess[0], computerguess[1]] == "▢") || (primarygrid[computerguess[0], computerguess[1]] == "M") || (primarygrid[computerguess[0], computerguess[1]] == "H"))
+                            while ((primarygrid[computerguess[0] + 1, computerguess[1] + 1] == "▢") || (primarygrid[computerguess[0] + 1, computerguess[1] + 1] == "M") || (primarygrid[computerguess[0] + 1, computerguess[1] + 1] == "H"))
                             {
                                     // generate new coordinates
-                                    computerguess[0] = r.Next(1, 7);
-                                    computerguess[1] = r.Next(1, 7);
+                                    computerguess[0] = r.Next(0, 8);
+                                    computerguess[1] = r.Next(0, 8);
                             }
 
 
@@ -350,7 +350,7 @@ namespace Calculator
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine(" One of your ships were struck!\n");
+                                Console.WriteLine(" One of your ships was struck!\n");
                                 computerguesses += 1;
                                 Thread.Sleep(1000);
                                 // re print primary grid with a H on the place hit
