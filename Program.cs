@@ -123,11 +123,11 @@ namespace Calculator
 
                         // edit user defined locations of array and mark it
                         Console.ForegroundColor = ConsoleColor.Red;
-                        primarygrid[intcoords1[0] - 1, intcoords1[1] - 1] = "▢";
-                        primarygrid[intcoords2[0] - 1, intcoords2[1] - 1] = "▢";
-                        primarygrid[intcoords3[0] - 1, intcoords3[1] - 1] = "▢";
-                        primarygrid[intcoords4[0] - 1, intcoords4[1] - 1] = "▢";
-                        primarygrid[intcoords5[0] - 1, intcoords5[1] - 1] = "▢";
+                        primarygrid[intcoords1[1] - 1, intcoords1[0] - 1] = "▢";
+                        primarygrid[intcoords2[1] - 1, intcoords2[0] - 1] = "▢";
+                        primarygrid[intcoords3[1] - 1, intcoords3[0] - 1] = "▢";
+                        primarygrid[intcoords4[1] - 1, intcoords4[0] - 1] = "▢";
+                        primarygrid[intcoords5[1] - 1, intcoords5[0] - 1] = "▢";
 
                         // looping through array
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -175,6 +175,7 @@ namespace Calculator
 
                         do
                         {
+                            int itcount = 0;
                             Thread.Sleep(500);
                             string userguess = "";
                             // user guess
@@ -183,12 +184,13 @@ namespace Calculator
 
                             while (true)
                             {
+                                itcount+=1;
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write("\nGuess the location of a computer's ship in ");
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write("x,y ");
                                 Console.ForegroundColor = ConsoleColor.White;
-                                Console.Write("format.\n\n");
+                                Console.Write($"format. (iteration: {itcount})\n\n");
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 
                                 userguess = Console.ReadLine();
@@ -332,10 +334,10 @@ namespace Calculator
                             computerguess[0] = r.Next(0, 8);
                             computerguess[1] = r.Next(0, 8);
 
-                            //Console.WriteLine($"{computerguess[0]} {computerguess[1]}");
+                            Console.WriteLine($"computer coordinate for next: {computerguess[0]}, {computerguess[1]}");
 
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                            while ((primarygrid[computerguess[0] + 1, computerguess[1] + 1] == "▢") || (primarygrid[computerguess[0] + 1, computerguess[1] + 1] == "M") || (primarygrid[computerguess[0] + 1, computerguess[1] + 1] == "H"))
+                            while ((primarygrid[computerguess[1], computerguess[0]] == "▢") || (primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
                             {
                                     // generate new coordinates
                                     computerguess[0] = r.Next(0, 8);
@@ -402,7 +404,7 @@ namespace Calculator
                                 Thread.Sleep(500);
 
                                 // re print grid with a M on the place hit
-                                primarygrid[computerguess[1] - 1, computerguess[0] - 1] = "M";
+                                primarygrid[computerguess[1], computerguess[0]] = "M";
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine(" 1 2 3 4 5 6 7 8");
                                 for (int i = 0; i < 8; i++)
