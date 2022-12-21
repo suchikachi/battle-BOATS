@@ -172,7 +172,8 @@ namespace Calculator
                         int userguesses = 0;
                         int computerguesses = 0;
                         bool gamedone = false;
-
+                        int itcount = 0;
+                        
                         do
                         {
                             Thread.Sleep(500);
@@ -183,14 +184,13 @@ namespace Calculator
 
                             while (true)
                             {
-                                int itcount = 1;
+                                itcount += 1;
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write("\nGuess the location of a computer's ship in ");
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write("x,y ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write($"format. (iteration: {itcount})\n\n");
-                                itcount += 1;
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 
                                 userguess = Console.ReadLine();
