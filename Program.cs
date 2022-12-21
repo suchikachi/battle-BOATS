@@ -175,7 +175,6 @@ namespace Calculator
 
                         do
                         {
-                            int itcount = 0;
                             Thread.Sleep(500);
                             string userguess = "";
                             // user guess
@@ -184,13 +183,14 @@ namespace Calculator
 
                             while (true)
                             {
-                                itcount+=1;
+                                int itcount = 1;
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write("\nGuess the location of a computer's ship in ");
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write("x,y ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write($"format. (iteration: {itcount})\n\n");
+                                itcount += 1;
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 
                                 userguess = Console.ReadLine();
@@ -334,7 +334,7 @@ namespace Calculator
                             computerguess[0] = r.Next(0, 8);
                             computerguess[1] = r.Next(0, 8);
 
-                            Console.WriteLine($"computer coordinate for next: {computerguess[0]}, {computerguess[1]}");
+                            Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                             while ((primarygrid[computerguess[1], computerguess[0]] == "▢") || (primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
