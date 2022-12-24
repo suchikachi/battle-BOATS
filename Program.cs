@@ -172,7 +172,7 @@ namespace Calculator
                         int userguesses = 0;
                         int computerguesses = 0;
                         bool gamedone = false;
-                        int itcount = 0;
+                        int itcount = 1;
                         
                         do
                         {
@@ -184,7 +184,6 @@ namespace Calculator
 
                             while (true)
                             {
-                                itcount += 1;
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write("\nGuess the location of a computer's ship in ");
                                 Console.ForegroundColor = ConsoleColor.Red;
@@ -208,6 +207,7 @@ namespace Calculator
                                 }
                             }
 
+                            itcount += 1;
                             // split the user guess into an array
                             string[] userguessarray = userguess.Split(',');
 
@@ -448,11 +448,11 @@ namespace Calculator
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nYou found all the computer's ships and won!");
                                 Thread.Sleep(1000);
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("\nGame over!");
                                 Thread.Sleep(500);
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                                 gamedone = true;
                             }
 
@@ -461,11 +461,11 @@ namespace Calculator
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nThe computer hit all your ships and won!");
                                 Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nGame over!");
+                                Thread.Sleep(500);
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\nGame over!\n");
-                                Thread.Sleep(500);
                                 gamedone = true;
                             }
                         } while (!gamedone);
