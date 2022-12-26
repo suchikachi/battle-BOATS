@@ -1,10 +1,72 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.IO;
 
-namespace Calculator
+// custom extension method
+using WW;
+
+
+// EXTENSION METHOD: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
+namespace WW
+{
+#if WWLIB
+	public
+#endif
+	static partial class StringUtility
+	{
+		static readonly char[] _WordBreakChars = new char[] { ' ', '_', '\t', '.', '+', '-', '(', ')', '[', ']', '\"', /*'\'',*/ '{', '}', '!', '<', '>', '~', '`', '*', '$', '#', '@', '!', '\\', '/', ':', ';', ',', '?', '^', '%', '&', '|', '\n', '\r', '\v', '\f', '\0' };
+		public static string WordWrap(this string text, int width,params char[] wordBreakChars)
+		{
+			if (string.IsNullOrEmpty(text) || 0 == width || width>=text.Length)
+				return text;
+			if (null == wordBreakChars || 0 == wordBreakChars.Length)
+				wordBreakChars = _WordBreakChars;
+			var sb = new StringBuilder();
+			var sr = new StringReader(text);
+			string line;
+			var first = true;
+			while(null!=(line=sr.ReadLine())) 
+			{
+				var col = 0;
+				if (!first)
+				{
+					sb.AppendLine();
+					col = 0;
+				}
+				else
+					first = false;
+				var words = line.Split(wordBreakChars);
+
+				for(var i = 0;i<words.Length;i++)
+				{
+					var word = words[i];
+					if (0 != i)
+					{
+						sb.Append(" ");
+						++col;
+					}
+					if (col+word.Length>width)
+					{
+						sb.AppendLine();
+						col = 0;
+					}
+					sb.Append(word);
+					col += word.Length;
+				}
+			}
+			return sb.ToString();
+		}
+	}
+}
+
+
+// main program
+
+namespace Boats
 {
     class Program
     {
@@ -496,7 +558,14 @@ namespace Calculator
                         string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and the other is used to record any hits or misses placed on their opponents. At the beginning of the game, players decide where they wish to place their fleet of five battle boats.";
                         string s3 = "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
                         string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
-                        Console.WriteLine(s1.WordWrap(10));
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(s1.WordWrap(159));
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine(s2.WordWrap(163));
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(s3.WordWrap(149));
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine(s4);
                         
                         Thread.Sleep(7550);
                         Console.WriteLine("");
