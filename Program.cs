@@ -18,7 +18,7 @@ namespace WW
 #endif
 	static partial class StringUtility
 	{
-		static readonly char[] _WordBreakChars = new char[] { ' ', '_', '\t', '.', '+', '-', '(', ')', '[', ']', '\"', /*'\'',*/ '{', '}', '!', '<', '>', '~', '`', '*', '$', '#', '@', '!', '\\', '/', ':', ';', ',', '?', '^', '%', '&', '|', '\n', '\r', '\v', '\f', '\0' };
+		static readonly char[] _WordBreakChars = new char[] { ' ', '_', '\t', '+', '-', '(', ')', '[', ']', '\"', /*'\'',*/ '{', '}', '!', '<', '>', '~', '`', '*', '$', '#', '@', '!', '\\', '/', ':', ';', ',', '?', '^', '%', '&', '|', '\n', '\r', '\v', '\f', '\0' };
 		public static string WordWrap(this string text, int width,params char[] wordBreakChars)
 		{
 			if (string.IsNullOrEmpty(text) || 0 == width || width>=text.Length)
@@ -559,13 +559,13 @@ namespace Boats
                         string s3 = "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
                         string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(s1.WordWrap(159));
+                        Console.WriteLine(s1.WordWrap(80));
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine(s2.WordWrap(163));
+                        Console.WriteLine(s2.WordWrap(85));
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(s3.WordWrap(149));
+                        Console.WriteLine(s3.WordWrap(80));
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine(s4);
+                        Console.WriteLine(s4.WordWrap(85));
                         
                         Thread.Sleep(7550);
                         Console.WriteLine("");
