@@ -127,7 +127,7 @@ namespace Boats
                         // get input of first coordinates and split characters into array
                         string coordinate1 = Console.ReadLine();
                         string[] coordinatearray1 = coordinate1.Split(',');
-                        // initialize new integer array and convert the string array to int array
+                        // initialise new array and convert string to int
                         int[] intcoords1 = new int[2];
                         for(int i = 0; i < 2; i++)
                         {
@@ -138,26 +138,23 @@ namespace Boats
                         // Repeat 2
                         string coordinate2 = Console.ReadLine();
                         string[] coordinatearray2 = coordinate2.Split(',');
-                        int[] intcoords2 = new int[2];
-                        for(int i = 0; i < 2; i++) intcoords2[i] = Int32.Parse(coordinatearray2[i]);
+                        int[] intcoords2 = Array.ConvertAll(coordinatearray2, int.Parse);
+
                         
                         // Repeat 3
                         string coordinate3 = Console.ReadLine();
-                        string[] coordinatearray3 = coordinate3.Split(',');
-                        int[] intcoords3 = new int[2];
-                        for(int i = 0; i < 2; i++) intcoords3[i] = Int32.Parse(coordinatearray3[i]);
+                        string[] coordinatearray3 = coordinate2.Split(',');
+                        int[] intcoords3 = Array.ConvertAll(coordinatearray2, int.Parse);
                         
                         // Repeat 4
                         string coordinate4 = Console.ReadLine();
-                        string[] coordinatearray4 = coordinate4.Split(',');
-                        int[] intcoords4 = new int[2];
-                        for(int i = 0; i < 2; i++) intcoords4[i] = Int32.Parse(coordinatearray4[i]);
+                        string[] coordinatearray4 = coordinate2.Split(',');
+                        int[] intcoords4 = Array.ConvertAll(coordinatearray2, int.Parse);
 
                         // Repeat 5
                         string coordinate5 = Console.ReadLine();
-                        string[] coordinatearray5 = coordinate5.Split(',');
-                        int[] intcoords5 = new int[2];
-                        for(int i = 0; i < 2; i++) intcoords5[i] = Int32.Parse(coordinatearray5[i]);
+                        string[] coordinatearray5 = coordinate2.Split(',');
+                        int[] intcoords5 = Array.ConvertAll(coordinatearray2, int.Parse);
                          
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
