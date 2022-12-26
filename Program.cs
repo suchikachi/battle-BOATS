@@ -426,7 +426,7 @@ namespace Boats
                             usedcoordinates.Add(computerguess);
 
                             // the computer is guessing animation
-                            //ComputerIsGuessing();
+                            ComputerIsGuessing();
 
                             // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
@@ -477,7 +477,7 @@ namespace Boats
                             else
                             {
                                 // the computer is guessing again
-                                //ComputerIsGuessing();
+                                ComputerIsGuessing();
 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine(" The computer misses!\n");
