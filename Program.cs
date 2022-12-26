@@ -18,7 +18,7 @@ namespace WW
 #endif
 	static partial class StringUtility
 	{
-		static readonly char[] _WordBreakChars = new char[] { ' ', '_', '\t', '+', '-', '(', ')', '[', ']', '\"', /*'\'',*/ '{', '}', '!', '<', '>', '~', '`', '*', '$', '#', '@', '!', '\\', '/', ':', ';', ',', '?', '^', '%', '&', '|', '\n', '\r', '\v', '\f', '\0' };
+		static readonly char[] _WordBreakChars = new char[] { ' ', '_', '\t', '+', '-', '(', ')', '[', ']', '\"', /*'\'',*/ '{', '}', '!', '<', '>', '~', '`', '*', '$', '#', '@', '!', '\\', '/', ':', ';', '?', '^', '%', '&', '|', '\n', '\r', '\v', '\f', '\0' };
 		public static string WordWrap(this string text, int width,params char[] wordBreakChars)
 		{
 			if (string.IsNullOrEmpty(text) || 0 == width || width>=text.Length)
@@ -128,9 +128,8 @@ namespace Boats
                         string coordinate1 = Console.ReadLine();
                         string[] coordinatearray1 = coordinate1.Split(',');
                         // initialize new integer array and convert the string array to int array
-                        int arrsize1 = coordinatearray1.Length;
-                        int[] intcoords1 = new int[arrsize1];
-                        for(int i = 0; i < arrsize1; i++)
+                        int[] intcoords1 = new int[2];
+                        for(int i = 0; i < 2; i++)
                         {
                             intcoords1[i] = Int32.Parse(coordinatearray1[i]);
                         }
@@ -139,30 +138,26 @@ namespace Boats
                         // Repeat 2
                         string coordinate2 = Console.ReadLine();
                         string[] coordinatearray2 = coordinate2.Split(',');
-                        int arrsize2 = coordinatearray2.Length;
-                        int[] intcoords2 = new int[arrsize2];
-                        for(int i = 0; i < arrsize2; i++) intcoords2[i] = Int32.Parse(coordinatearray2[i]);
+                        int[] intcoords2 = new int[2];
+                        for(int i = 0; i < 2; i++) intcoords2[i] = Int32.Parse(coordinatearray2[i]);
                         
                         // Repeat 3
                         string coordinate3 = Console.ReadLine();
                         string[] coordinatearray3 = coordinate3.Split(',');
-                        int arrsize3 = coordinatearray3.Length;
-                        int[] intcoords3 = new int[arrsize3];
-                        for(int i = 0; i < arrsize3; i++) intcoords3[i] = Int32.Parse(coordinatearray3[i]);
+                        int[] intcoords3 = new int[2];
+                        for(int i = 0; i < 2; i++) intcoords3[i] = Int32.Parse(coordinatearray3[i]);
                         
                         // Repeat 4
                         string coordinate4 = Console.ReadLine();
                         string[] coordinatearray4 = coordinate4.Split(',');
-                        int arrsize4 = coordinatearray4.Length;
-                        int[] intcoords4 = new int[arrsize4];
-                        for(int i = 0; i < arrsize4; i++) intcoords4[i] = Int32.Parse(coordinatearray4[i]);
+                        int[] intcoords4 = new int[2];
+                        for(int i = 0; i < 2; i++) intcoords4[i] = Int32.Parse(coordinatearray4[i]);
 
                         // Repeat 5
                         string coordinate5 = Console.ReadLine();
                         string[] coordinatearray5 = coordinate5.Split(',');
-                        int arrsize5 = coordinatearray5.Length;
-                        int[] intcoords5 = new int[arrsize5];
-                        for(int i = 0; i < arrsize5; i++) intcoords5[i] = Int32.Parse(coordinatearray5[i]);
+                        int[] intcoords5 = new int[2];
+                        for(int i = 0; i < 2; i++) intcoords5[i] = Int32.Parse(coordinatearray5[i]);
                          
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
@@ -564,24 +559,25 @@ namespace Boats
                         string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s1.WordWrap(80));
-                        Thread.Sleep(4250);
+                        Thread.Sleep(6250);
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s2.WordWrap(85));
-                        Thread.Sleep(4500);
+                        Thread.Sleep(6500);
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s3.WordWrap(80));
-                        Thread.Sleep(4550);
+                        Thread.Sleep(6550);
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s4.WordWrap(85));
-                        Thread.Sleep(3050);
+                        Thread.Sleep(5550);
                         
-                        Thread.Sleep(250);
+                        Thread.Sleep(550);
                         Console.WriteLine("");
-                        Thread.Sleep(200);
+                        Thread.Sleep(500);
                         Console.WriteLine("");
+                        Thread.Sleep(500);
                         break;
 
                     case "4":
