@@ -553,23 +553,30 @@ namespace Boats
 
                         break;
                     case "2":
-                        Thread.Sleep(1500);
+                        Thread.Sleep(990);
                         string s1 = "Battle boats is a turn based strategy game where players eliminate their opponents fleet of boats by firing at a location on a grid in an attempt to sink them. The first player to sink all of their opponents’ battle boats is declared the winner.";
                         string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and the other is used to record any hits or misses placed on their opponents. At the beginning of the game, players decide where they wish to place their fleet of five battle boats.";
                         string s3 = "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
                         string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s1.WordWrap(80));
+                        Thread.Sleep(4250);
+
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s2.WordWrap(85));
+                        Thread.Sleep(4500);
+
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s3.WordWrap(80));
+                        Thread.Sleep(4550);
+
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s4.WordWrap(85));
+                        Thread.Sleep(3050);
                         
-                        Thread.Sleep(7550);
+                        Thread.Sleep(250);
                         Console.WriteLine("");
-                        Thread.Sleep(7500);
+                        Thread.Sleep(200);
                         Console.WriteLine("");
                         break;
 
