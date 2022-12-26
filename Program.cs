@@ -553,6 +553,10 @@ namespace Boats
 
                         break;
                     case "2":
+                        Console.WriteLine("in progrss");
+                        break;
+
+                    case "3":
                         Thread.Sleep(990);
                         string s1 = "Battle boats is a turn based strategy game where players eliminate their opponents fleet of boats by firing at a location on a grid in an attempt to sink them. The first player to sink all of their opponents’ battle boats is declared the winner.";
                         string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and the other is used to record any hits or misses placed on their opponents. At the beginning of the game, players decide where they wish to place their fleet of five battle boats.";
@@ -578,10 +582,6 @@ namespace Boats
                         Console.WriteLine("");
                         Thread.Sleep(200);
                         Console.WriteLine("");
-                        break;
-
-                    case "3":
-                        Console.WriteLine("in progress");
                         break;
 
                     case "4":
