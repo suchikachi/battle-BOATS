@@ -217,7 +217,7 @@ namespace Calculator
                             int[] userguessint = new int[2];
 
 
-                            //check if hit with abnormally big statement
+                            // check if hit with abnormally big statement
 
                             for(int i = 0; i < 2; i++) userguessint[i] = Int32.Parse(userguessarray[i]);
 
@@ -335,16 +335,17 @@ namespace Calculator
                             Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                            while ((primarygrid[computerguess[1], computerguess[0]] == "▢") || (primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
+                            while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H"))
                             {
                                     // generate new coordinates
+                                    Console.WriteLine("computer hit a set of coordinates and regenerated.");
                                     computerguess[0] = r.Next(0, 8);
                                     computerguess[1] = r.Next(0, 8);
                             }
 
 
                             // the computer is guessing animation
-                            ComputerIsGuessing();
+                            //ComputerIsGuessing();
 
                             // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
                             if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
@@ -395,7 +396,7 @@ namespace Calculator
                             else
                             {
                                 // the computer is guessing again
-                                ComputerIsGuessing();
+                                //ComputerIsGuessing();
 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine(" The computer misses!\n");
