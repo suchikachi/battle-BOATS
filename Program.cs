@@ -128,7 +128,6 @@ namespace Boats
                         Console.Write("format.\n\n");
                         Console.ForegroundColor = ConsoleColor.Blue;
 
-
                         // create a list to store the coordinates
                         List<int[]> coordinates = new List<int[]>();
 
@@ -136,22 +135,12 @@ namespace Boats
                         string coordinate1 = Console.ReadLine();
                         string[] coordinatearray1 = coordinate1.Split(',');
                         int[] intcoords1 = Array.ConvertAll(coordinatearray1, int.Parse);
-
-                        // check if the coordinates have already been entered
-                        while (coordinates.Contains(intcoords1))
-                        {
-                            Thread.Sleep(500);
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Error: Duplicate coordinates");
-                            coordinate1 = Console.ReadLine();
-                            coordinatearray1 = coordinate1.Split(',');
-                            intcoords1 = Array.ConvertAll(coordinatearray1, int.Parse);
-                        }
-
                         // add the coordinates to the list
                         coordinates.Add(intcoords1);
 
-                        // repeat the process for the remaining sets of coordinates
+
+                        // repeat (2) the process for the remaining sets of coordinates
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         string coordinate2 = Console.ReadLine();
                         string[] coordinatearray2 = coordinate2.Split(',');
                         int[] intcoords2 = Array.ConvertAll(coordinatearray2, int.Parse);
@@ -166,6 +155,8 @@ namespace Boats
                         }
                         coordinates.Add(intcoords2);
 
+                        // repeat (3)
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         string coordinate3 = Console.ReadLine();
                         string[] coordinatearray3 = coordinate3.Split(',');
                         int[] intcoords3 = Array.ConvertAll(coordinatearray3, int.Parse);
@@ -180,6 +171,8 @@ namespace Boats
                         }
                         coordinates.Add(intcoords3);
 
+                        // repeat (4)
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         string coordinate4 = Console.ReadLine();
                         string[] coordinatearray4 = coordinate4.Split(',');
                         int[] intcoords4 = Array.ConvertAll(coordinatearray4, int.Parse);
@@ -194,6 +187,8 @@ namespace Boats
                         }
                         coordinates.Add(intcoords4);
 
+                        // repeat (5)
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         string coordinate5 = Console.ReadLine();
                         string[] coordinatearray5 = coordinate5.Split(',');
                         int[] intcoords5 = Array.ConvertAll(coordinatearray5, int.Parse);
