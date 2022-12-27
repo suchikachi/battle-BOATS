@@ -128,15 +128,49 @@ namespace Boats
                         Console.Write("format.\n\n");
                         Console.ForegroundColor = ConsoleColor.Blue;
 
-                        // get input for first set of coordinates
-                        string coordinate1 = Console.ReadLine();
-                        string[] coordinatearray1 = coordinate1.Split(',');
-                        int[] intcoords1 = Array.ConvertAll(coordinatearray1, int.Parse);
+                        string coordinate1;
+                        string coordinate2;
+                        string coordinate3;
+                        string coordinate4;
+                        string coordinate5;
+                        int[] intcoords1 = new int[2];
+                        int[] intcoords2 = new int[2];
+                        int[] intcoords3 = new int[2];
+                        int[] intcoords4 = new int[2];
+                        int[] intcoords5 = new int[2];
+
+                        // do while loop to repeatedly ask for input until int parseable and is in right format
+                        do {
+                            // get input for first set of coordinates
+                            coordinate1 = Console.ReadLine();
+                            string[] coordinatearray1 = coordinate1.Split(',');
+                            if (!int.TryParse(coordinatearray1[0], out int x) || !int.TryParse(coordinatearray1[1], out int y))
+                            {
+                                Thread.Sleep(500);
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Error: Invalid input string");
+                                Thread.Sleep(500);
+                                continue;
+                            }
+                            intcoords1.Append(x);
+                            intcoords1.Append(y);
+                            break;
+                        } while (true);
+
                         
-                        // repeat (2) the process for the remaining sets of coordinates and check for duplicates
-                        string coordinate2 = Console.ReadLine();
-                        string[] coordinatearray2 = coordinate2.Split(',');
-                        int[] intcoords2 = Array.ConvertAll(coordinatearray2, int.Parse);
+                        // repeat (2) the process for the remaining sets of coordinates
+                        do {
+                            // get input for first set of coordinates
+                            coordinate2 = Console.ReadLine();
+                            string[] coordinatearray2 = coordinate2.Split(',');
+                            if (!int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y)) {
+                                Console.WriteLine("Error: Invalid input string");
+                                continue;
+                            }
+                            intcoords2.Append(x);
+                            intcoords2.Append(y);
+                            break;
+                        } while (true);
 
                         // repeat (3)
                         string coordinate3 = Console.ReadLine();
@@ -145,7 +179,7 @@ namespace Boats
 
                         // repeat (4)
                         string coordinate4 = Console.ReadLine();
-                        string[] coordinatearray4 = coordinate3.Split(',');
+                        string[] coordinatearray4 = coordinate4.Split(',');
                         int[] intcoords4 = Array.ConvertAll(coordinatearray4, int.Parse);
 
                         // repeat (5)
@@ -279,7 +313,7 @@ namespace Boats
                                 {
                                     Thread.Sleep(500);
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.WriteLine("Error: Bad input string");
+                                    Console.WriteLine("Error: Invalid input string");
                                     Thread.Sleep(500);
                                 }
                             }
