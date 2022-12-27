@@ -303,7 +303,7 @@ namespace Boats
                             string userguess = "";
                             // user guess
                             string pattern = @"^\d+,\d+$";
-                            Regex regex = new Regex(pattern);
+                            Regex regcheck = new Regex(pattern);
 
                             while (true)
                             {
@@ -318,7 +318,7 @@ namespace Boats
                                 userguess = Console.ReadLine();
                                 string[] uservalidator = userguess.Split(',');
                                 
-                                if (regex.IsMatch(userguess) && Convert.ToInt32(uservalidator[0]) >= 1 && Convert.ToInt32(uservalidator[0]) <= 8 && Convert.ToInt32(uservalidator[1]) >= 1 && Convert.ToInt32(uservalidator[1]) <= 8)
+                                if (regcheck.IsMatch(userguess) && Convert.ToInt32(uservalidator[0]) >= 1 && Convert.ToInt32(uservalidator[0]) <= 8 && Convert.ToInt32(uservalidator[1]) >= 1 && Convert.ToInt32(uservalidator[1]) <= 8)
                                 {
                                     // userguess is in x, y format and is inside bounds
                                     break;
