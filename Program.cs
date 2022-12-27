@@ -5,6 +5,8 @@ using System.Threading;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 // custom extension method
 using WW;
@@ -108,11 +110,11 @@ namespace Boats
                 // Ask for the menu option
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string menuOption = Console.ReadLine();
+
                 // Perform a subroutine based on the menu option
                 switch (menuOption) 
                 {
                     case "1":
-
                         LoadingAnimation();
                         CreateBaseGrid();
                         
@@ -126,7 +128,6 @@ namespace Boats
 
                         // create a list to store the coordinates
                         List<int[]> coordinates = new List<int[]>();
-
                         // get input for first set of coordinates
                         string coordinate1 = Console.ReadLine();
                         string[] coordinatearray1 = coordinate1.Split(',');
@@ -135,7 +136,8 @@ namespace Boats
                         // check if the coordinates have already been entered
                         while (coordinates.Contains(intcoords1))
                         {
-                            Console.WriteLine("Error: These coordinates have already been entered. Please enter a different set of coordinates.");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Error: Duplicate coordinates");
                             coordinate1 = Console.ReadLine();
                             coordinatearray1 = coordinate1.Split(',');
                             intcoords1 = Array.ConvertAll(coordinatearray1, int.Parse);
@@ -150,6 +152,7 @@ namespace Boats
                         int[] intcoords2 = Array.ConvertAll(coordinatearray2, int.Parse);
                         while (coordinates.Contains(intcoords2))
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate2 = Console.ReadLine();
                             coordinatearray2 = coordinate2.Split(',');
@@ -162,6 +165,7 @@ namespace Boats
                         int[] intcoords3 = Array.ConvertAll(coordinatearray3, int.Parse);
                         while (coordinates.Contains(intcoords3))
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate3 = Console.ReadLine();
                             coordinatearray3 = coordinate3.Split(',');
@@ -174,6 +178,7 @@ namespace Boats
                         int[] intcoords4 = Array.ConvertAll(coordinatearray4, int.Parse);
                         while (coordinates.Contains(intcoords4))
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate4 = Console.ReadLine();
                             coordinatearray4 = coordinate4.Split(',');
@@ -186,6 +191,7 @@ namespace Boats
                         int[] intcoords5 = Array.ConvertAll(coordinatearray5, int.Parse);
                         while (coordinates.Contains(intcoords5))
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate5 = Console.ReadLine();
                             coordinatearray5 = coordinate5.Split(',');
@@ -587,7 +593,7 @@ namespace Boats
 
                     case "3":
                         Thread.Sleep(990);
-                        string s1 = "Battle boats is a turn based strategy game where players eliminate their opponents fleet of boats by firing at a location on a grid in an attempt to sink them. The first player to sink all of their opponents’ battle boats is declared the winner.";
+                        string s1 = "\nBattle boats is a turn based strategy game where players eliminate their opponents fleet of boats by firing at a location on a grid in an attempt to sink them. The first player to sink all of their opponents’ battle boats is declared the winner.";
                         string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and the other is used to record any hits or misses placed on their opponents. At the beginning of the game, players decide where they wish to place their fleet of five battle boats.";
                         string s3 = "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
                         string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
@@ -640,92 +646,80 @@ namespace Boats
                             Console.WriteLine("Error: Invalid input string");
                         break;
                 }
-
-
-
-                static void LoadingAnimation()
-                {
-                    // weird unnecessary loading animation
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nStarting new game");
-                    Console.SetCursorPosition(17, Console.CursorTop - 1);
-                    Console.WriteLine(".");
-                    Thread.Sleep(500);
-                    Console.SetCursorPosition(18, Console.CursorTop - 1);
-                    Console.WriteLine(".");
-                    Thread.Sleep(500);
-                    Console.SetCursorPosition(19, Console.CursorTop - 1);
-                    Console.WriteLine(".");
-                    Thread.Sleep(1000);
-                    Console.SetCursorPosition(21, Console.CursorTop - 1);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Done!");
-                    Thread.Sleep(1500);
-                }
-
-
-                static void CreateBaseGrid()
-                {
-                    // nested for-loop matrix for base grid 
-                    Console.WriteLine("");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine(" 1 2 3 4 5 6 7 8");
-                    for (int i = 0; i < 8; i++)
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.Write(i + 1);
-                        for (int j = 0; j < 8; j++)
-                        {
-                            // make it look pretty
-                            Console.BackgroundColor = ConsoleColor.DarkBlue;
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.Write(". ");
-                        }
-                        // new line between each row
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("");
-                    }
-                }
-
-                static void ResetColors()
-                {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-
-                static void ComputerIsGuessing()
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    string[] guessidentifiers = {"The computer prepares for battle", "The computer is adjusting its tactics", "The computer is scanning the battlefield", "The computer is broadcasting a message to you: 010001000100100101000101", "The computer is making a calculated guess", "A fan is whirring somewhere", "The computer begins overclocking itself for extra efficiency", "The computer is undergoing a situational analysis", "The computer begins measuring change in potential energy", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code", "The computer is analysing its choices"};
-                    Random r = new Random();
-                    string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
-
-                    Console.WriteLine("\n" + sentenceinuse);
-
-                    Console.SetCursorPosition(sentenceinuse.Length, Console.CursorTop - 1);
-                    Console.WriteLine(".");
-                    Thread.Sleep(500);
-                    Console.SetCursorPosition(sentenceinuse.Length + 1, Console.CursorTop - 1);
-                    Console.WriteLine(".");
-                    Thread.Sleep(500);
-                    Console.SetCursorPosition(sentenceinuse.Length + 2, Console.CursorTop - 1);
-                    Console.WriteLine(".");
-                    Thread.Sleep(1000);
-                    Console.SetCursorPosition(sentenceinuse.Length + 3, Console.CursorTop - 1);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                }
-
-                /*static int RandomNumberExcluding(int values)
-                {
-                    var exclude = new HashSet<int>() { 5, 7, 1};
-                    var range = Enumerable.Range(1, 8).Where(i => !exclude.Contains(i));
-
-                    var rand = new System.Random();
-                    int index = rand.Next(0, 8 - exclude.Count);
-                    return range.ElementAt(index);
-                }*/
             }
+        }
+
+        static void LoadingAnimation()
+        {
+            // weird unnecessary loading animation
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nStarting new game");
+            Console.SetCursorPosition(17, Console.CursorTop - 1);
+            Console.WriteLine(".");
+            Thread.Sleep(500);
+            Console.SetCursorPosition(18, Console.CursorTop - 1);
+            Console.WriteLine(".");
+            Thread.Sleep(500);
+            Console.SetCursorPosition(19, Console.CursorTop - 1);
+            Console.WriteLine(".");
+            Thread.Sleep(1000);
+            Console.SetCursorPosition(21, Console.CursorTop - 1);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Done!");
+            Thread.Sleep(1500);
+        }
+
+
+        static void CreateBaseGrid()
+        {
+            // nested for-loop matrix for base grid 
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(" 1 2 3 4 5 6 7 8");
+            for (int i = 0; i < 8; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write(i + 1);
+                for (int j = 0; j < 8; j++)
+                {
+                    // make it look pretty
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write(". ");
+                }
+                // new line between each row
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("");
+            }
+        }
+
+        static void ResetColors()
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        static void ComputerIsGuessing()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            string[] guessidentifiers = {"The computer prepares for battle", "The computer is adjusting its tactics", "The computer is scanning the battlefield", "The computer is broadcasting a message to you: 010001000100100101000101", "The computer is making a calculated guess", "A fan is whirring somewhere", "The computer begins overclocking itself for extra efficiency", "The computer is undergoing a situational analysis", "The computer begins measuring change in potential energy", "The computer is thinking", "The AI is racking its cache", "The computer prepares for its turn", "The computer begins trash talking you in machine code", "The computer is analysing its choices"};
+            Random r = new Random();
+            string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
+
+            Console.WriteLine("\n" + sentenceinuse);
+
+            Console.SetCursorPosition(sentenceinuse.Length, Console.CursorTop - 1);
+            Console.WriteLine(".");
+            Thread.Sleep(500);
+            Console.SetCursorPosition(sentenceinuse.Length + 1, Console.CursorTop - 1);
+            Console.WriteLine(".");
+            Thread.Sleep(500);
+            Console.SetCursorPosition(sentenceinuse.Length + 2, Console.CursorTop - 1);
+            Console.WriteLine(".");
+            Thread.Sleep(1000);
+            Console.SetCursorPosition(sentenceinuse.Length + 3, Console.CursorTop - 1);
+            Console.ForegroundColor = ConsoleColor.Green;
         }
     }
 }
