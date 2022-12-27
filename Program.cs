@@ -138,15 +138,13 @@ namespace Boats
                         // add the coordinates to the list
                         coordinates.Add(intcoords1);
 
-
-                        // repeat (2) the process for the remaining sets of coordinates
+                        // repeat (2) the process for the remaining sets of coordinates and check for duplicates
                         Console.ForegroundColor = ConsoleColor.Blue;
                         string coordinate2 = Console.ReadLine();
                         string[] coordinatearray2 = coordinate2.Split(',');
                         int[] intcoords2 = Array.ConvertAll(coordinatearray2, int.Parse);
-                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2))
+                        while (coordinates.Contains(intcoords2))
                         {
-                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate2 = Console.ReadLine();
@@ -160,9 +158,8 @@ namespace Boats
                         string coordinate3 = Console.ReadLine();
                         string[] coordinatearray3 = coordinate3.Split(',');
                         int[] intcoords3 = Array.ConvertAll(coordinatearray3, int.Parse);
-                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2) || coordinates.Contains(intcoords3))
+                        while (coordinates.Contains(intcoords3))
                         {
-                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate3 = Console.ReadLine();
@@ -174,11 +171,10 @@ namespace Boats
                         // repeat (4)
                         Console.ForegroundColor = ConsoleColor.Blue;
                         string coordinate4 = Console.ReadLine();
-                        string[] coordinatearray4 = coordinate4.Split(',');
+                        string[] coordinatearray4 = coordinate3.Split(',');
                         int[] intcoords4 = Array.ConvertAll(coordinatearray4, int.Parse);
-                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2) || coordinates.Contains(intcoords3) || coordinates.Contains(intcoords4))
+                        while (coordinates.Contains(intcoords4))
                         {
-                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate4 = Console.ReadLine();
@@ -192,9 +188,8 @@ namespace Boats
                         string coordinate5 = Console.ReadLine();
                         string[] coordinatearray5 = coordinate5.Split(',');
                         int[] intcoords5 = Array.ConvertAll(coordinatearray5, int.Parse);
-                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2) || coordinates.Contains(intcoords3) || coordinates.Contains(intcoords4) || coordinates.Contains(intcoords5))
+                        while (coordinates.Contains(intcoords5))
                         {
-                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate5 = Console.ReadLine();
@@ -202,6 +197,7 @@ namespace Boats
                             intcoords5 = Array.ConvertAll(coordinatearray5, int.Parse);
                         }
                         coordinates.Add(intcoords5);
+
                          
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
