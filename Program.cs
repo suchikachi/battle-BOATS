@@ -148,7 +148,6 @@ namespace Boats
                             string[] coordinatearray1 = coordinate1.Split(',');
                             if (!int.TryParse(coordinatearray1[0], out int x) || !int.TryParse(coordinatearray1[1], out int y))
                             {
-                                Thread.Sleep(500);
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
                                 Thread.Sleep(500);
@@ -167,7 +166,6 @@ namespace Boats
                             string[] coordinatearray2 = coordinate2.Split(',');
                             if (!int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y))
                             {
-                                Thread.Sleep(500);
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
                                 Thread.Sleep(500);
@@ -185,7 +183,6 @@ namespace Boats
                             string[] coordinatearray3 = coordinate3.Split(',');
                             if (!int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y))
                             {
-                                Thread.Sleep(500);
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
                                 Thread.Sleep(500);
@@ -203,7 +200,6 @@ namespace Boats
                             string[] coordinatearray4 = coordinate4.Split(',');
                             if (!int.TryParse(coordinatearray4[0], out int x) || !int.TryParse(coordinatearray4[1], out int y))
                             {
-                                Thread.Sleep(500);
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
                                 Thread.Sleep(500);
@@ -221,7 +217,6 @@ namespace Boats
                             string[] coordinatearray5 = coordinate5.Split(',');
                             if (!int.TryParse(coordinatearray5[0], out int x) || !int.TryParse(coordinatearray5[1], out int y))
                             {
-                                Thread.Sleep(500);
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
                                 Thread.Sleep(500);
