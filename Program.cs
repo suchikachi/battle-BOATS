@@ -111,6 +111,9 @@ namespace Boats
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string menuOption = Console.ReadLine();
 
+                string pattern = @"^\d+,\d+$";
+                Regex regcheck = new Regex(pattern);
+
                 // Perform a subroutine based on the menu option
                 switch (menuOption) 
                 {
@@ -301,10 +304,8 @@ namespace Boats
                         {
                             Thread.Sleep(500);
                             string userguess = "";
-                            // user guess
-                            string pattern = @"^\d+,\d+$";
-                            Regex regcheck = new Regex(pattern);
 
+                            // user guess
                             while (true)
                             {
                                 Console.ForegroundColor = ConsoleColor.White;
