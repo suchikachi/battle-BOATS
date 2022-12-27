@@ -131,6 +131,7 @@ namespace Boats
 
                         // create a list to store the coordinates
                         List<int[]> coordinates = new List<int[]>();
+
                         // get input for first set of coordinates
                         string coordinate1 = Console.ReadLine();
                         string[] coordinatearray1 = coordinate1.Split(',');
@@ -139,6 +140,7 @@ namespace Boats
                         // check if the coordinates have already been entered
                         while (coordinates.Contains(intcoords1))
                         {
+                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate1 = Console.ReadLine();
@@ -153,8 +155,9 @@ namespace Boats
                         string coordinate2 = Console.ReadLine();
                         string[] coordinatearray2 = coordinate2.Split(',');
                         int[] intcoords2 = Array.ConvertAll(coordinatearray2, int.Parse);
-                        while (coordinates.Contains(intcoords2))
+                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2))
                         {
+                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate2 = Console.ReadLine();
@@ -166,8 +169,9 @@ namespace Boats
                         string coordinate3 = Console.ReadLine();
                         string[] coordinatearray3 = coordinate3.Split(',');
                         int[] intcoords3 = Array.ConvertAll(coordinatearray3, int.Parse);
-                        while (coordinates.Contains(intcoords3))
+                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2) || coordinates.Contains(intcoords3))
                         {
+                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate3 = Console.ReadLine();
@@ -179,8 +183,9 @@ namespace Boats
                         string coordinate4 = Console.ReadLine();
                         string[] coordinatearray4 = coordinate4.Split(',');
                         int[] intcoords4 = Array.ConvertAll(coordinatearray4, int.Parse);
-                        while (coordinates.Contains(intcoords4))
+                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2) || coordinates.Contains(intcoords3) || coordinates.Contains(intcoords4))
                         {
+                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate4 = Console.ReadLine();
@@ -192,8 +197,9 @@ namespace Boats
                         string coordinate5 = Console.ReadLine();
                         string[] coordinatearray5 = coordinate5.Split(',');
                         int[] intcoords5 = Array.ConvertAll(coordinatearray5, int.Parse);
-                        while (coordinates.Contains(intcoords5))
+                        while (coordinates.Contains(intcoords1) || coordinates.Contains(intcoords2) || coordinates.Contains(intcoords3) || coordinates.Contains(intcoords4) || coordinates.Contains(intcoords5))
                         {
+                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Duplicate coordinates");
                             coordinate5 = Console.ReadLine();
@@ -326,8 +332,10 @@ namespace Boats
                                 }
                                 else
                                 {
+                                    Thread.Sleep(500);
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.WriteLine("Error: Bad input string");
+                                    Thread.Sleep(500);
                                 }
                             }
 
@@ -643,8 +651,10 @@ namespace Boats
                         break;
                         
                     default:
+                            Thread.Sleep(500);
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Error: Invalid input string");
+                            Thread.Sleep(500);
                         break;
                 }
             }
