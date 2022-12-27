@@ -142,6 +142,7 @@ namespace Boats
                         // do while loop to repeatedly ask for input until int parseable and is in right format
                         do
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             // get input for first set of coordinates
                             coordinate1 = Console.ReadLine();
                             string[] coordinatearray1 = coordinate1.Split(',');
@@ -161,6 +162,7 @@ namespace Boats
                         
                         // repeat (2) the process for the remaining sets of coordinates
                         do {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate2 = Console.ReadLine();
                             string[] coordinatearray2 = coordinate2.Split(',');
                             if (!int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y))
@@ -178,6 +180,7 @@ namespace Boats
 
                         // repeat (3)
                         do {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate3 = Console.ReadLine();
                             string[] coordinatearray3 = coordinate3.Split(',');
                             if (!int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y))
@@ -195,6 +198,7 @@ namespace Boats
 
                         // repeat (4)
                         do {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate4 = Console.ReadLine();
                             string[] coordinatearray4 = coordinate4.Split(',');
                             if (!int.TryParse(coordinatearray4[0], out int x) || !int.TryParse(coordinatearray4[1], out int y))
@@ -212,6 +216,7 @@ namespace Boats
 
                         // repeat (5)
                         do {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate5 = Console.ReadLine();
                             string[] coordinatearray5 = coordinate5.Split(',');
                             if (!int.TryParse(coordinatearray5[0], out int x) || !int.TryParse(coordinatearray5[1], out int y))
