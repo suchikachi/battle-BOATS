@@ -275,6 +275,7 @@ namespace Boats
 
                             // loading animation
                             LoadingAnimation("Reading save file");
+                            Console.WriteLine("");
 
                             // looping through array
                             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -1437,7 +1438,7 @@ namespace Boats
             // weird unnecessary loading animation
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n{message}\n");
-            Console.SetCursorPosition(17, Console.CursorTop - 1);
+            Console.SetCursorPosition(17, Console.CursorTop - 2);
             Console.WriteLine(".");
             Thread.Sleep(500);
             Console.SetCursorPosition(18, Console.CursorTop - 1);
