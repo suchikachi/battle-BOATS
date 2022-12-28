@@ -741,10 +741,10 @@ namespace Boats
 
 
                             // save the game variables to a file after each guess made by the user and computer
-                            using (StreamWriter writer = new StreamWriter("game_data.txt"))
+                            using (StreamWriter writer = new StreamWriter("savegame.47495645204d4520414e2041"))
                             {
                                 // Save the primary grid to the file
-                                writer.WriteLine("Primary grid:");
+                                writer.WriteLine("pgrid:");
                                 for (int i = 0; i < 8; i++)
                                 {
                                     for (int j = 0; j < 8; j++)
@@ -755,7 +755,7 @@ namespace Boats
                                 }
 
                                 // Save the secondary grid to the file
-                                writer.WriteLine("Secondary grid:");
+                                writer.WriteLine("sgrid:");
                                 for (int i = 0; i < 8; i++)
                                 {
                                     for (int j = 0; j < 8; j++)
