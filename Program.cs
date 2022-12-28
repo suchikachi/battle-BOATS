@@ -323,7 +323,6 @@ namespace Boats
                             computercoords4 = computercoords[3];
                             computercoords5 = computercoords[4];
 
-
                             // initialise the user and computer guess count to keep track of all correct guesses
                             int userguesses = 0;
                             int computerguesses = 0;
@@ -640,7 +639,8 @@ namespace Boats
                                 // save the game variables to a file after each guess made by the user and computer
                                 using (
                                     StreamWriter writer = new StreamWriter(
-                                        "47495645204d4520414e2041.dat", false
+                                        "47495645204d4520414e2041.dat",
+                                        false
                                     )
                                 )
                                 {
@@ -1103,7 +1103,6 @@ namespace Boats
 
                 // split the user guess into an array
                 string[] userguessarray = userguess.Split(',');
-
                 int[] userguessint = new int[2];
 
                 // check if hit with abnormally big statement
@@ -1351,7 +1350,9 @@ namespace Boats
                 }
 
                 // save the game variables to a file after each guess made by the user and computer
-                using (StreamWriter writer = new StreamWriter("47495645204d4520414e2041.dat", false))
+                using (
+                    StreamWriter writer = new StreamWriter("47495645204d4520414e2041.dat", false)
+                )
                 {
                     // Save the primary grid to the file
                     for (int i = 0; i < 8; i++)
