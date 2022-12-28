@@ -1427,7 +1427,7 @@ namespace Boats
         static void LoadingAnimation(string message)
         {
             // weird unnecessary loading animation
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n{message}\n");
             Console.SetCursorPosition(17, Console.CursorTop - 2);
             Console.WriteLine(".");
