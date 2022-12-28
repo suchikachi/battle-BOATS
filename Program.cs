@@ -146,14 +146,14 @@ namespace Boats
                 switch (menuOption)
                 {
                     case "1":
-                        LoadingAnimation();
+                        LoadingAnimation("Starting new game");
                         CreateBaseGrid();
 
                         PlayGame();
                         break;
 
                     case "2":
-                        // read the variable data from the file
+                        // try read the variable data from the file, if not display error message
                         try
                         {
                             string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
@@ -272,6 +272,9 @@ namespace Boats
                                 int.Parse(computercoords5Line[1])
                             };
                             lineIndex++;
+
+                            // loading animation
+                            LoadingAnimation("Reading save file");
 
                             // looping through array
                             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -1431,11 +1434,11 @@ namespace Boats
             } while (!gamedone);
         }
 
-        static void LoadingAnimation()
+        static void LoadingAnimation(string message)
         {
             // weird unnecessary loading animation
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nStarting new game");
+            Console.WriteLine($"\n{message}\n");
             Console.SetCursorPosition(17, Console.CursorTop - 1);
             Console.WriteLine(".");
             Thread.Sleep(500);
