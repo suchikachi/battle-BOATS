@@ -1483,17 +1483,25 @@ namespace Boats
                 "The computer prepares for battle",
                 "The computer is adjusting its tactics",
                 "The computer is scanning the battlefield",
-                "The computer is broadcasting a message to you: 010001000100100101000101",
+                "The computer is casting an ASCII message to you: 010001000100100101000101",
                 "The computer is making a calculated guess",
                 "A fan is whirring somewhere",
                 "The computer begins overclocking itself for extra efficiency",
                 "The computer is undergoing a situational analysis",
+                "The computer braces itself",
                 "The computer begins measuring change in potential energy",
                 "The computer is thinking",
                 "The AI is racking its cache",
                 "The computer prepares for its turn",
                 "The computer begins trash talking you in machine code",
-                "The computer is analysing its choices"
+                "The computer is analysing its choices",
+                "The computer is running diagnostics",
+                "The computer begins mobilizing",
+                "The computer's sensors are going haywire",
+                "Smells like solder around here",
+                "The computer is appending its ideas to its internal database",
+                "Something is brewing in the chips",
+                "The computer begins murmuring something in machine code"
             };
             Random r = new Random();
             string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
