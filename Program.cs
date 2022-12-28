@@ -170,7 +170,7 @@ namespace Boats
                             }
 
                             // add the current coordinates to the list
-                            allCoords.Add(intcoords2);
+                            allCoords.Add(intcoords1);
                             break;
                         } while (true);
 
@@ -232,7 +232,7 @@ namespace Boats
                             }
 
                             // add the current coordinates to the list
-                            allCoords.Add(intcoords2);
+                            allCoords.Add(intcoords3);
                             break;
                         } while (true);
 
@@ -262,7 +262,7 @@ namespace Boats
                             }
 
                             // add the current coordinates to the list
-                            allCoords.Add(intcoords2);
+                            allCoords.Add(intcoords4);
                             break;
                         } while (true);
 
@@ -292,7 +292,7 @@ namespace Boats
                             }
 
                             // add the current coordinates to the list
-                            allCoords.Add(intcoords2);
+                            allCoords.Add(intcoords5);
                             break;
                         } while (true);
 
