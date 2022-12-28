@@ -171,7 +171,7 @@ namespace Boats
                             if (coordinate2 == coordinate1)
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: Invalid input string\n");
+                                Console.WriteLine("Error: Duplicate string\n");
                                 continue;
                             }
                             intcoords2.Add(x);
@@ -195,7 +195,7 @@ namespace Boats
                             if ((coordinate3 == coordinate2) || (coordinate3 == coordinate1))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: Invalid input string\n");
+                                Console.WriteLine("Error: Duplicate string\n");
                                 continue;
                             }
                             intcoords3.Add(x);
@@ -218,7 +218,7 @@ namespace Boats
                             if ((coordinate4 == coordinate3) || (coordinate4 == coordinate2) || (coordinate4 == coordinate1))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: Invalid input string\n");
+                                Console.WriteLine("Error: Duplicate string\n");
                                 continue;
                             }
                             intcoords4.Add(x);
