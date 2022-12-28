@@ -133,11 +133,11 @@ namespace Boats
                         string coordinate3;
                         string coordinate4;
                         string coordinate5;
-                        int[] intcoords1 = new int[2];
-                        int[] intcoords2 = new int[2];
-                        int[] intcoords3 = new int[2];
-                        int[] intcoords4 = new int[2];
-                        int[] intcoords5 = new int[2];
+                        List<int> intcoords1 = new List<int>();
+                        List<int> intcoords2 = new List<int>();
+                        List<int> intcoords3 = new List<int>();
+                        List<int> intcoords4 = new List<int>();
+                        List<int> intcoords5 = new List<int>();
 
                         // do while loop to repeatedly ask for input until int parseable and is in right format
                         do
@@ -146,33 +146,30 @@ namespace Boats
                             // get input for first set of coordinates
                             coordinate1 = Console.ReadLine();
                             string[] coordinatearray1 = coordinate1.Split(',');
-                            if (!int.TryParse(coordinatearray1[0], out int x) || !int.TryParse(coordinatearray1[1], out int y))
+                            if (coordinatearray1.Length != 2 || !int.TryParse(coordinatearray1[0], out int x) || !int.TryParse(coordinatearray1[1], out int y))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
-                                Thread.Sleep(500);
                                 continue;
                             }
-                            intcoords1.Append(x);
-                            intcoords1.Append(y);
+                            intcoords1.Add(x);
+                            intcoords1.Add(y);
                             break;
                         } while (true);
 
-                        
                         // repeat (2) the process for the remaining sets of coordinates
                         do {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate2 = Console.ReadLine();
                             string[] coordinatearray2 = coordinate2.Split(',');
-                            if (!int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y))
+                            if (coordinatearray2.Length != 2 || !int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
-                                Thread.Sleep(500);
                                 continue;
                             }
-                            intcoords2.Append(x);
-                            intcoords2.Append(y);
+                            intcoords2.Add(x);
+                            intcoords2.Add(y);
                             break;
                         } while (true);
 
@@ -181,15 +178,14 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate3 = Console.ReadLine();
                             string[] coordinatearray3 = coordinate3.Split(',');
-                            if (!int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y))
+                            if (coordinatearray3.Length != 2 || !int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
-                                Thread.Sleep(500);
                                 continue;
                             }
-                            intcoords3.Append(x);
-                            intcoords3.Append(y);
+                            intcoords3.Add(x);
+                            intcoords3.Add(y);
                             break;
                         } while (true);
 
@@ -198,15 +194,14 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate4 = Console.ReadLine();
                             string[] coordinatearray4 = coordinate4.Split(',');
-                            if (!int.TryParse(coordinatearray4[0], out int x) || !int.TryParse(coordinatearray4[1], out int y))
+                            if (coordinatearray4.Length != 2 || !int.TryParse(coordinatearray4[0], out int x) || !int.TryParse(coordinatearray4[1], out int y))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
-                                Thread.Sleep(500);
                                 continue;
                             }
-                            intcoords4.Append(x);
-                            intcoords4.Append(y);
+                            intcoords4.Add(x);
+                            intcoords4.Add(y);
                             break;
                         } while (true);
 
@@ -215,18 +210,18 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate5 = Console.ReadLine();
                             string[] coordinatearray5 = coordinate5.Split(',');
-                            if (!int.TryParse(coordinatearray5[0], out int x) || !int.TryParse(coordinatearray5[1], out int y))
+                            if (coordinatearray5.Length != 2 || !int.TryParse(coordinatearray5[0], out int x) || !int.TryParse(coordinatearray5[1], out int y))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
-                                Thread.Sleep(500);
                                 continue;
                             }
-                            intcoords5.Append(x);
-                            intcoords5.Append(y);
+                            intcoords5.Add(x);
+                            intcoords5.Add(y);
                             break;
                         } while (true);
-                         
+
+
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
                         
@@ -351,7 +346,6 @@ namespace Boats
                                 }
                                 else
                                 {
-                                    Thread.Sleep(500);
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.WriteLine("Error: Invalid input string\n");
                                     Thread.Sleep(500);
@@ -474,13 +468,13 @@ namespace Boats
                             computerguess[0] = r.Next(0, 8);
                             computerguess[1] = r.Next(0, 8);
 
-                            Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
+                            //Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                             // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                             while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                             {
                                 // generate new coordinates
-                                Console.WriteLine("computer hit a set of coordinates and regenerated.");
+                                //Console.WriteLine("computer hit a set of coordinates and regenerated.");
                                 computerguess[0] = r.Next(0, 8);
                                 computerguess[1] = r.Next(0, 8);
                             }
