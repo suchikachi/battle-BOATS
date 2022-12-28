@@ -860,10 +860,8 @@ namespace Boats
                     }
                 }
 
-
-
                 // save the game variables to a file after each guess made by the user and computer
-                using (StreamWriter writer = new StreamWriter("savegame.47495645204d4520414e2041.dat"))
+                using (StreamWriter writer = new StreamWriter("47495645204d4520414e2041.dat"))
                 {
                     // Save the primary grid to the file
                     for (int i = 0; i < 8; i++)
