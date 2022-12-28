@@ -139,6 +139,9 @@ namespace Boats
                         List<int> intcoords4 = new List<int>();
                         List<int> intcoords5 = new List<int>();
 
+                        // create 2d list to check for existing inputs
+                        List<List<int>> allCoords = new List<List<int>>();
+
                         // do while loop to repeatedly ask for input until int parseable and is in right format
                         do
                         {
