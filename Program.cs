@@ -152,56 +152,64 @@ namespace Boats
                         PlayGame();
                         
                         break;
-                    case "2":
                         
-                       /* using (StreamReader reader = new StreamReader("savegame.47495645204d4520414e2041.dat"))
+                    case "2":
+                    // read the variable data from the file
+                    string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
+                    int lineIndex = 0;
+
+                    // read the primary grid data from the file
+                    string[,] primarygrid = new string[8, 8];
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int j = 0; j < 8; j++)
                         {
-                            // Read the primary grid data from the file
-                            for (int i = 0; i < 8; i++)
-                            {
-                                string line = reader.ReadLine();
-                                for (int j = 0; j < 8; j++)
-                                {
-                                    primarygrid[i, j] = line[j].ToString();
-                                }
-                            }
+                            primarygrid[i, j] = fileLines[lineIndex][j].ToString();
+                        }
+                        lineIndex++;
+                    }
 
-                            // Read the secondary grid data from the file
-                            for (int i = 0; i < 8; i++)
-                            {
-                                string line = reader.ReadLine();
-                                for (int j = 0; j < 8; j++)
-                                {
-                                    secondarygrid[i, j] = line[j].ToString();
-                                }
-                            }
+                    // read the secondary grid data from the file
+                    string[,] secondarygrid = new string[8, 8];
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int j = 0; j < 8; j++)
+                        {
+                            secondarygrid[i, j] = fileLines[lineIndex][j].ToString();
+                        }
+                        lineIndex++;
+                    }
 
-                            // Read the intcoords variables from the file
-                            string[] coords1 = reader.ReadLine().Split(':', ',');
-                            intcoords1[0] = int.Parse(coords1[1]);
-                            intcoords1[1] = int.Parse(coords1[2]);
+                    // read the intcoords variables from the file
+                    string[] intcoords1Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    List<int> intcoords1 = new List<int> { int.Parse(intcoords1Line[0]), int.Parse(intcoords1Line[1]) };
+                    lineIndex++;
 
-                            string[] coords2 = reader.ReadLine().Split(':', ',');
-                            intcoords2[0] = int.Parse(coords2[1]);
-                            intcoords2[1] = int.Parse(coords2[2]);
+                    string[] intcoords2Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    List<int> intcoords2 = new List<int> { int.Parse(intcoords2Line[0]), int.Parse(intcoords2Line[1]) };
+                    lineIndex++;
 
-                            string[] coords3 = reader.ReadLine().Split(':', ',');
-                            intcoords3[0] = int.Parse(coords3[1]);
-                            intcoords3[1] = int.Parse(coords3[2]);
+                    string[] intcoords3Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    List<int> intcoords3 = new List<int> { int.Parse(intcoords3Line[0]), int.Parse(intcoords3Line[1]) };
+                    lineIndex++;
 
-                            string[] coords4 = reader.ReadLine().Split(':', ',');
-                            intcoords4[0] = int.Parse(coords4[1]);
-                            intcoords4[1] = int.Parse(coords4[2]);
+                    string[] intcoords4Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    List<int> intcoords4 = new List<int> { int.Parse(intcoords4Line[0]), int.Parse(intcoords4Line[1]) };
+                    lineIndex++;
 
-                            string[] coords5 = reader.ReadLine().Split(':', ',');
-                            intcoords5[0] = int.Parse(coords5[1]);
-                            intcoords5[1] = int.Parse(coords5[2]);
+                    string[] intcoords5Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    List<int> intcoords5 = new List<int> { int.Parse(intcoords5Line[0]), int.Parse(intcoords5Line[1]) };
+                    lineIndex++;
 
-                            // Read the computercoords variables from the file
-                            //string[] computercoords1 = reader
-                        }*/
+                    // read the computercoords variables from the file
+                    string[] computercoords1Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    int[] computercoords1 = new int[] { int.Parse(computercoords1Line[0]), int.Parse(computercoords1Line[1]) };
+                    lineIndex++;
+
+                    
 
 
+                        PlayGame();
 
                         break;
 
