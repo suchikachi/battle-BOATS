@@ -1054,20 +1054,6 @@ namespace Boats
             int[] computercoords4 = computercoords[3];
             int[] computercoords5 = computercoords[4];
 
-            // print all coords (testing purposes)
-
-            Console.WriteLine($"{computercoords1[0]}, {computercoords1[1]}");
-            Console.WriteLine($"{computercoords2[0]}, {computercoords2[1]}");
-            Console.WriteLine($"{computercoords3[0]}, {computercoords3[1]}");
-            Console.WriteLine($"{computercoords4[0]}, {computercoords4[1]}");
-            Console.WriteLine($"{computercoords5[0]}, {computercoords5[1]}\n\n");
-
-            Console.WriteLine($"{intcoords1[0]}, {intcoords1[1]}");
-            Console.WriteLine($"{intcoords2[0]}, {intcoords2[1]}");
-            Console.WriteLine($"{intcoords3[0]}, {intcoords3[1]}");
-            Console.WriteLine($"{intcoords4[0]}, {intcoords4[1]}");
-            Console.WriteLine($"{intcoords5[0]}, {intcoords5[1]}");
-
             // initialise the user and computer guess count to keep track of all correct guesses
             int userguesses = 0;
             int computerguesses = 0;
