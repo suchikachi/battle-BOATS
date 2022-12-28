@@ -778,7 +778,7 @@ namespace Boats
                                 writer.WriteLine($"computercoords3: {computercoords3[0]},{computercoords3[0]}");
                                 writer.WriteLine($"computercoords4: {computercoords4[0]},{computercoords4[1]}");
                                 writer.WriteLine($"computercoords5: {computercoords5[0]},{computercoords5[1]}");
-
+                            }
 
 
                             if (userguesses == 5)
