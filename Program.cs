@@ -152,7 +152,7 @@ namespace Boats
                         PlayGame();
                         
                         break;
-                        
+
                     case "2":
                     // read the variable data from the file
                     string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
@@ -206,10 +206,22 @@ namespace Boats
                     int[] computercoords1 = new int[] { int.Parse(computercoords1Line[0]), int.Parse(computercoords1Line[1]) };
                     lineIndex++;
 
-                    
+                    string[] computercoords2Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    int[] computercoords2 = new int[] { int.Parse(computercoords2Line[0]), int.Parse(computercoords2Line[1]) };
+                    lineIndex++;
 
+                    string[] computercoords3Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    int[] computercoords3 = new int[] { int.Parse(computercoords3Line[0]), int.Parse(computercoords3Line[1]) };
+                    lineIndex++;
 
-                        PlayGame();
+                    string[] computercoords4Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    int[] computercoords4 = new int[] { int.Parse(computercoords4Line[0]), int.Parse(computercoords4Line[1]) };
+                    lineIndex++;
+
+                    string[] computercoords5Line = fileLines[lineIndex].Split(':')[1].Split(',');
+                    int[] computercoords5 = new int[] { int.Parse(computercoords5Line[0]), int.Parse(computercoords5Line[1]) };
+                    lineIndex++;
+
 
                         break;
 
