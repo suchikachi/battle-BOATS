@@ -741,10 +741,9 @@ namespace Boats
 
 
                             // save the game variables to a file after each guess made by the user and computer
-                            using (StreamWriter writer = new StreamWriter("savegame.47495645204d4520414e2041"))
+                            using (StreamWriter writer = new StreamWriter("savegame.47495645204d4520414e2041.dat"))
                             {
                                 // Save the primary grid to the file
-                                writer.WriteLine("pgrid:");
                                 for (int i = 0; i < 8; i++)
                                 {
                                     for (int j = 0; j < 8; j++)
@@ -755,7 +754,6 @@ namespace Boats
                                 }
 
                                 // Save the secondary grid to the file
-                                writer.WriteLine("sgrid:");
                                 for (int i = 0; i < 8; i++)
                                 {
                                     for (int j = 0; j < 8; j++)
@@ -766,18 +764,18 @@ namespace Boats
                                 }
 
                                 // Save the intcoords variables to the file
-                                writer.WriteLine($"intcoords1: {intcoords1[0]},{intcoords1[1]}");
-                                writer.WriteLine($"intcoords2: {intcoords2[0]},{intcoords2[1]}");
-                                writer.WriteLine($"intcoords3: {intcoords3[0]},{intcoords3[1]}");
-                                writer.WriteLine($"intcoords4: {intcoords4[0]},{intcoords4[1]}");
-                                writer.WriteLine($"intcoords5: {intcoords5[0]},{intcoords5[1]}");
+                                writer.WriteLine($"intcoords1:{intcoords1[0]},{intcoords1[1]}");
+                                writer.WriteLine($"intcoords2:{intcoords2[0]},{intcoords2[1]}");
+                                writer.WriteLine($"intcoords3:{intcoords3[0]},{intcoords3[1]}");
+                                writer.WriteLine($"intcoords4:{intcoords4[0]},{intcoords4[1]}");
+                                writer.WriteLine($"intcoords5:{intcoords5[0]},{intcoords5[1]}");
 
                                 // Save the computercoords variables to the file
-                                writer.WriteLine($"computercoords1: {computercoords1[0]},{computercoords1[1]}");
-                                writer.WriteLine($"computercoords2: {computercoords2[0]},{computercoords2[1]}");
-                                writer.WriteLine($"computercoords3: {computercoords3[0]},{computercoords3[0]}");
-                                writer.WriteLine($"computercoords4: {computercoords4[0]},{computercoords4[1]}");
-                                writer.WriteLine($"computercoords5: {computercoords5[0]},{computercoords5[1]}");
+                                writer.WriteLine($"computercoords1:{computercoords1[0]},{computercoords1[1]}");
+                                writer.WriteLine($"computercoords2:{computercoords2[0]},{computercoords2[1]}");
+                                writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[0]}");
+                                writer.WriteLine($"computercoords4:{computercoords4[0]},{computercoords4[1]}");
+                                writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
                             }
 
 
