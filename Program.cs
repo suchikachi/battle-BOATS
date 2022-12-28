@@ -792,6 +792,13 @@ namespace Boats
 
         static void PlayGame()
         {
+            // delete savegame file if already exists
+            if (File.Exists("47495645204d4520414e2041.dat"))
+            {
+                LoadingAnimation("Deleting existing savegame");
+                File.Delete("47495645204d4520414e2041.dat");
+            }
+
             string pattern = @"^\d+,\d+$";
             Regex regcheck = new Regex(pattern);
 
