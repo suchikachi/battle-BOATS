@@ -328,7 +328,6 @@ namespace Boats
                             int userguesses = 0;
                             int computerguesses = 0;
                             bool gamedone = false;
-                            int itcount = 1;
 
                             List<int[]> previoususercoords = new List<int[]>();
                             List<int[]> previouscomputercoords = new List<int[]>();
@@ -348,7 +347,7 @@ namespace Boats
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("x,y ");
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write($"format. (iteration: {itcount})\n\n");
+                                    Console.Write($"format.");
                                     Console.ForegroundColor = ConsoleColor.Blue;
 
                                     userguess = Console.ReadLine();
@@ -371,7 +370,6 @@ namespace Boats
                                     }
                                 }
 
-                                itcount += 1;
                                 // split the user guess into an array
                                 string[] userguessarray = userguess.Split(',');
 
@@ -1063,7 +1061,6 @@ namespace Boats
             int userguesses = 0;
             int computerguesses = 0;
             bool gamedone = false;
-            int itcount = 1;
 
             List<int[]> previoususercoords = new List<int[]>();
             List<int[]> previouscomputercoords = new List<int[]>();
@@ -1081,7 +1078,7 @@ namespace Boats
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("x,y ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write($"format. (iteration: {itcount})\n\n");
+                    Console.Write($"format.\n\n");
                     Console.ForegroundColor = ConsoleColor.Blue;
 
                     userguess = Console.ReadLine();
@@ -1104,7 +1101,6 @@ namespace Boats
                     }
                 }
 
-                itcount += 1;
                 // split the user guess into an array
                 string[] userguessarray = userguess.Split(',');
 
