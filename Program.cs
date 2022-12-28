@@ -41,7 +41,6 @@ namespace WW
             '!',
             '\\',
             '/',
-            ':',
             ';',
             '?',
             '^',
@@ -147,8 +146,14 @@ namespace Boats
                 {
                     case "1":
                         LoadingAnimation("Starting new game");
-                        CreateBaseGrid();
+                        // delete savegame file if already exists
+                        if (File.Exists("47495645204d4520414e2041.dat"))
+                        {
+                            LoadingAnimation("Deleting existing savegame");
+                            File.Delete("47495645204d4520414e2041.dat");
+                        }
 
+                        CreateBaseGrid();
                         PlayGame();
                         break;
 
@@ -739,6 +744,8 @@ namespace Boats
                             "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
                         string s4 =
                             "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
+                        string s5 =
+                            "Note: By selecting menu option 1 (Start new game) any existing save files will be cleared.";
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s1.WordWrap(80));
                         Thread.Sleep(6250);
@@ -754,6 +761,10 @@ namespace Boats
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s4.WordWrap(85));
                         Thread.Sleep(5550);
+
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(s5.WordWrap(70));
+                        Thread.Sleep(6550);
 
                         Thread.Sleep(550);
                         Console.WriteLine("");
@@ -792,13 +803,6 @@ namespace Boats
 
         static void PlayGame()
         {
-            // delete savegame file if already exists
-            if (File.Exists("47495645204d4520414e2041.dat"))
-            {
-                LoadingAnimation("Deleting existing savegame");
-                File.Delete("47495645204d4520414e2041.dat");
-            }
-
             string pattern = @"^\d+,\d+$";
             Regex regcheck = new Regex(pattern);
 
@@ -1506,7 +1510,7 @@ namespace Boats
                 "The computer begins mobilizing",
                 "The computer's sensors are going haywire",
                 "Smells like solder around here",
-                "The computer is appending its ideas to its internal database",
+                "The computer is appending its plans to its internal database",
                 "Something is brewing in the chips",
                 "The computer begins murmuring something in machine code"
             };
