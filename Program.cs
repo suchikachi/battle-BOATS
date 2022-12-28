@@ -139,9 +139,6 @@ namespace Boats
                         List<int> intcoords4 = new List<int>();
                         List<int> intcoords5 = new List<int>();
 
-                        // create 2d list to check for existing inputs
-                        List<List<int>> allCoords = new List<List<int>>();
-
                         // do while loop to repeatedly ask for input until int parseable and is in right format
                         do
                         {
@@ -149,7 +146,7 @@ namespace Boats
                             // get input for first set of coordinates
                             coordinate1 = Console.ReadLine();
                             string[] coordinatearray1 = coordinate1.Split(',');
-                            if (coordinatearray1.Length != 2 || !int.TryParse(coordinatearray1[0], out int x) || !int.TryParse(coordinatearray1[1], out int y) || !(Convert.ToInt32(coordinatearray1[0]) >= 1) || !(Convert.ToInt32(coordinatearray1[0]) <= 8) || !(Convert.ToInt32(coordinatearray1[1]) >= 1) || !(Convert.ToInt32(coordinatearray1[1]) <= 8))
+                            if (!(regcheck.IsMatch(coordinate1)) || coordinatearray1.Length != 2 || !int.TryParse(coordinatearray1[0], out int x) || !int.TryParse(coordinatearray1[1], out int y) || !(Convert.ToInt32(coordinatearray1[0]) >= 1) || !(Convert.ToInt32(coordinatearray1[0]) <= 8) || !(Convert.ToInt32(coordinatearray1[1]) >= 1) || !(Convert.ToInt32(coordinatearray1[1]) <= 8))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
@@ -165,7 +162,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate2 = Console.ReadLine();
                             string[] coordinatearray2 = coordinate2.Split(',');
-                            if (coordinatearray2.Length != 2 || !int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y) || !(Convert.ToInt32(coordinatearray2[0]) >= 1) || !(Convert.ToInt32(coordinatearray2[0]) <= 8) || !(Convert.ToInt32(coordinatearray2[1]) >= 1) || !(Convert.ToInt32(coordinatearray2[1]) <= 8))
+                            if (!(regcheck.IsMatch(coordinate2)) || coordinatearray2.Length != 2 || !int.TryParse(coordinatearray2[0], out int x) || !int.TryParse(coordinatearray2[1], out int y) || !(Convert.ToInt32(coordinatearray2[0]) >= 1) || !(Convert.ToInt32(coordinatearray2[0]) <= 8) || !(Convert.ToInt32(coordinatearray2[1]) >= 1) || !(Convert.ToInt32(coordinatearray2[1]) <= 8))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
@@ -182,7 +179,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate3 = Console.ReadLine();
                             string[] coordinatearray3 = coordinate3.Split(',');
-                            if (coordinatearray3.Length != 2 || !int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y) || !(Convert.ToInt32(coordinatearray3[0]) >= 1) || !(Convert.ToInt32(coordinatearray3[0]) <= 8) || !(Convert.ToInt32(coordinatearray3[1]) >= 1) || !(Convert.ToInt32(coordinatearray3[1]) <= 8))
+                            if (!(regcheck.IsMatch(coordinate3)) || coordinatearray3.Length != 2 || !int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y) || !(Convert.ToInt32(coordinatearray3[0]) >= 1) || !(Convert.ToInt32(coordinatearray3[0]) <= 8) || !(Convert.ToInt32(coordinatearray3[1]) >= 1) || !(Convert.ToInt32(coordinatearray3[1]) <= 8))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
@@ -198,7 +195,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate4 = Console.ReadLine();
                             string[] coordinatearray4 = coordinate4.Split(',');
-                            if (coordinatearray4.Length != 2 || !int.TryParse(coordinatearray4[0], out int x) || !int.TryParse(coordinatearray4[1], out int y) || !(Convert.ToInt32(coordinatearray4[0]) >= 1) || !(Convert.ToInt32(coordinatearray4[0]) <= 8) || !(Convert.ToInt32(coordinatearray4[1]) >= 1) || !(Convert.ToInt32(coordinatearray4[1]) <= 8))
+                            if (!(regcheck.IsMatch(coordinate4)) || coordinatearray4.Length != 2 || !int.TryParse(coordinatearray4[0], out int x) || !int.TryParse(coordinatearray4[1], out int y) || !(Convert.ToInt32(coordinatearray4[0]) >= 1) || !(Convert.ToInt32(coordinatearray4[0]) <= 8) || !(Convert.ToInt32(coordinatearray4[1]) >= 1) || !(Convert.ToInt32(coordinatearray4[1]) <= 8))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
@@ -214,7 +211,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate5 = Console.ReadLine();
                             string[] coordinatearray5 = coordinate5.Split(',');
-                            if (coordinatearray5.Length != 2 || !int.TryParse(coordinatearray5[0], out int x) || !int.TryParse(coordinatearray5[1], out int y) || !(Convert.ToInt32(coordinatearray5[0]) >= 1) || !(Convert.ToInt32(coordinatearray5[0]) <= 8) || !(Convert.ToInt32(coordinatearray5[1]) >= 1) || !(Convert.ToInt32(coordinatearray5[1]) <= 8))
+                            if (!(regcheck.IsMatch(coordinate1)) || coordinatearray5.Length != 2 || !int.TryParse(coordinatearray5[0], out int x) || !int.TryParse(coordinatearray5[1], out int y) || !(Convert.ToInt32(coordinatearray5[0]) >= 1) || !(Convert.ToInt32(coordinatearray5[0]) <= 8) || !(Convert.ToInt32(coordinatearray5[1]) >= 1) || !(Convert.ToInt32(coordinatearray5[1]) <= 8))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
