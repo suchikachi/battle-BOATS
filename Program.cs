@@ -1433,16 +1433,16 @@ namespace Boats
             // weird unnecessary loading animation
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n{message}\n");
-            Console.SetCursorPosition(17, Console.CursorTop - 2);
+            Console.SetCursorPosition(message.Length, Console.CursorTop - 2);
             Console.WriteLine(".");
             Thread.Sleep(500);
-            Console.SetCursorPosition(18, Console.CursorTop - 1);
+            Console.SetCursorPosition(message.Length + 1, Console.CursorTop - 1);
             Console.WriteLine(".");
             Thread.Sleep(500);
-            Console.SetCursorPosition(19, Console.CursorTop - 1);
+            Console.SetCursorPosition(message.Length + 2, Console.CursorTop - 1);
             Console.WriteLine(".");
             Thread.Sleep(1000);
-            Console.SetCursorPosition(21, Console.CursorTop - 1);
+            Console.SetCursorPosition(message.Length + 4, Console.CursorTop - 1);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Done!");
             Thread.Sleep(1500);
