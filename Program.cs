@@ -379,9 +379,7 @@ namespace Boats
                                     }
                                     else
                                     {
-                                        Console.ForegroundColor = ConsoleColor.Yellow;
-                                        Console.WriteLine("Error: Invalid input string\n");
-                                        Thread.Sleep(500);
+                                        InvalidInputString("Error: Invalid input string\n");
                                     }
                                 }
 
