@@ -5,9 +5,6 @@ using System.Threading;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
-// custom extension method
 using WW;
 
 // EXTENSION METHOD: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
@@ -740,6 +737,15 @@ namespace Boats
                                     Console.WriteLine("");
                                 }
                             }
+
+                            // Save the game variables to a file after each guess made by the user and computer
+                            using (StreamWriter writer = new StreamWriter("game_data.txt", false))
+                            {
+                                // Save the game variables to the file
+                                writer.WriteLine($"primarygrid: {primarygrid}");
+                                writer.WriteLine($"secondarygrid: {secondarygrid}");
+                            }
+
 
                             if (userguesses == 5)
                             {
