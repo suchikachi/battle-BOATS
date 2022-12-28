@@ -155,22 +155,8 @@ namespace Boats
                                 Console.WriteLine("Error: Invalid input string\n");
                                 continue;
                             }
-                            
-                            // create a new list to check if the coordinates are already in the list
-                            List<int> checkCoords = new List<int>();
-                            checkCoords.Add(x);
-                            checkCoords.Add(y);
-
-                            // check if the current coordinates are already in the list
-                            if (allCoords.Contains(checkCoords))
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: These coordinates have already been entered. Please enter new coordinates.\n");
-                                continue;
-                            }
-
-                            // add the current coordinates to the list
-                            allCoords.Add(intcoords1);
+                            intcoords1.Add(x);
+                            intcoords1.Add(y);
                             break;
                         } while (true);
 
@@ -187,23 +173,8 @@ namespace Boats
                             }
                             intcoords2.Add(x);
                             intcoords2.Add(y);
-
-                            // create a new list to check if the coordinates are already in the list
-                            List<int> checkCoords = new List<int>();
-                            checkCoords.Add(x);
-                            checkCoords.Add(y);
-
-                            // check if the current coordinates are already in the list
-                            if (allCoords.Contains(checkCoords))
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: These coordinates have already been entered. Please enter new coordinates.\n");
-                                continue;
-                            }
-
-                            // add the current coordinates to the list
-                            allCoords.Add(intcoords2);
                             break;
+
                         } while (true);
 
                         // repeat (3)
@@ -217,22 +188,8 @@ namespace Boats
                                 Console.WriteLine("Error: Invalid input string\n");
                                 continue;
                             }
-                            
-                            // create a new list to check if the coordinates are already in the list
-                            List<int> checkCoords = new List<int>();
-                            checkCoords.Add(x);
-                            checkCoords.Add(y);
-
-                            // check if the current coordinates are already in the list
-                            if (allCoords.Contains(checkCoords))
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: These coordinates have already been entered. Please enter new coordinates.\n");
-                                continue;
-                            }
-
-                            // add the current coordinates to the list
-                            allCoords.Add(intcoords3);
+                            intcoords3.Add(x);
+                            intcoords3.Add(y);
                             break;
                         } while (true);
 
@@ -247,22 +204,8 @@ namespace Boats
                                 Console.WriteLine("Error: Invalid input string\n");
                                 continue;
                             }
-                            
-                            // create a new list to check if the coordinates are already in the list
-                            List<int> checkCoords = new List<int>();
-                            checkCoords.Add(x);
-                            checkCoords.Add(y);
-
-                            // check if the current coordinates are already in the list
-                            if (allCoords.Contains(checkCoords))
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: These coordinates have already been entered. Please enter new coordinates.\n");
-                                continue;
-                            }
-
-                            // add the current coordinates to the list
-                            allCoords.Add(intcoords4);
+                            intcoords4.Add(x);
+                            intcoords4.Add(y);
                             break;
                         } while (true);
 
@@ -277,22 +220,8 @@ namespace Boats
                                 Console.WriteLine("Error: Invalid input string\n");
                                 continue;
                             }
-                            
-                            // create a new list to check if the coordinates are already in the list
-                            List<int> checkCoords = new List<int>();
-                            checkCoords.Add(x);
-                            checkCoords.Add(y);
-
-                            // check if the current coordinates are already in the list
-                            if (allCoords.Contains(checkCoords))
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("Error: These coordinates have already been entered. Please enter new coordinates.\n");
-                                continue;
-                            }
-
-                            // add the current coordinates to the list
-                            allCoords.Add(intcoords5);
+                            intcoords5.Add(x);
+                            intcoords5.Add(y);
                             break;
                         } while (true);
 
