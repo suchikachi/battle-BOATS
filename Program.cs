@@ -738,13 +738,47 @@ namespace Boats
                                 }
                             }
 
-                            // Save the game variables to a file after each guess made by the user and computer
-                            using (StreamWriter writer = new StreamWriter("game_data.txt", false))
+
+
+                            // save the game variables to a file after each guess made by the user and computer
+                            using (StreamWriter writer = new StreamWriter("game_data.txt"))
                             {
-                                // Save the game variables to the file
-                                writer.WriteLine($"primarygrid: {primarygrid}");
-                                writer.WriteLine($"secondarygrid: {secondarygrid}");
-                            }
+                                // Save the primary grid to the file
+                                writer.WriteLine("Primary grid:");
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        writer.Write(primarygrid[i, j]);
+                                    }
+                                    writer.WriteLine();
+                                }
+
+                                // Save the secondary grid to the file
+                                writer.WriteLine("Secondary grid:");
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    for (int j = 0; j < 8; j++)
+                                    {
+                                        writer.Write(secondarygrid[i, j]);
+                                    }
+                                    writer.WriteLine();
+                                }
+
+                                // Save the intcoords variables to the file
+                                writer.WriteLine($"intcoords1: {intcoords1[0]},{intcoords1[1]}");
+                                writer.WriteLine($"intcoords2: {intcoords2[0]},{intcoords2[1]}");
+                                writer.WriteLine($"intcoords3: {intcoords3[0]},{intcoords3[1]}");
+                                writer.WriteLine($"intcoords4: {intcoords4[0]},{intcoords4[1]}");
+                                writer.WriteLine($"intcoords5: {intcoords5[0]},{intcoords5[1]}");
+
+                                // Save the computercoords variables to the file
+                                writer.WriteLine($"computercoords1: {computercoords1[0]},{computercoords1[1]}");
+                                writer.WriteLine($"computercoords2: {computercoords2[0]},{computercoords2[1]}");
+                                writer.WriteLine($"computercoords3: {computercoords3[0]},{computercoords3[0]}");
+                                writer.WriteLine($"computercoords4: {computercoords4[0]},{computercoords4[1]}");
+                                writer.WriteLine($"computercoords5: {computercoords5[0]},{computercoords5[1]}");
+
 
 
                             if (userguesses == 5)
@@ -777,6 +811,7 @@ namespace Boats
                                 gamedone = true;
                             }
                         } while (!gamedone);
+                        
                         break;
                     case "2":
                         Console.WriteLine("in progrss");
