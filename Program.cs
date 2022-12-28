@@ -168,6 +168,12 @@ namespace Boats
                                 Console.WriteLine("Error: Invalid input string\n");
                                 continue;
                             }
+                            if (coordinate2 == coordinate1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Error: Invalid input string\n");
+                                continue;
+                            }
                             intcoords2.Add(x);
                             intcoords2.Add(y);
                             break;
@@ -179,7 +185,14 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Blue;
                             coordinate3 = Console.ReadLine();
                             string[] coordinatearray3 = coordinate3.Split(',');
-                            if (!(regcheck.IsMatch(coordinate3)) || coordinatearray3.Length != 2 || !int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y) || !(Convert.ToInt32(coordinatearray3[0]) >= 1) || !(Convert.ToInt32(coordinatearray3[0]) <= 8) || !(Convert.ToInt32(coordinatearray3[1]) >= 1) || !(Convert.ToInt32(coordinatearray3[1]) <= 8))
+                            if (coordinatearray3.Length != 2 || !int.TryParse(coordinatearray3[0], out int x) || !int.TryParse(coordinatearray3[1], out int y) || !(Convert.ToInt32(coordinatearray3[0]) >= 1) || !(Convert.ToInt32(coordinatearray3[0]) <= 8) || !(Convert.ToInt32(coordinatearray3[1]) >= 1) || !(Convert.ToInt32(coordinatearray3[1]) <= 8))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Error: Invalid input string\n");
+                                continue;
+                            }
+
+                            if ((coordinate3 == coordinate2) || (coordinate3 == coordinate1))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
@@ -201,6 +214,13 @@ namespace Boats
                                 Console.WriteLine("Error: Invalid input string\n");
                                 continue;
                             }
+
+                            if ((coordinate4 == coordinate3) || (coordinate4 == coordinate2) || (coordinate4 == coordinate1))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Error: Invalid input string\n");
+                                continue;
+                            }
                             intcoords4.Add(x);
                             intcoords4.Add(y);
                             break;
@@ -215,6 +235,13 @@ namespace Boats
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("Error: Invalid input string\n");
+                                continue;
+                            }
+
+                            if ((coordinate5 == coordinate4) || (coordinate5 == coordinate3) || (coordinate5 == coordinate2) || (coordinate5 == coordinate1))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Error: Duplicate string\n");
                                 continue;
                             }
                             intcoords5.Add(x);
