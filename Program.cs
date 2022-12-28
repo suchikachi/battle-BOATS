@@ -154,7 +154,7 @@ namespace Boats
 
                     case "2":
                         // read the variable data from the file
-                        if (File.Exists("47495645204d4520414e2041.dat"))
+                        try
                         {
                             string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
                             int lineIndex = 0;
@@ -735,12 +735,9 @@ namespace Boats
                                 }
                             } while (!gamedone);
                         }
-                        else
+                        catch
                         {
-                            Thread.Sleep(500);
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Error: File does not exist\n");
-                            Thread.Sleep(500);
+                            InvalidInputString("Error: File couldn't be read or doesn't exist\n");
                             break;
                         }
                         break;
