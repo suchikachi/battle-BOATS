@@ -636,6 +636,9 @@ namespace Boats
                 Thread.Sleep(500);
                 string userguess = "";
 
+                string[] userguessarray = userguess.Split(',');
+                int[] userguessint = new int[2];
+
                 // user guess
                 while (true)
                 {
@@ -650,29 +653,34 @@ namespace Boats
                     userguess = Console.ReadLine();
                     string[] uservalidator = userguess.Split(',');
 
+
+                    // check if the player entered an existing position, and if so then prompt to generate new coordinates. if not then continue
                     if (
                         regcheck.IsMatch(userguess)
                         && Convert.ToInt32(uservalidator[0]) >= 1
                         && Convert.ToInt32(uservalidator[0]) <= 8
                         && Convert.ToInt32(uservalidator[1]) >= 1
                         && Convert.ToInt32(uservalidator[1]) <= 8
+                        && !(secondarygrid[userguessint[1], userguessint[0]] == "M")
+                        && !(secondarygrid[userguessint[1], userguessint[0]] == "H")
                     )
                     {
-                        // userguess is in x, y format and is inside bounds
+                        // userguess is in x, y format, inside bounds and has not already been struck
                         break;
                     }
                     else
                     {
-                        InvalidInputString("Error: Invalid input string\n");
+                        InvalidInputString("Error: Invalid input string or duplicate coordinate\n");
                     }
+
+                    // split the user guess into an array
+                
+
+                    
                 }
 
-                // split the user guess into an array
-                string[] userguessarray = userguess.Split(',');
-                int[] userguessint = new int[2];
 
                 // check if hit with abnormally big statement
-
                 for (int i = 0; i < 2; i++)
                     userguessint[i] = Int32.Parse(userguessarray[i]);
 
