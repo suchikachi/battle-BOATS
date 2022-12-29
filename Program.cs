@@ -62,10 +62,8 @@ namespace Boats
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
-
             string pattern = @"^\d+,\d+$";
             Regex regcheck = new Regex(pattern);
 
@@ -366,9 +364,20 @@ namespace Boats
                         int[] computercoords4 = computercoords[3];
                         int[] computercoords5 = computercoords[4];
 
-            
-                        PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
-                        
+                        PlayGame(
+                            primarygrid,
+                            secondarygrid,
+                            intcoords1,
+                            intcoords2,
+                            intcoords3,
+                            intcoords4,
+                            intcoords5,
+                            computercoords1,
+                            computercoords2,
+                            computercoords3,
+                            computercoords4,
+                            computercoords5
+                        );
                         break;
 
                     case "2":
@@ -542,7 +551,20 @@ namespace Boats
                             computercoords4 = precomputercoords[3];
                             computercoords5 = precomputercoords[4];
 
-                            PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
+                            PlayGame(
+                                preprimarygrid,
+                                presecondarygrid,
+                                preintcoords1,
+                                preintcoords2,
+                                preintcoords3,
+                                preintcoords4,
+                                preintcoords5,
+                                computercoords1,
+                                computercoords2,
+                                computercoords3,
+                                computercoords4,
+                                computercoords5
+                            );
                         }
                         catch
                         {
@@ -618,7 +640,20 @@ namespace Boats
             }
         }
 
-        static void PlayGame(string[,] primarygrid, string[,] secondarygrid, List<int> intcoords1, List<int> intcoords2, List<int> intcoords3, List<int> intcoords4, List<int> intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5)
+        static void PlayGame(
+            string[,] primarygrid,
+            string[,] secondarygrid,
+            List<int> intcoords1,
+            List<int> intcoords2,
+            List<int> intcoords3,
+            List<int> intcoords4,
+            List<int> intcoords5,
+            int[] computercoords1,
+            int[] computercoords2,
+            int[] computercoords3,
+            int[] computercoords4,
+            int[] computercoords5
+        )
         {
             // initialise the user and computer guess count to keep track of all correct guesses
             int userguesses = 0;
@@ -648,7 +683,7 @@ namespace Boats
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write($"format.\n\n");
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    
+
                     userguess = Console.ReadLine();
                     userguessarray = userguess.Split(',');
                     userguessint = new int[2];
@@ -665,14 +700,19 @@ namespace Boats
                         // convert userguessarray to userguessint to use as indices in the secondarygrid array
                         userguessint[0] = Convert.ToInt32(userguessarray[0]) - 1;
                         userguessint[1] = Convert.ToInt32(userguessarray[1]) - 1;
-                        if (secondarygrid[userguessint[1], userguessint[0]] != "M" && secondarygrid[userguessint[1], userguessint[0]] != "H")
+                        if (
+                            secondarygrid[userguessint[1], userguessint[0]] != "M"
+                            && secondarygrid[userguessint[1], userguessint[0]] != "H"
+                        )
                         {
                             // userguess is in x, y format, inside bounds and has not already been struck
                             break;
                         }
                         else
                         {
-                            InvalidInputString("Error: Invalid input string or duplicate coordinate\n");
+                            InvalidInputString(
+                                "Error: Invalid input string or duplicate coordinate\n"
+                            );
                         }
                     }
                     else
@@ -683,7 +723,7 @@ namespace Boats
 
                 // check if hit with abnormally big statement
                 for (int i = 0; i < 2; i++)
-                userguessint[i] = Int32.Parse(userguessarray[i]);
+                    userguessint[i] = Int32.Parse(userguessarray[i]);
 
                 if (
                     (userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1])
@@ -704,7 +744,6 @@ namespace Boats
                         && userguessint[1] == computercoords5[1]
                     )
                 )
-
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You hit one of the computer's ships!\n");
