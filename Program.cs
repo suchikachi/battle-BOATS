@@ -661,8 +661,6 @@ namespace Boats
                         && Convert.ToInt32(userguessarray[0]) <= 8
                         && Convert.ToInt32(userguessarray[1]) >= 1
                         && Convert.ToInt32(userguessarray[1]) <= 8
-                        && !(secondarygrid[userguessint[1], userguessint[0]] == "M")
-                        && !(secondarygrid[userguessint[1], userguessint[0]] == "H")
                     )
                     {
                         // userguess is in x, y format, inside bounds and has not already been struck
