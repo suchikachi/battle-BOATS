@@ -141,6 +141,11 @@ namespace Boats
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string menuOption = Console.ReadLine();
 
+                string pattern = @"^\d+,\d+$";
+                Regex regcheck = new Regex(pattern);
+
+                Random rng = new Random();
+
                 // Perform a subroutine based on the menu option
                 switch (menuOption)
                 {
@@ -155,8 +160,7 @@ namespace Boats
 
                         CreateBaseGrid();
 
-                        string pattern = @"^\d+,\d+$";
-                        Regex regcheck = new Regex(pattern);
+                        
 
                         Console.Write("\nPlease enter the coordinates of your ships in ");
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -383,8 +387,6 @@ namespace Boats
                         Console.WriteLine("");
 
                         // generate computer's coordinates and ensure the same set is not made twice
-                        Random rng = new Random();
-
                         List<int[]> computercoords = new List<int[]>();
 
                         while (computercoords.Count < 5)
@@ -449,7 +451,7 @@ namespace Boats
                             lineIndex++;
 
                             string[] intcoords2Line = fileLines[lineIndex].Split(':')[1].Split(',');
-                            List<int> intcoords2 = new List<int>
+                            List<int> preintcoords2 = new List<int>
                             {
                                 int.Parse(intcoords2Line[0]),
                                 int.Parse(intcoords2Line[1])
@@ -457,7 +459,7 @@ namespace Boats
                             lineIndex++;
 
                             string[] intcoords3Line = fileLines[lineIndex].Split(':')[1].Split(',');
-                            List<int> intcoords3 = new List<int>
+                            List<int> preintcoords3 = new List<int>
                             {
                                 int.Parse(intcoords3Line[0]),
                                 int.Parse(intcoords3Line[1])
@@ -465,7 +467,7 @@ namespace Boats
                             lineIndex++;
 
                             string[] intcoords4Line = fileLines[lineIndex].Split(':')[1].Split(',');
-                            List<int> intcoords4 = new List<int>
+                            List<int> preintcoords4 = new List<int>
                             {
                                 int.Parse(intcoords4Line[0]),
                                 int.Parse(intcoords4Line[1])
@@ -473,7 +475,7 @@ namespace Boats
                             lineIndex++;
 
                             string[] intcoords5Line = fileLines[lineIndex].Split(':')[1].Split(',');
-                            List<int> intcoords5 = new List<int>
+                            List<int> preintcoords5 = new List<int>
                             {
                                 int.Parse(intcoords5Line[0]),
                                 int.Parse(intcoords5Line[1])
@@ -484,7 +486,7 @@ namespace Boats
                             string[] computercoords1Line = fileLines[lineIndex].Split(':')[1].Split(
                                 ','
                             );
-                            int[] computercoords1 = new int[]
+                            int[] precomputercoords1 = new int[]
                             {
                                 int.Parse(computercoords1Line[0]),
                                 int.Parse(computercoords1Line[1])
@@ -494,7 +496,7 @@ namespace Boats
                             string[] computercoords2Line = fileLines[lineIndex].Split(':')[1].Split(
                                 ','
                             );
-                            int[] computercoords2 = new int[]
+                            int[] precomputercoords2 = new int[]
                             {
                                 int.Parse(computercoords2Line[0]),
                                 int.Parse(computercoords2Line[1])
@@ -504,7 +506,7 @@ namespace Boats
                             string[] computercoords3Line = fileLines[lineIndex].Split(':')[1].Split(
                                 ','
                             );
-                            int[] computercoords3 = new int[]
+                            int[] precomputercoords3 = new int[]
                             {
                                 int.Parse(computercoords3Line[0]),
                                 int.Parse(computercoords3Line[1])
@@ -514,7 +516,7 @@ namespace Boats
                             string[] computercoords4Line = fileLines[lineIndex].Split(':')[1].Split(
                                 ','
                             );
-                            int[] computercoords4 = new int[]
+                            int[] precomputercoords4 = new int[]
                             {
                                 int.Parse(computercoords4Line[0]),
                                 int.Parse(computercoords4Line[1])
@@ -524,7 +526,7 @@ namespace Boats
                             string[] computercoords5Line = fileLines[lineIndex].Split(':')[1].Split(
                                 ','
                             );
-                            int[] computercoords5 = new int[]
+                            int[] precomputercoords5 = new int[]
                             {
                                 int.Parse(computercoords5Line[0]),
                                 int.Parse(computercoords5Line[1])
@@ -547,7 +549,7 @@ namespace Boats
                                     // loop through and print all elements of 2d array
                                     Console.BackgroundColor = ConsoleColor.DarkBlue;
                                     Console.ForegroundColor = ConsoleColor.Gray;
-                                    Console.Write($"{primarygrid[i, j]} ");
+                                    Console.Write($"{preprimarygrid[i, j]} ");
                                 }
                                 // new line between each row
                                 ResetColors();
@@ -559,29 +561,29 @@ namespace Boats
                             Console.WriteLine("");
 
                             // generate computer's coordinates and ensure the same set is not made twice
-                            Random rng = new Random();
+                            Random r = new Random();
 
-                            List<int[]> computercoords = new List<int[]>();
+                            List<int[]> precomputercoords = new List<int[]>();
 
-                            while (computercoords.Count < 5)
+                            while (precomputercoords.Count < 5)
                             {
-                                int x = rng.Next(1, 9);
-                                int y = rng.Next(1, 9);
+                                int x = r.Next(1, 9);
+                                int y = r.Next(1, 9);
                                 int[] coord = { x, y };
 
-                                if (!computercoords.Contains(coord))
+                                if (!precomputercoords.Contains(coord))
                                 {
-                                    computercoords.Add(coord);
+                                    precomputercoords.Add(coord);
                                 }
                             }
 
-                            computercoords1 = computercoords[0];
-                            computercoords2 = computercoords[1];
-                            computercoords3 = computercoords[2];
-                            computercoords4 = computercoords[3];
-                            computercoords5 = computercoords[4];
+                            computercoords1 = precomputercoords[0];
+                            computercoords2 = precomputercoords[1];
+                            computercoords3 = precomputercoords[2];
+                            computercoords4 = precomputercoords[3];
+                            computercoords5 = precomputercoords[4];
 
-                            PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
+                            PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
                         }
                         catch
                         {
@@ -687,7 +689,7 @@ namespace Boats
                     string[] uservalidator = userguess.Split(',');
 
                     if (
-                        regcheck.IsMatch(userguess)
+                        reg.IsMatch(userguess)
                         && Convert.ToInt32(uservalidator[0]) >= 1
                         && Convert.ToInt32(uservalidator[0]) <= 8
                         && Convert.ToInt32(uservalidator[1]) >= 1
