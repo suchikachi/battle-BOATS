@@ -651,17 +651,31 @@ namespace Boats
                     Console.ForegroundColor = ConsoleColor.Blue;
 
                     userguess = Console.ReadLine();
-                    string[] uservalidator = userguess.Split(',');
-
+                    userguessarray = userguess.Split(',');
+                    userguessint = new int[2];
 
                     // check if the player entered an existing position, and if so then prompt to generate new coordinates. if not then continue
                     if (
                         regcheck.IsMatch(userguess)
-                        && Convert.ToInt32(uservalidator[0]) >= 1
-                        && Convert.ToInt32(uservalidator[0]) <= 8
-                        && Convert.ToInt32(uservalidator[1]) >= 1
-                        && Convert.ToInt32(uservalidator[1]) <= 8
+                        && Convert.ToInt32(userguessarray[0]) >= 1
+                        && Convert.ToInt32(userguessarray[0]) <= 8
+                        && Convert.ToInt32(userguessarray[1]) >= 1
+                        && Convert.ToInt32(userguessarray[1]) <= 8
                         && !(secondarygrid[userguessint[1], userguessint[0]] == "M")
+                        && !(secondarygrid[userguessint[1], userguessint[0]] == "H")
+                    )
+                    {
+                        // userguess is in x, y format, inside bounds and has not already been struck
+                        break;
+                    }
+                    else
+                    {
+                        InvalidInputString("Error: Duplicate input string\n");
+                    }
+
+                    // check if the player entered an existing position, and if so then prompt to generate new coordinates. if not then continue
+                    if (
+                        !(secondarygrid[userguessint[1], userguessint[0]] == "M")
                         && !(secondarygrid[userguessint[1], userguessint[0]] == "H")
                     )
                     {
@@ -674,13 +688,9 @@ namespace Boats
                     }
                 }
 
-                userguessarray = userguess.Split(',');
-                userguessint = new int[2];
-
-
                 // check if hit with abnormally big statement
                 for (int i = 0; i < 2; i++)
-                    userguessint[i] = Int32.Parse(userguessarray[i]);
+                userguessint[i] = Int32.Parse(userguessarray[i]);
 
                 if (
                     (userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1])
@@ -701,6 +711,7 @@ namespace Boats
                         && userguessint[1] == computercoords5[1]
                     )
                 )
+
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You hit one of the computer's ships!\n");
