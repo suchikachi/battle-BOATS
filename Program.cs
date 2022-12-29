@@ -111,11 +111,11 @@ namespace Boats
                 switch (menuOption)
                 {
                     case "1":
-                        LoadingAnimation("Starting new game");
+                        LoadingAnimation("Starting new game", 500);
                         // delete savegame file if already exists
                         if (File.Exists("47495645204d4520414e2041.dat"))
                         {
-                            LoadingAnimation("Deleting existing savegame");
+                            LoadingAnimation("Deleting existing savegame", 200);
                             File.Delete("47495645204d4520414e2041.dat");
                         }
 
@@ -493,7 +493,7 @@ namespace Boats
                             lineIndex++;
 
                             // loading animation
-                            LoadingAnimation("Reading save file");
+                            LoadingAnimation("Reading save file", 500);
                             Console.WriteLine("");
 
                             // looping through array
@@ -672,12 +672,10 @@ namespace Boats
                     {
                         InvalidInputString("Error: Invalid input string or duplicate coordinate\n");
                     }
-
-                    // split the user guess into an array
-                
-
-                    
                 }
+
+                userguessarray = userguess.Split(',');
+                userguessint = new int[2];
 
 
                 // check if hit with abnormally big statement
@@ -991,24 +989,24 @@ namespace Boats
             } while (!gamedone);
         }
 
-        static void LoadingAnimation(string message)
+        static void LoadingAnimation(string message, int time)
         {
             // weird unnecessary loading animation
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n{message}\n");
             Console.SetCursorPosition(message.Length, Console.CursorTop - 2);
             Console.WriteLine(".");
-            Thread.Sleep(500);
+            Thread.Sleep(time);
             Console.SetCursorPosition(message.Length + 1, Console.CursorTop - 1);
             Console.WriteLine(".");
-            Thread.Sleep(500);
+            Thread.Sleep(time);
             Console.SetCursorPosition(message.Length + 2, Console.CursorTop - 1);
             Console.WriteLine(".");
-            Thread.Sleep(1000);
+            Thread.Sleep(time + 500);
             Console.SetCursorPosition(message.Length + 4, Console.CursorTop - 1);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Done!");
-            Thread.Sleep(1500);
+            Thread.Sleep(time + 500);
         }
 
         static void InvalidInputString(string reason)
