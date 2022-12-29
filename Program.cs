@@ -172,6 +172,7 @@ namespace Boats
                             intcoords1.Add(x);
                             intcoords1.Add(y);
                             break;
+
                         } while (true);
 
                         // repeat (2) the process for the remaining sets of coordinates
@@ -202,6 +203,7 @@ namespace Boats
                             intcoords2.Add(x);
                             intcoords2.Add(y);
                             break;
+
                         } while (true);
 
                         // repeat (3)
@@ -232,6 +234,7 @@ namespace Boats
                             intcoords3.Add(x);
                             intcoords3.Add(y);
                             break;
+
                         } while (true);
 
                         // repeat (4)
@@ -267,6 +270,7 @@ namespace Boats
                             intcoords4.Add(x);
                             intcoords4.Add(y);
                             break;
+
                         } while (true);
 
                         // repeat (5)
@@ -303,6 +307,7 @@ namespace Boats
                             intcoords5.Add(x);
                             intcoords5.Add(y);
                             break;
+
                         } while (true);
 
                         Console.ForegroundColor = ConsoleColor.White;
@@ -347,6 +352,7 @@ namespace Boats
                                 Console.ForegroundColor = ConsoleColor.Gray;
                                 Console.Write($"{primarygrid[i, j]} ");
                             }
+
                             // new line between each row
                             ResetColors();
                             Console.WriteLine("");
@@ -356,7 +362,7 @@ namespace Boats
                         ResetColors();
                         Console.WriteLine("");
 
-                        // generate computer's coordinates and ensure the same set is not made twice
+                        // generate computer's coordinates and ensure the same set is not made twice by keeping track of them in a list
                         List<int[]> computercoords = new List<int[]>();
 
                         while (computercoords.Count < 5)
@@ -365,6 +371,7 @@ namespace Boats
                             int y = rng.Next(1, 9);
                             int[] coord = { x, y };
 
+                            // add coordinate to list if it's not already in there
                             if (!computercoords.Contains(coord))
                             {
                                 computercoords.Add(coord);
@@ -383,7 +390,6 @@ namespace Boats
                         break;
 
                     case "2":
-
                         // try read variable data from the file, if not display error message
                         try
                         {
@@ -454,9 +460,7 @@ namespace Boats
                             lineIndex++;
 
                             // read all computercoords variables from the file and split by defining text behind the values
-                            string[] computercoords1Line = fileLines[lineIndex].Split(':')[1].Split(
-                                ','
-                            );
+                            string[] computercoords1Line = fileLines[lineIndex].Split(':')[1].Split(',');
                             int[] precomputercoords1 = new int[]
                             {
                                 int.Parse(computercoords1Line[0]),
@@ -464,9 +468,7 @@ namespace Boats
                             };
                             lineIndex++;
 
-                            string[] computercoords2Line = fileLines[lineIndex].Split(':')[1].Split(
-                                ','
-                            );
+                            string[] computercoords2Line = fileLines[lineIndex].Split(':')[1].Split(',');
                             int[] precomputercoords2 = new int[]
                             {
                                 int.Parse(computercoords2Line[0]),
@@ -474,9 +476,7 @@ namespace Boats
                             };
                             lineIndex++;
 
-                            string[] computercoords3Line = fileLines[lineIndex].Split(':')[1].Split(
-                                ','
-                            );
+                            string[] computercoords3Line = fileLines[lineIndex].Split(':')[1].Split(',');
                             int[] precomputercoords3 = new int[]
                             {
                                 int.Parse(computercoords3Line[0]),
@@ -484,9 +484,7 @@ namespace Boats
                             };
                             lineIndex++;
 
-                            string[] computercoords4Line = fileLines[lineIndex].Split(':')[1].Split(
-                                ','
-                            );
+                            string[] computercoords4Line = fileLines[lineIndex].Split(':')[1].Split(',');
                             int[] precomputercoords4 = new int[]
                             {
                                 int.Parse(computercoords4Line[0]),
@@ -494,9 +492,7 @@ namespace Boats
                             };
                             lineIndex++;
 
-                            string[] computercoords5Line = fileLines[lineIndex].Split(':')[1].Split(
-                                ','
-                            );
+                            string[] computercoords5Line = fileLines[lineIndex].Split(':')[1].Split(',');
                             int[] precomputercoords5 = new int[]
                             {
                                 int.Parse(computercoords5Line[0]),
@@ -522,6 +518,7 @@ namespace Boats
                                     Console.ForegroundColor = ConsoleColor.Gray;
                                     Console.Write($"{preprimarygrid[i, j]} ");
                                 }
+
                                 // new line between each row
                                 ResetColors();
                                 Console.WriteLine("");
@@ -557,7 +554,7 @@ namespace Boats
                             // run game logic with all the variables defined beforehand
                             PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
                         }
-                        catch
+                        catch // erroneous data inputted
                         {
                             InvalidInputString("Error: File couldn't be read or doesn't exist\n");
                             break;
@@ -635,27 +632,12 @@ namespace Boats
             }
         }
 
-        static void PlayGame(
-            string[,] primarygrid,
-            string[,] secondarygrid,
-            List<int> intcoords1,
-            List<int> intcoords2,
-            List<int> intcoords3,
-            List<int> intcoords4,
-            List<int> intcoords5,
-            int[] computercoords1,
-            int[] computercoords2,
-            int[] computercoords3,
-            int[] computercoords4,
-            int[] computercoords5
-        )
+        static void PlayGame(string[,] primarygrid, string[,] secondarygrid, List<int> intcoords1, List<int> intcoords2, List<int> intcoords3, List<int> intcoords4, List<int> intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5, int userguesscount, int computerguessecount)
         {
-            // initialise the user and computer guess count to keep track of all correct guesses
-            int userguesses = 0;
-            int computerguesses = 0;
+            // variable to initiate gameover sequence
             bool gamedone = false;
 
-            List<int[]> previoususercoords = new List<int[]>();
+            // list to keep track of previous computer coordinates
             List<int[]> previouscomputercoords = new List<int[]>();
 
             string pattern = @"^\d+,\d+$";
@@ -685,8 +667,7 @@ namespace Boats
                     userguessint = new int[2];
 
                     // check if the player entered an existing position, and if so then prompt to generate new coordinates. if not then continue
-                    if (
-                        regcheck.IsMatch(userguess)
+                    if (regcheck.IsMatch(userguess)
                         && Convert.ToInt32(userguessarray[0]) >= 1
                         && Convert.ToInt32(userguessarray[0]) <= 8
                         && Convert.ToInt32(userguessarray[1]) >= 1
@@ -696,10 +677,7 @@ namespace Boats
                         // convert userguessarray to userguessint to use as indices in the secondarygrid array
                         userguessint[0] = Convert.ToInt32(userguessarray[0]) - 1;
                         userguessint[1] = Convert.ToInt32(userguessarray[1]) - 1;
-                        if (
-                            secondarygrid[userguessint[1], userguessint[0]] != "M"
-                            && secondarygrid[userguessint[1], userguessint[0]] != "H"
-                        )
+                        if (secondarygrid[userguessint[1], userguessint[0]] != "M" && secondarygrid[userguessint[1], userguessint[0]] != "H")
                         {
                             // userguess is in x, y format, inside bounds and has not already been struck
                             break;
@@ -716,8 +694,7 @@ namespace Boats
                 }
 
                 // parse contents of the userguess array into integers for later use
-                for (int i = 0; i < 2; i++)
-                    userguessint[i] = Int32.Parse(userguessarray[i]);
+                for (int i = 0; i < 2; i++) userguessint[i] = Int32.Parse(userguessarray[i]);
 
                 // check if user guess was correct
                 if (
@@ -767,6 +744,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{secondarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -794,6 +772,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{primarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -831,14 +810,9 @@ namespace Boats
                 computerguess[1] = r.Next(0, 8);
 
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                while (
-                    (primarygrid[computerguess[1], computerguess[0]] == "M")
-                    || (primarygrid[computerguess[1], computerguess[0]] == "H")
-                    || usedcoordinates.Contains(computerguess)
-                )
+                while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                 {
                     // generate new coordinates
-                    //Console.WriteLine("computer hit a set of coordinates and regenerated.");
                     computerguess[0] = r.Next(0, 8);
                     computerguess[1] = r.Next(0, 8);
                 }
@@ -984,12 +958,16 @@ namespace Boats
                     writer.WriteLine($"intcoords4:{intcoords4[0]},{intcoords4[1]}");
                     writer.WriteLine($"intcoords5:{intcoords5[0]},{intcoords5[1]}");
 
-                    // save the computer's variables to the file
+                    // save the computer's coords to the file
                     writer.WriteLine($"computercoords1:{computercoords1[0]},{computercoords1[1]}");
                     writer.WriteLine($"computercoords2:{computercoords2[0]},{computercoords2[1]}");
                     writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[0]}");
                     writer.WriteLine($"computercoords4:{computercoords4[0]},{computercoords4[1]}");
                     writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
+
+                    // save the user's and computer's guess count
+                    writer.WriteLine($"userguesses:{userguesses}");
+                    writer.WriteLine($"computerguesses:{computerguesses}");
                 }
 
                 // if the user guesses all 5 of the computer's coords then end the game
