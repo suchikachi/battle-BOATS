@@ -103,8 +103,13 @@ namespace Boats
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+
+            string pattern = @"^\d+,\d+$";
+            Regex regcheck = new Regex(pattern);
+
             // support advanced unicode characters
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
@@ -140,9 +145,6 @@ namespace Boats
                 // Ask for the menu option
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string menuOption = Console.ReadLine();
-
-                string pattern = @"^\d+,\d+$";
-                Regex regcheck = new Regex(pattern);
 
                 Random rng = new Random();
 
@@ -669,6 +671,9 @@ namespace Boats
             List<int[]> previoususercoords = new List<int[]>();
             List<int[]> previouscomputercoords = new List<int[]>();
 
+            string pattern = @"^\d+,\d+$";
+            Regex regcheck = new Regex(pattern);
+
             do
             {
                 Thread.Sleep(500);
@@ -689,7 +694,7 @@ namespace Boats
                     string[] uservalidator = userguess.Split(',');
 
                     if (
-                        reg.IsMatch(userguess)
+                        regcheck.IsMatch(userguess)
                         && Convert.ToInt32(uservalidator[0]) >= 1
                         && Convert.ToInt32(uservalidator[0]) <= 8
                         && Convert.ToInt32(uservalidator[1]) >= 1
