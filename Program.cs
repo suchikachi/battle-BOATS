@@ -14,49 +14,10 @@ namespace WW
 #endif
     static partial class StringUtility
     {
-        static readonly char[] _WordBreakChars = new char[]
-        {
-            ' ',
-            '_',
-            '\t',
-            '+',
-            '-',
-            '[',
-            ']',
-            '\"',
-            /*'\'',*/
-            '{',
-            '}',
-            '!',
-            '<',
-            '>',
-            '~',
-            '`',
-            '*',
-            '$',
-            '#',
-            '@',
-            '!',
-            '\\',
-            '/',
-            ';',
-            '?',
-            '^',
-            '%',
-            '&',
-            '|',
-            '\n',
-            '\r',
-            '\v',
-            '\f',
-            '\0'
-        };
         public static string WordWrap(this string text, int width, params char[] wordBreakChars)
         {
             if (string.IsNullOrEmpty(text) || 0 == width || width >= text.Length)
                 return text;
-            if (null == wordBreakChars || 0 == wordBreakChars.Length)
-                wordBreakChars = _WordBreakChars;
             var sb = new StringBuilder();
             var sr = new StringReader(text);
             string line;
