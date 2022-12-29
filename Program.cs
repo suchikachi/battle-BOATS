@@ -64,12 +64,14 @@ namespace Boats
     {
         static void Main(string[] args)
         {
-            string pattern = @"^\d+,\d+$";
-            Regex regcheck = new Regex(pattern);
-
             // support advanced unicode characters
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            // define regex patterm to validate user coordinate inputs by
+            string pattern = @"^\d+,\d+$";
+            Regex regcheck = new Regex(pattern);
+
+            // title print
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Battle Boats (c) S104 Productions 2001-2023");
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -99,17 +101,19 @@ namespace Boats
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("Exit program\n\n");
 
-                // Ask for the menu option
+                // prompt for user menu option
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string menuOption = Console.ReadLine();
 
+                // define random object to be used later on
                 Random rng = new Random();
 
-                // Perform a subroutine based on the menu option
+                // perform case based on the menu option
                 switch (menuOption)
                 {
                     case "1":
                         LoadingAnimation("Starting new game", 500);
+
                         // delete savegame file if already exists
                         if (File.Exists("47495645204d4520414e2041.dat"))
                         {
@@ -117,6 +121,7 @@ namespace Boats
                             File.Delete("47495645204d4520414e2041.dat");
                         }
 
+                        // display empty grid
                         CreateBaseGrid();
 
                         Console.Write("\nPlease enter the coordinates of your ships in ");
@@ -126,6 +131,7 @@ namespace Boats
                         Console.Write("format.\n\n");
                         Console.ForegroundColor = ConsoleColor.Blue;
 
+                        // define variables to take in user input and hold the coordinates
                         string coordinate1;
                         string coordinate2;
                         string coordinate3;
@@ -141,8 +147,11 @@ namespace Boats
                         do
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
+
                             // get input for first set of coordinates
                             coordinate1 = Console.ReadLine();
+
+                            // validity check
                             string[] coordinatearray1 = coordinate1.Split(',');
                             if (
                                 !(regcheck.IsMatch(coordinate1))
@@ -158,6 +167,8 @@ namespace Boats
                                 InvalidInputString("Error: Invalid input string\n");
                                 continue;
                             }
+
+                            // input is fine, append values to the array
                             intcoords1.Add(x);
                             intcoords1.Add(y);
                             break;
@@ -293,10 +304,11 @@ namespace Boats
                             intcoords5.Add(y);
                             break;
                         } while (true);
+
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
 
-                        // create 2d array to display updated grid
+                        // create 2d array to display updated grid and handle computer guesses
                         string[,] primarygrid = new string[8, 8]
                         {
                             { ".", ".", ".", ".", ".", ".", ".", "." },
@@ -309,10 +321,11 @@ namespace Boats
                             { ".", ".", ".", ".", ".", ".", ".", "." }
                         };
 
+                        // duplicate primarygrid to hold all the user guesses
                         string[,] secondarygrid = new string[8, 8];
                         Array.Copy(primarygrid, secondarygrid, primarygrid.Length);
 
-                        // edit user defined locations of array and mark it
+                        // mark user defined locations
                         Console.ForegroundColor = ConsoleColor.Red;
                         primarygrid[intcoords1[1] - 1, intcoords1[0] - 1] = "▢";
                         primarygrid[intcoords2[1] - 1, intcoords2[0] - 1] = "▢";
@@ -320,7 +333,7 @@ namespace Boats
                         primarygrid[intcoords4[1] - 1, intcoords4[0] - 1] = "▢";
                         primarygrid[intcoords5[1] - 1, intcoords5[0] - 1] = "▢";
 
-                        // looping through array
+                        // print primarygrid array to show fleet on grid
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine(" 1 2 3 4 5 6 7 8");
                         for (int i = 0; i < 8; i++)
@@ -339,7 +352,7 @@ namespace Boats
                             Console.WriteLine("");
                         }
 
-                        // new line to clear coloring
+                        // clear coloring
                         ResetColors();
                         Console.WriteLine("");
 
@@ -358,30 +371,20 @@ namespace Boats
                             }
                         }
 
+                        // define arrays to store computer coords in
                         int[] computercoords1 = computercoords[0];
                         int[] computercoords2 = computercoords[1];
                         int[] computercoords3 = computercoords[2];
                         int[] computercoords4 = computercoords[3];
                         int[] computercoords5 = computercoords[4];
 
-                        PlayGame(
-                            primarygrid,
-                            secondarygrid,
-                            intcoords1,
-                            intcoords2,
-                            intcoords3,
-                            intcoords4,
-                            intcoords5,
-                            computercoords1,
-                            computercoords2,
-                            computercoords3,
-                            computercoords4,
-                            computercoords5
-                        );
+                        // run the repeating logic of the game with all the variables defined beforehand
+                        PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
                         break;
 
                     case "2":
-                        // try read the variable data from the file, if not display error message
+
+                        // try read variable data from the file, if not display error message
                         try
                         {
                             string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
@@ -409,7 +412,7 @@ namespace Boats
                                 lineIndex++;
                             }
 
-                            // read the intcoords variables from the file
+                            // read all 5 intcoords variables from the file and split by defining text behind the values
                             string[] intcoords1Line = fileLines[lineIndex].Split(':')[1].Split(',');
                             List<int> preintcoords1 = new List<int>
                             {
@@ -450,7 +453,7 @@ namespace Boats
                             };
                             lineIndex++;
 
-                            // read the computercoords variables from the file
+                            // read all computercoords variables from the file and split by defining text behind the values
                             string[] computercoords1Line = fileLines[lineIndex].Split(':')[1].Split(
                                 ','
                             );
@@ -551,20 +554,8 @@ namespace Boats
                             computercoords4 = precomputercoords[3];
                             computercoords5 = precomputercoords[4];
 
-                            PlayGame(
-                                preprimarygrid,
-                                presecondarygrid,
-                                preintcoords1,
-                                preintcoords2,
-                                preintcoords3,
-                                preintcoords4,
-                                preintcoords5,
-                                computercoords1,
-                                computercoords2,
-                                computercoords3,
-                                computercoords4,
-                                computercoords5
-                            );
+                            // run game logic with all the variables defined beforehand
+                            PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
                         }
                         catch
                         {
@@ -575,6 +566,8 @@ namespace Boats
 
                     case "3":
                         Thread.Sleep(990);
+
+                        // individual paragraphs to provide game instructions
                         string s1 =
                             "\nBattle boats is a turn based strategy game where players eliminate their opponents fleet of boats by firing at a location on a grid in an attempt to sink them. The first player to sink all of their opponents’ battle boats is declared the winner.";
                         string s2 =
@@ -613,6 +606,7 @@ namespace Boats
                         break;
 
                     case "4":
+                        // really over eccentric coloring
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write("\nG");
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -634,6 +628,7 @@ namespace Boats
                         break;
 
                     default:
+                        // what should be printed if erroneous data is entered in the menu
                         InvalidInputString("Error: Invalid input string\n");
                         break;
                 }
@@ -669,11 +664,12 @@ namespace Boats
             {
                 Thread.Sleep(500);
 
+                // define variables for handling coordinate input
                 string userguess;
                 string[] userguessarray;
                 int[] userguessint = new int[2];
 
-                // user guess
+                // user guess loop
                 while (true)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
@@ -708,48 +704,36 @@ namespace Boats
                             // userguess is in x, y format, inside bounds and has not already been struck
                             break;
                         }
-                        else
+                        else // erroneous data was inputted
                         {
-                            InvalidInputString(
-                                "Error: Invalid input string or duplicate coordinate\n"
-                            );
+                            InvalidInputString("Error: Invalid input string or duplicate coordinate\n");
                         }
                     }
-                    else
+                    else // erroneous data was inputted
                     {
                         InvalidInputString("Error: Invalid input string or duplicate coordinate\n");
                     }
                 }
 
-                // check if hit with abnormally big statement
+                // parse contents of the userguess array into integers for later use
                 for (int i = 0; i < 2; i++)
                     userguessint[i] = Int32.Parse(userguessarray[i]);
 
+                // check if user guess was correct
                 if (
                     (userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1])
-                    || (
-                        userguessint[0] == computercoords2[0]
-                        && userguessint[1] == computercoords2[1]
-                    )
-                    || (
-                        userguessint[0] == computercoords3[0]
-                        && userguessint[1] == computercoords3[1]
-                    )
-                    || (
-                        userguessint[0] == computercoords4[0]
-                        && userguessint[1] == computercoords4[1]
-                    )
-                    || (
-                        userguessint[0] == computercoords5[0]
-                        && userguessint[1] == computercoords5[1]
-                    )
+                    || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1])
+                    || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1])
+                    || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1])
+                    || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1])
                 )
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You hit one of the computer's ships!\n");
                     userguesses += 1;
                     Thread.Sleep(1000);
-                    // re print grid with a H on the place hit
+
+                    // re-print grid with a H on the place hit
                     secondarygrid[userguessint[1] - 1, userguessint[0] - 1] = "H";
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(" 1 2 3 4 5 6 7 8");
@@ -764,6 +748,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{primarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -787,14 +772,14 @@ namespace Boats
                         Console.WriteLine("");
                     }
                 }
-                else
+                else // user was not correct
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You missed your shot.\n");
 
                     Thread.Sleep(1000);
 
-                    // re print grid with a M on the place hit
+                    // re-print grid with an 'M' on the place hit
                     secondarygrid[userguessint[1] - 1, userguessint[0] - 1] = "M";
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(" 1 2 3 4 5 6 7 8");
@@ -827,6 +812,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{secondarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -843,8 +829,6 @@ namespace Boats
                 // assign random computer value
                 computerguess[0] = r.Next(0, 8);
                 computerguess[1] = r.Next(0, 8);
-
-                //Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                 while (
@@ -865,7 +849,7 @@ namespace Boats
                 // the computer is guessing animation
                 ComputerIsGuessing();
 
-                // unfortunately big if statement again to check if computer guess lines up with player's coordinates and if it does then edit the PRIMARY GRID
+                // check if user guess was correct
                 if (
                     (computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1])
                     || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1])
@@ -878,7 +862,7 @@ namespace Boats
                     Console.WriteLine(" One of your ships was struck!\n");
                     computerguesses += 1;
                     Thread.Sleep(1000);
-                    // re print primary grid with a H on the place hit
+                    // re-print primary grid with a H on the place hit
                     primarygrid[computerguess[1] - 1, computerguess[0] - 1] = "H";
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(" 1 2 3 4 5 6 7 8");
@@ -893,6 +877,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{primarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -911,6 +896,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{secondarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -925,7 +911,7 @@ namespace Boats
                     Console.WriteLine(" The computer misses!\n");
                     Thread.Sleep(500);
 
-                    // re print grid with a M on the place hit
+                    // re-print grid with an 'M' on the place hit
                     primarygrid[computerguess[1], computerguess[0]] = "M";
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(" 1 2 3 4 5 6 7 8");
@@ -940,6 +926,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{primarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -958,6 +945,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{secondarygrid[i, j]} ");
                         }
+
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -969,7 +957,7 @@ namespace Boats
                     StreamWriter writer = new StreamWriter("47495645204d4520414e2041.dat", false)
                 )
                 {
-                    // Save the primary grid to the file
+                    // save the primary grid to the file
                     for (int i = 0; i < 8; i++)
                     {
                         for (int j = 0; j < 8; j++)
@@ -979,7 +967,7 @@ namespace Boats
                         writer.WriteLine();
                     }
 
-                    // Save the secondary grid to the file
+                    // save the secondary grid to the file
                     for (int i = 0; i < 8; i++)
                     {
                         for (int j = 0; j < 8; j++)
@@ -989,14 +977,14 @@ namespace Boats
                         writer.WriteLine();
                     }
 
-                    // Save the intcoords variables to the file
+                    // save the user's coordinates to the file
                     writer.WriteLine($"intcoords1:{intcoords1[0]},{intcoords1[1]}");
                     writer.WriteLine($"intcoords2:{intcoords2[0]},{intcoords2[1]}");
                     writer.WriteLine($"intcoords3:{intcoords3[0]},{intcoords3[1]}");
                     writer.WriteLine($"intcoords4:{intcoords4[0]},{intcoords4[1]}");
                     writer.WriteLine($"intcoords5:{intcoords5[0]},{intcoords5[1]}");
 
-                    // Save the computercoords variables to the file
+                    // save the computer's variables to the file
                     writer.WriteLine($"computercoords1:{computercoords1[0]},{computercoords1[1]}");
                     writer.WriteLine($"computercoords2:{computercoords2[0]},{computercoords2[1]}");
                     writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[0]}");
@@ -1004,6 +992,7 @@ namespace Boats
                     writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
                 }
 
+                // if the user guesses all 5 of the computer's coords then end the game
                 if (userguesses == 5)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -1017,6 +1006,7 @@ namespace Boats
                     gamedone = true;
                 }
 
+                // if the computer guesses all 5 of the user's coords then end the game
                 if (computerguesses == 5)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -1032,9 +1022,8 @@ namespace Boats
             } while (!gamedone);
         }
 
-        static void LoadingAnimation(string message, int time)
+        static void LoadingAnimation(string message, int time) // cool loading animation using Thread.Sleep() and cursor placement to emulate a loading screen
         {
-            // weird unnecessary loading animation
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n{message}\n");
             Console.SetCursorPosition(message.Length, Console.CursorTop - 2);
@@ -1052,15 +1041,15 @@ namespace Boats
             Thread.Sleep(time + 500);
         }
 
-        static void InvalidInputString(string reason)
-        {
+        static void InvalidInputString(string reason) // easy method to animate an exception
+        { 
             Thread.Sleep(500);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(reason);
             Thread.Sleep(500);
         }
 
-        static void CreateBaseGrid()
+        static void CreateBaseGrid() // displays starter grid to user
         {
             // nested for-loop matrix for base grid
             Console.WriteLine("");
@@ -1077,6 +1066,7 @@ namespace Boats
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write(". ");
                 }
+
                 // new line between each row
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
@@ -1084,14 +1074,16 @@ namespace Boats
             }
         }
 
-        static void ResetColors()
+        static void ResetColors() // resets terminal colors
         {
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        static void ComputerIsGuessing()
+        static void ComputerIsGuessing() // fun extension to add a random message before the computer's turn
         {
+            // 
             Console.ForegroundColor = ConsoleColor.Yellow;
             string[] guessidentifiers =
             {
@@ -1119,6 +1111,8 @@ namespace Boats
                 "Something is brewing in the chips",
                 "The computer begins murmuring something in machine code"
             };
+
+            // define random object
             Random r = new Random();
             string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
 
