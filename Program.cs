@@ -630,13 +630,12 @@ namespace Boats
 
             string pattern = @"^\d+,\d+$";
             Regex regcheck = new Regex(pattern);
-
             do
             {
                 Thread.Sleep(500);
-                string userguess = "";
 
-                string[] userguessarray = userguess.Split(',');
+                string userguess;
+                string[] userguessarray;
                 int[] userguessint = new int[2];
 
                 // user guess
@@ -649,7 +648,7 @@ namespace Boats
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write($"format.\n\n");
                     Console.ForegroundColor = ConsoleColor.Blue;
-
+                    
                     userguess = Console.ReadLine();
                     userguessarray = userguess.Split(',');
                     userguessint = new int[2];
@@ -663,22 +662,18 @@ namespace Boats
                         && Convert.ToInt32(userguessarray[1]) <= 8
                     )
                     {
-                        // userguess is in x, y format, inside bounds and has not already been struck
-                        break;
-                    }
-                    else
-                    {
-                        InvalidInputString("Error: Duplicate input string\n");
-                    }
-
-                    // check if the player entered an existing position, and if so then prompt to generate new coordinates. if not then continue
-                    if (
-                        !(secondarygrid[userguessint[1], userguessint[0]] == "M")
-                        && !(secondarygrid[userguessint[1], userguessint[0]] == "H")
-                    )
-                    {
-                        // userguess is in x, y format, inside bounds and has not already been struck
-                        break;
+                        // convert userguessarray to userguessint to use as indices in the secondarygrid array
+                        userguessint[0] = Convert.ToInt32(userguessarray[0]) - 1;
+                        userguessint[1] = Convert.ToInt32(userguessarray[1]) - 1;
+                        if (secondarygrid[userguessint[1], userguessint[0]] != "M" && secondarygrid[userguessint[1], userguessint[0]] != "H")
+                        {
+                            // userguess is in x, y format, inside bounds and has not already been struck
+                            break;
+                        }
+                        else
+                        {
+                            InvalidInputString("Error: Invalid input string or duplicate coordinate\n");
+                        }
                     }
                     else
                     {
