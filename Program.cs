@@ -121,8 +121,6 @@ namespace Boats
 
                         CreateBaseGrid();
 
-                        
-
                         Console.Write("\nPlease enter the coordinates of your ships in ");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("x,y ");
@@ -961,10 +959,10 @@ namespace Boats
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\nYou found all the computer's ships and won!");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(4500);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nGame over!");
-                    Thread.Sleep(500);
+                    Thread.Sleep(4000);
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                     gamedone = true;
@@ -974,10 +972,10 @@ namespace Boats
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\nThe computer hit all your ships and won!");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(4500);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nGame over!");
-                    Thread.Sleep(500);
+                    Thread.Sleep(4000);
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                     gamedone = true;
@@ -1051,7 +1049,7 @@ namespace Boats
                 "The computer prepares for battle",
                 "The computer is adjusting its tactics",
                 "The computer is scanning the battlefield",
-                "The computer is casting an ASCII message to you: 010001000100100101000101",
+                "The computer is casting a message in hexadecimal to you: 44 49 45",
                 "The computer is making a calculated guess",
                 "A fan is whirring somewhere",
                 "The computer begins overclocking itself for extra efficiency",
@@ -1061,6 +1059,7 @@ namespace Boats
                 "The computer is thinking",
                 "The AI is racking its cache",
                 "The computer prepares for its turn",
+                "The computer begins profusely increasing in clock speed",
                 "The computer begins trash talking you in machine code",
                 "The computer is analysing its choices",
                 "The computer is running diagnostics",
