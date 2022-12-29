@@ -632,12 +632,14 @@ namespace Boats
             }
         }
 
-        static void PlayGame(string[,] primarygrid, string[,] secondarygrid, List<int> intcoords1, List<int> intcoords2, List<int> intcoords3, List<int> intcoords4, List<int> intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5, int userguesscount, int computerguessecount)
+        static void PlayGame(string[,] primarygrid, string[,] secondarygrid, List<int> intcoords1, List<int> intcoords2, List<int> intcoords3, List<int> intcoords4, List<int> intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5)
         {
-            // variable to initiate gameover sequence
+            // initialise the user and computer guess count to keep track of all correct guesses
+            int userguesses = 0;
+            int computerguesses = 0;
             bool gamedone = false;
 
-            // list to keep track of previous computer coordinates
+            List<int[]> previoususercoords = new List<int[]>();
             List<int[]> previouscomputercoords = new List<int[]>();
 
             string pattern = @"^\d+,\d+$";
@@ -772,7 +774,7 @@ namespace Boats
                             Console.ForegroundColor = ConsoleColor.Gray;
                             Console.Write($"{primarygrid[i, j]} ");
                         }
-
+                        
                         // new line between each row
                         ResetColors();
                         Console.WriteLine("");
@@ -810,9 +812,14 @@ namespace Boats
                 computerguess[1] = r.Next(0, 8);
 
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
+                while (
+                    (primarygrid[computerguess[1], computerguess[0]] == "M")
+                    || (primarygrid[computerguess[1], computerguess[0]] == "H")
+                    || usedcoordinates.Contains(computerguess)
+                )
                 {
                     // generate new coordinates
+                    //Console.WriteLine("computer hit a set of coordinates and regenerated.");
                     computerguess[0] = r.Next(0, 8);
                     computerguess[1] = r.Next(0, 8);
                 }
@@ -958,16 +965,12 @@ namespace Boats
                     writer.WriteLine($"intcoords4:{intcoords4[0]},{intcoords4[1]}");
                     writer.WriteLine($"intcoords5:{intcoords5[0]},{intcoords5[1]}");
 
-                    // save the computer's coords to the file
+                    // save the computer's variables to the file
                     writer.WriteLine($"computercoords1:{computercoords1[0]},{computercoords1[1]}");
                     writer.WriteLine($"computercoords2:{computercoords2[0]},{computercoords2[1]}");
                     writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[0]}");
                     writer.WriteLine($"computercoords4:{computercoords4[0]},{computercoords4[1]}");
                     writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
-
-                    // save the user's and computer's guess count
-                    writer.WriteLine($"userguesses:{userguesses}");
-                    writer.WriteLine($"computerguesses:{computerguesses}");
                 }
 
                 // if the user guesses all 5 of the computer's coords then end the game
