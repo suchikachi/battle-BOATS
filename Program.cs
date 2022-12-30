@@ -400,9 +400,9 @@ namespace Boats {
                         lineIndex++;
 
                         // read the user and computer guesscount
-                        int preuserguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
+                        int userguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
                         lineIndex++;
-                        int precomputerguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
+                        int computerguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
                         lineIndex++;
 
                         // loading animation
@@ -456,7 +456,7 @@ namespace Boats {
                         computercoords5 = precomputercoords5;
 
                         // run game logic with all the variables defined beforehand
-                        PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, preuserguesses, precomputerguesses);
+                        PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, userguesses, computerguesses);
                     } catch // erroneous data inputted
                     {
                         InvalidInputString("Error: File couldn't be read or doesn't exist\n");
@@ -530,11 +530,9 @@ namespace Boats {
             }
         }
 
-        static void PlayGame(string[, ] primarygrid, string[, ] secondarygrid, List < int > intcoords1, List < int > intcoords2, List < int > intcoords3, List < int > intcoords4, List < int > intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5, int preuserguesses, int precomputerguesses) {
+        static void PlayGame(string[, ] primarygrid, string[, ] secondarygrid, List < int > intcoords1, List < int > intcoords2, List < int > intcoords3, List < int > intcoords4, List < int > intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5, int userguesses, int computerguesses) {
 
             // initialise the user and computer guess count to keep track of all correct guesses
-            //int userguesses = 0;
-            //int computerguesses = 0;
             bool gamedone = false;
 
             List < int[] > previoususercoords = new List < int[] > ();
@@ -589,7 +587,7 @@ namespace Boats {
                 if ((userguessint[0] == computercoords1[0] && userguessint[1] == computercoords1[1]) || (userguessint[0] == computercoords2[0] && userguessint[1] == computercoords2[1]) || (userguessint[0] == computercoords3[0] && userguessint[1] == computercoords3[1]) || (userguessint[0] == computercoords4[0] && userguessint[1] == computercoords4[1]) || (userguessint[0] == computercoords5[0] && userguessint[1] == computercoords5[1])) {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You hit one of the computer's ships!\n");
-                    preuserguesses += 1;
+                    userguesses += 1;
                     Thread.Sleep(1000);
 
                     // re-print grid with a H on the place hit
@@ -700,7 +698,7 @@ namespace Boats {
                 if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1])) {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(" One of your ships was struck!\n");
-                    precomputerguesses += 1;
+                    computerguesses += 1;
                     Thread.Sleep(1000);
                     // re-print primary grid with a H on the place hit
                     primarygrid[computerguess[1] - 1, computerguess[0] - 1] = "H";
@@ -816,12 +814,12 @@ namespace Boats {
                     writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
 
                     // save userguess and computerguess count to file
-                    writer.WriteLine($"userguesses:{preuserguesses}");
-                    writer.WriteLine($"computerguesses:{precomputerguesses}");
+                    writer.WriteLine($"userguesses:{userguesses}");
+                    writer.WriteLine($"computerguesses:{computerguesses}");
                 }
 
                 // if the user guesses all 5 of the computer's coords then end the game
-                if (preuserguesses >= 5) {
+                if (userguesses >= 5) {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\nYou found all the computer's ships and won!");
                     Thread.Sleep(4500);
@@ -834,7 +832,7 @@ namespace Boats {
                 }
 
                 // if the computer guesses all 5 of the user's coords then end the game
-                if (precomputerguesses >= 5) {
+                if (computerguesses >= 5) {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\nThe computer hit all your ships and won!");
                     Thread.Sleep(4500);
