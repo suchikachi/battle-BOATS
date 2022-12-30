@@ -331,6 +331,12 @@ namespace Boats
                         int[] computercoords4 = computercoords[3];
                         int[] computercoords5 = computercoords[4];
 
+                        Console.WriteLine($"{computercoords1[0]}, {computercoords1[1]}");
+                        Console.WriteLine($"{computercoords2[0]}, {computercoords2[1]}");
+                        Console.WriteLine($"{computercoords3[0]}, {computercoords3[1]}");
+                        Console.WriteLine($"{computercoords4[0]}, {computercoords4[1]}");
+                        Console.WriteLine($"{computercoords5[0]}, {computercoords5[1]}");
+
                         // run the repeating logic of the game with all the variables defined beforehand
                         PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, 0, 0);
                         break;
@@ -748,19 +754,19 @@ namespace Boats
                 computerguess[0] = r.Next(0, 8);
                 computerguess[1] = r.Next(0, 8);
 
-                Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
-
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                 while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                 {
                     // generate new coordinates
                     //Console.WriteLine("computer hit a set of coordinates and regenerated.");
-                    computerguess[0] = r.Next(0, 8);
-                    computerguess[1] = r.Next(0, 8);
+                    computerguess[0] = r.Next(0, 7);
+                    computerguess[1] = r.Next(0, 7);
                 }
 
                 // add the generated coordinates to the list of used coordinates
                 usedcoordinates.Add(computerguess);
+
+                Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                 // the computer is guessing animation
                 ComputerIsGuessing();
@@ -897,7 +903,7 @@ namespace Boats
                     // save the computer's variables to the file
                     writer.WriteLine($"computercoords1:{computercoords1[0]},{computercoords1[1]}");
                     writer.WriteLine($"computercoords2:{computercoords2[0]},{computercoords2[1]}");
-                    writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[0]}");
+                    writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[1]}");
                     writer.WriteLine($"computercoords4:{computercoords4[0]},{computercoords4[1]}");
                     writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
 
