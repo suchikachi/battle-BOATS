@@ -524,6 +524,26 @@ namespace Boats
                                 Console.WriteLine("");
                             }
 
+                            // looping through array
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine(" 1 2 3 4 5 6 7 8");
+                            for (int i = 0; i < 8; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.Write(i + 1);
+                                for (int j = 0; j < 8; j++)
+                                {
+                                    // loop through and print all elements of 2d array
+                                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                    Console.Write($"{presecondarygrid[i, j]} ");
+                                }
+
+                                // new line between each row
+                                ResetColors();
+                                Console.WriteLine("");
+                            }
+
                             // new line to clear coloring
                             ResetColors();
                             Console.WriteLine("");
@@ -971,6 +991,10 @@ namespace Boats
                     writer.WriteLine($"computercoords3:{computercoords3[0]},{computercoords3[0]}");
                     writer.WriteLine($"computercoords4:{computercoords4[0]},{computercoords4[1]}");
                     writer.WriteLine($"computercoords5:{computercoords5[0]},{computercoords5[1]}");
+
+                    // save userguess and computerguess count to file
+                    writer.WriteLine($"userguesses:{userguesses}");
+                    writer.WriteLine($"computerguesses:{computerguesses}");
                 }
 
                 // if the user guesses all 5 of the computer's coords then end the game
