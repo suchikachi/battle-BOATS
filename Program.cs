@@ -910,7 +910,7 @@ namespace Boats {
         }
 
         // if the user guesses all 5 of the computer's coords then end the game
-        if (userguesses == 5) {
+        if (userguesses >= 5) {
           Console.ForegroundColor = ConsoleColor.Yellow;
           Console.WriteLine("\nYou found all the computer's ships and won!");
           Thread.Sleep(4500);
@@ -923,7 +923,7 @@ namespace Boats {
         }
 
         // if the computer guesses all 5 of the user's coords then end the game
-        if (computerguesses == 5) {
+        if (computerguesses >= 5) {
           Console.ForegroundColor = ConsoleColor.Yellow;
           Console.WriteLine("\nThe computer hit all your ships and won!");
           Thread.Sleep(4500);
