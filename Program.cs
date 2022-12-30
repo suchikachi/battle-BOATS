@@ -1028,7 +1028,7 @@ namespace Boats
             // define random object
             Random r = new Random();
             string sentenceinuse = guessidentifiers[r.Next(0, guessidentifiers.Length)];
-
+            
             Console.WriteLine("\n" + sentenceinuse);
 
             Console.SetCursorPosition(sentenceinuse.Length, Console.CursorTop - 1);
