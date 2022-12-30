@@ -449,23 +449,6 @@ namespace Boats {
                         ResetColors();
                         Console.WriteLine("");
 
-                        /* generate computer's coordinates and ensure the same set is not made twice
-                        Random r = new Random();
-
-                        /*List < int[] > precomputercoords = new List < int[] > ();
-                        while (precomputercoords.Count < 5) {
-                            int x = r.Next(1, 9);
-                            int y = r.Next(1, 9);
-                            int[] coord = {
-                                x,
-                                y
-                            };
-
-                            if (!precomputercoords.Contains(coord)) {
-                                precomputercoords.Add(coord);
-                            }
-                        }*/
-
                         computercoords1 = precomputercoords1;
                         computercoords2 = precomputercoords2;
                         computercoords3 = precomputercoords3;
