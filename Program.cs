@@ -55,7 +55,6 @@ namespace WW
 }
 
 // main program
-
 namespace Boats
 {
     class Program
@@ -751,8 +750,8 @@ namespace Boats
                 int[] computerguess = new int[2];
 
                 // assign random computer value
-                computerguess[0] = r.Next(1, 9);
-                computerguess[1] = r.Next(1, 9);
+                computerguess[0] = r.Next(1, 8);
+                computerguess[1] = r.Next(1, 8);
 
                 Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
@@ -760,9 +759,8 @@ namespace Boats
                 while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                 {
                     // generate new coordinates
-                    //Console.WriteLine("computer hit a set of coordinates and regenerated.");
-                    computerguess[0] = r.Next(1, 9);
-                    computerguess[1] = r.Next(1, 9);
+                    computerguess[0] = r.Next(1, 8);
+                    computerguess[1] = r.Next(1, 8);
                 }
 
                 // add the generated coordinates to the list of used coordinates
