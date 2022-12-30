@@ -511,7 +511,7 @@ namespace Boats
                             // run game logic with all the variables defined beforehand
                             PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, userguesses, computerguesses);
                         }
-                        catch // erroneous data inputted
+                        catch // erroneous data read from file
                         {
                             InvalidInputString("Error: File couldn't be read or doesn't exist\n");
                             break;
@@ -589,9 +589,6 @@ namespace Boats
 
             // initialise the user and computer guess count to keep track of all correct guesses
             bool gamedone = false;
-
-            List<int[]> previoususercoords = new List<int[]>();
-            List<int[]> previouscomputercoords = new List<int[]>();
 
             string pattern = @"^\d+,\d+$";
             Regex regcheck = new Regex(pattern);
