@@ -748,6 +748,8 @@ namespace Boats
                 computerguess[0] = r.Next(0, 8);
                 computerguess[1] = r.Next(0, 8);
 
+                Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
+
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                 while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                 {
@@ -763,7 +765,7 @@ namespace Boats
                 // the computer is guessing animation
                 ComputerIsGuessing();
 
-                // check if user guess was correct
+                // check if computer guess was correct
                 if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
