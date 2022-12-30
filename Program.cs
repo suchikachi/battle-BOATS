@@ -400,9 +400,9 @@ namespace Boats {
                         lineIndex++;
 
                         // read the user and computer guesscount
-                        int userguesses = int.Parse(fileLines[lineIndex]);
+                        int userguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
                         lineIndex++;
-                        int computerguesses = int.Parse(fileLines[lineIndex]);
+                        int computerguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
                         lineIndex++;
 
                         // loading animation
