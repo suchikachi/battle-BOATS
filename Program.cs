@@ -300,7 +300,7 @@ namespace Boats {
                     int[] computercoords5 = computercoords[4];
 
                     // run the repeating logic of the game with all the variables defined beforehand
-                    PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
+                    PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, 0, 0);
                     break;
 
                 case "2":
@@ -399,6 +399,12 @@ namespace Boats {
                         };
                         lineIndex++;
 
+                        // read the user and computer guesscount
+                        int userguesses = int.Parse(fileLines[lineIndex]);
+                        lineIndex++;
+                        int computerguesses = int.Parse(fileLines[lineIndex]);
+                        lineIndex++;
+
                         // loading animation
                         LoadingAnimation("Reading save file", 500);
                         Console.WriteLine("");
@@ -443,11 +449,10 @@ namespace Boats {
                         ResetColors();
                         Console.WriteLine("");
 
-                        // generate computer's coordinates and ensure the same set is not made twice
+                        /* generate computer's coordinates and ensure the same set is not made twice
                         Random r = new Random();
 
-                        List < int[] > precomputercoords = new List < int[] > ();
-
+                        /*List < int[] > precomputercoords = new List < int[] > ();
                         while (precomputercoords.Count < 5) {
                             int x = r.Next(1, 9);
                             int y = r.Next(1, 9);
@@ -459,16 +464,16 @@ namespace Boats {
                             if (!precomputercoords.Contains(coord)) {
                                 precomputercoords.Add(coord);
                             }
-                        }
+                        }*/
 
-                        computercoords1 = precomputercoords[0];
-                        computercoords2 = precomputercoords[1];
-                        computercoords3 = precomputercoords[2];
-                        computercoords4 = precomputercoords[3];
-                        computercoords5 = precomputercoords[4];
+                        computercoords1 = precomputercoords1;
+                        computercoords2 = precomputercoords2;
+                        computercoords3 = precomputercoords3;
+                        computercoords4 = precomputercoords4;
+                        computercoords5 = precomputercoords5;
 
                         // run game logic with all the variables defined beforehand
-                        PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5);
+                        PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, userguesses, computerguesses);
                     } catch // erroneous data inputted
                     {
                         InvalidInputString("Error: File couldn't be read or doesn't exist\n");
@@ -484,7 +489,7 @@ namespace Boats {
                     string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and the other is used to record any hits or misses placed on their opponents. At the beginning of the game, players decide where they wish to place their fleet of five battle boats.";
                     string s3 = "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
                     string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
-                    string s5 = "Note: By selecting menu option 1 (Start new game) any existing save files will be cleared.";
+                    string s5 = "Note: By selecting menu option 1 (Start new game) any existing save files will be cleared. Closing the game mid-action may also cause save file errors - it is recommended to only close the game when you are being prompted for your coordinate input.";
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine(s1.WordWrap(80));
                     Thread.Sleep(6250);
@@ -502,7 +507,7 @@ namespace Boats {
                     Thread.Sleep(5550);
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(s5.WordWrap(70));
+                    Console.WriteLine(s5.WordWrap(80));
                     Thread.Sleep(6550);
 
                     Thread.Sleep(550);
@@ -542,7 +547,7 @@ namespace Boats {
             }
         }
 
-        static void PlayGame(string[, ] primarygrid, string[, ] secondarygrid, List < int > intcoords1, List < int > intcoords2, List < int > intcoords3, List < int > intcoords4, List < int > intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5) {
+        static void PlayGame(string[, ] primarygrid, string[, ] secondarygrid, List < int > intcoords1, List < int > intcoords2, List < int > intcoords3, List < int > intcoords4, List < int > intcoords5, int[] computercoords1, int[] computercoords2, int[] computercoords3, int[] computercoords4, int[] computercoords5, int userguesscount, int computerguesscount) {
 
             Console.WriteLine($"{computercoords1[0]},{computercoords1[1]}");
             Console.WriteLine($"{computercoords2[0]},{computercoords2[1]}");
