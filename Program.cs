@@ -766,7 +766,7 @@ namespace Boats
                 ComputerIsGuessing();
 
                 // check if computer guess was correct
-                if ((computerguess[0] == intcoords1[0] && computerguess[1] == intcoords1[1]) || (computerguess[0] == intcoords2[0] && computerguess[1] == intcoords2[1]) || (computerguess[0] == intcoords3[0] && computerguess[1] == intcoords3[1]) || (computerguess[0] == intcoords4[0] && computerguess[1] == intcoords4[1]) || (computerguess[0] == intcoords5[0] && computerguess[1] == intcoords5[1]))
+                if (primarygrid[computerguess[1], computerguess[0]] == "▢")
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(" One of your ships was struck!\n");
