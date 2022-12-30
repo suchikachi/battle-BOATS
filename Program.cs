@@ -751,22 +751,22 @@ namespace Boats
                 int[] computerguess = new int[2];
 
                 // assign random computer value
-                computerguess[0] = r.Next(0, 8);
-                computerguess[1] = r.Next(0, 8);
+                computerguess[0] = r.Next(1, 9);
+                computerguess[1] = r.Next(1, 9);
+
+                Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                 while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                 {
                     // generate new coordinates
                     //Console.WriteLine("computer hit a set of coordinates and regenerated.");
-                    computerguess[0] = r.Next(0, 7);
-                    computerguess[1] = r.Next(0, 7);
+                    computerguess[0] = r.Next(1, 9);
+                    computerguess[1] = r.Next(1, 9);
                 }
 
                 // add the generated coordinates to the list of used coordinates
                 usedcoordinates.Add(computerguess);
-
-                Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                 // the computer is guessing animation
                 ComputerIsGuessing();
