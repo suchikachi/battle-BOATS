@@ -861,8 +861,7 @@ namespace Boats
                 }
 
                 // save the game variables to a file after each guess made by the user and computer
-                using (
-                        StreamWriter writer = new StreamWriter("47495645204d4520414e2041.dat", false))
+                using (StreamWriter writer = new StreamWriter("47495645204d4520414e2041.dat", false))
                 {
                     // save the primary grid to the file
                     for (int i = 0; i < 8; i++)
@@ -871,6 +870,7 @@ namespace Boats
                         {
                             writer.Write(primarygrid[i, j]);
                         }
+
                         writer.WriteLine();
                     }
 
@@ -881,6 +881,7 @@ namespace Boats
                         {
                             writer.Write(secondarygrid[i, j]);
                         }
+
                         writer.WriteLine();
                     }
 
@@ -930,6 +931,7 @@ namespace Boats
                     Console.WriteLine("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
                     gamedone = true;
                 }
+
             } while (!gamedone);
         }
 
@@ -996,31 +998,32 @@ namespace Boats
         {
             // 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            string[] guessidentifiers = {
-                                "The computer prepares for battle",
-                                "The computer is adjusting its tactics",
-                                "The computer is scanning the battlefield",
-                                "The computer is casting a message in hexadecimal to you: 44 49 45",
-                                "The computer is making a calculated guess",
-                                "A fan is whirring somewhere",
-                                "The computer begins overclocking itself for extra efficiency",
-                                "The computer is undergoing a situational analysis",
-                                "The computer braces itself",
-                                "The computer begins measuring change in potential energy",
-                                "The computer is thinking",
-                                "The AI is racking its cache",
-                                "The computer prepares for its turn",
-                                "The computer begins profusely increasing in clock speed",
-                                "The computer begins trash talking you in machine code",
-                                "The computer is analysing its choices",
-                                "The computer is running diagnostics",
-                                "The computer begins mobilizing",
-                                "The computer's sensors are going haywire",
-                                "Smells like solder around here",
-                                "The computer is appending its plans to its internal database",
-                                "Something is brewing in the chips",
-                                "The computer begins murmuring something in machine code"
-                        };
+            string[] guessidentifiers =
+            {
+                "The computer prepares for battle",
+                "The computer is adjusting its tactics",
+                "The computer is scanning the battlefield",
+                "The computer is casting a message in hexadecimal to you: 44 49 45",
+                "The computer is making a calculated guess",
+                "A fan is whirring somewhere",
+                "The computer begins overclocking itself for extra efficiency",
+                "The computer is undergoing a situational analysis",
+                "The computer braces itself",
+                "The computer begins measuring change in potential energy",
+                "The computer is thinking",
+                "The AI is racking its cache",
+                "The computer prepares for its turn",
+                "The computer begins profusely increasing in clock speed",
+                "The computer begins trash talking you in machine code",
+                "The computer is analysing its choices",
+                "The computer is running diagnostics",
+                "The computer begins mobilizing",
+                "The computer's sensors are going haywire",
+                "Smells like solder around here",
+                "The computer is appending its plans to its internal database",
+                "Something is brewing in the Level 1 cache",
+                "The computer begins murmuring something in machine code"
+            };
 
             // define random object
             Random r = new Random();
