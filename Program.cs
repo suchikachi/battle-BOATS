@@ -825,8 +825,7 @@ namespace Boats
                     Console.WriteLine(" The computer misses!\n");
                     Thread.Sleep(500);
 
-                    // re-print grid with an 'M' on the place hit
-                    primarygrid[computerguess[1], computerguess[0]] = "M";
+                    // re-print unmodified grid
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(" 1 2 3 4 5 6 7 8");
                     for (int i = 0; i < 8; i++)
