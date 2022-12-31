@@ -330,12 +330,6 @@ namespace Boats
                         int[] computercoords4 = computercoords[3];
                         int[] computercoords5 = computercoords[4];
 
-                        Console.WriteLine($"{computercoords1[0]}, {computercoords1[1]}");
-                        Console.WriteLine($"{computercoords2[0]}, {computercoords2[1]}");
-                        Console.WriteLine($"{computercoords3[0]}, {computercoords3[1]}");
-                        Console.WriteLine($"{computercoords4[0]}, {computercoords4[1]}");
-                        Console.WriteLine($"{computercoords5[0]}, {computercoords5[1]}");
-
                         // run the repeating logic of the game with all the variables defined beforehand
                         PlayGame(primarygrid, secondarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, 0, 0);
                         break;
@@ -752,8 +746,6 @@ namespace Boats
                 // assign random computer value
                 computerguess[0] = r.Next(1, 8);
                 computerguess[1] = r.Next(1, 8);
-
-                Console.WriteLine($"computer coordinate for next: {computerguess[0] + 1}, {computerguess[1] + 1}");
 
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
                 while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
