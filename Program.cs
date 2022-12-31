@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using WW;
 
-// EXTENSION METHOD: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
+// EXTENSION NAMESPACE: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
 namespace WW
 {
 #if WWLIB
