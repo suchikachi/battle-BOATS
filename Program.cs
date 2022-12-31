@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using WW;
 
-// EXTENSION NAMESPACE: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
+// PARTIAL CLASS: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
 namespace WW
 {
 #if WWLIB
@@ -16,37 +16,22 @@ namespace WW
     {
         public static string WordWrap(this string text, int width, params char[] wordBreakChars)
         {
-            if (string.IsNullOrEmpty(text) || 0 == width || width >= text.Length) return text;
+            if (string.IsNullOrEmpty(text) || width <= 0 || width >= text.Length) return text;
             var sb = new StringBuilder();
             var sr = new StringReader(text);
             string line;
-            var first = true;
             while (null != (line = sr.ReadLine()))
             {
-                var col = 0;
-                if (!first)
-                {
-                    sb.AppendLine();
-                    col = 0;
-                }
-                else first = false;
                 var words = line.Split(wordBreakChars);
-
                 for (var i = 0; i < words.Length; i++)
                 {
                     var word = words[i];
-                    if (0 != i)
-                    {
-                        sb.Append(" ");
-                        ++col;
-                    }
-                    if (col + word.Length > width)
+                    if (i > 0) sb.Append(" ");
+                    if (sb.Length + word.Length > width)
                     {
                         sb.AppendLine();
-                        col = 0;
                     }
                     sb.Append(word);
-                    col += word.Length;
                 }
             }
             return sb.ToString();
