@@ -4,55 +4,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.IO;
-using WW;
-
-// PARTIAL CLASS: Wordwrap - allows the programmer to specify how many characters should be printed before a newline is made. i have implemented this to ensure enhanced readability of code.
-namespace WW
-{
-#if WWLIB
-        public
-#endif
-    static partial class StringUtility
-    {
-        public static string WordWrap(this string text, int width, params char[] wordBreakChars)
-        {
-            if (string.IsNullOrEmpty(text) || 0 == width || width >= text.Length) return text;
-            var sb = new StringBuilder();
-            var sr = new StringReader(text);
-            string line;
-            var first = true;
-            while (null != (line = sr.ReadLine()))
-            {
-                var col = 0;
-                if (!first)
-                {
-                    sb.AppendLine();
-                    col = 0;
-                }
-                else first = false;
-                var words = line.Split(wordBreakChars);
-
-                for (var i = 0; i < words.Length; i++)
-                {
-                    var word = words[i];
-                    if (0 != i)
-                    {
-                        sb.Append(" ");
-                        ++col;
-                    }
-                    if (col + word.Length > width)
-                    {
-                        sb.AppendLine();
-                        col = 0;
-                    }
-                    sb.Append(word);
-                    col += word.Length;
-                }
-            }
-            return sb.ToString();
-        }
-    }
-}
 
 // main program
 namespace Boats
@@ -539,7 +490,7 @@ namespace Boats
                         string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
                         string s5 = "Note: By selecting menu option 1 (Start new game) any existing save files will be cleared. Closing the game mid-action may also cause save file errors - it is recommended to only close the game when you are being prompted for your coordinate input.";
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(s1.WordWrap(80));
+                        Console.WriteLine(s1)
                         Thread.Sleep(6250);
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
