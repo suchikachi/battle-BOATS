@@ -10,7 +10,7 @@ using WW;
 namespace WW
 {
 #if WWLIB
-        public
+    public
 #endif
     static partial class StringUtility
     {
