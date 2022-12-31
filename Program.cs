@@ -140,6 +140,19 @@ namespace Boats
                         List<int> intcoords4 = new List<int>();
                         List<int> intcoords5 = new List<int>();
 
+                        // create 2d array to display updated grid and handle computer guesses
+                        string[,] primarygrid = new string[8, 8]
+                        {
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."},
+                            {".", ".", ".", ".", ".", ".", ".", "."} 
+                        };
+
                         // do while loop to repeatedly ask for input until int parseable and is in right format
                         do
                         {
@@ -159,9 +172,12 @@ namespace Boats
                             // input is fine, append values to the array
                             intcoords1.Add(x);
                             intcoords1.Add(y);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords1, intcoords1, intcoords1, intcoords1);
                             break;
 
                         } while (true);
+                        
+
 
                         // repeat (2) the process for the remaining sets of coordinates
                         do
@@ -182,6 +198,7 @@ namespace Boats
                             }
                             intcoords2.Add(x);
                             intcoords2.Add(y);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords1, intcoords1, intcoords1);
                             break;
 
                         } while (true);
@@ -205,6 +222,7 @@ namespace Boats
                             }
                             intcoords3.Add(x);
                             intcoords3.Add(y);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords1, intcoords1);
                             break;
 
                         } while (true);
@@ -228,6 +246,7 @@ namespace Boats
                             }
                             intcoords4.Add(x);
                             intcoords4.Add(y);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords1);
                             break;
 
                         } while (true);
@@ -251,25 +270,13 @@ namespace Boats
                             }
                             intcoords5.Add(x);
                             intcoords5.Add(y);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5);
                             break;
 
                         } while (true);
 
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYour coordinates are displayed as follows:\n");
-
-                        // create 2d array to display updated grid and handle computer guesses
-                        string[,] primarygrid = new string[8, 8]
-                        {
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."},
-                            {".", ".", ".", ".", ".", ".", ".", "."} 
-                        };
 
                         // duplicate primarygrid to hold all the user guesses
                         string[,] secondarygrid = new string[8, 8];
@@ -982,6 +989,37 @@ namespace Boats
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
             }
+        }
+
+        static void DisplayUserGrid(string[, ] basegrid, List<int> coord1, List<int> coord2, List<int> coord3, List<int> coord4, List<int> coord5) // displays starter grid to user after each coordinate input
+        {
+            // nested for-loop matrix for base grid
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(" 1 2 3 4 5 6 7 8");
+            for (int i = 0; i < 8; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write(i + 1);
+                for (int j = 0; j < 8; j++)
+                {
+                    // make it look pretty
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write(". ");
+                }
+
+                // new line between each row
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("");
+            }
+
+            basegrid[coord1[1] - 1, coord1[0] - 1] = "▢";
+            basegrid[coord2[1] - 1, coord2[0] - 1] = "▢";
+            basegrid[coord3[1] - 1, coord3[0] - 1] = "▢";
+            basegrid[coord4[1] - 1, coord4[0] - 1] = "▢";
+            basegrid[coord5[1] - 1, coord5[0] - 1] = "▢";
         }
 
         static void ResetColors() // resets terminal colors
