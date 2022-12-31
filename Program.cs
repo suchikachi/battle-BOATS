@@ -484,30 +484,30 @@ namespace Boats
                         Thread.Sleep(990);
 
                         // individual paragraphs to provide game instructions
-                        string s1 = "\nBattle Boats (c) is a turn based strategy game where players eliminate their opponents fleet of boats by firing at a location on a grid in an attempt to sink them. The first player to sink all of their opponents’ battle boats is declared the winner.";
-                        string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and the other is used to record any hits or misses placed on their opponents. At the beginning of the game, players decide where they wish to place their fleet of five battle boats.";
-                        string s3 = "During game play, players take it in turns to fire at a location on their opponent’s board. They do this by stating the coordinates for their target. If a player hits their opponent's boat then this is recorded as a hit. If they miss then this is recorded as a miss.";
-                        string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with boats remaining at the end of the game.";
-                        string s5 = "Note: By selecting menu option 1 (Start new game) any existing save files will be cleared. Closing the game mid-action may also cause save file errors - it is recommended to only close the game when you are being prompted for your coordinate input.";
+                        string s1 = "\nBattle Boats (c) is a turn based strategy game where players eliminate their opponents\nfleet of boats by firing at a location on a grid in an attempt to sink them. The first\nplayer to sink all of their opponents’ battle boats is declared the winner.";
+                        string s2 = "Each player has two eight by eight grids. One grid is used for their own battle boats and\nthe other is used to record any hits or misses placed on their opponents. At the beginning\nof the game, players decide where they wish to place their fleet of five battle boats.";
+                        string s3 = "During game play, players take it in turns to fire at a location on their\nopponent’s board. They do this by stating the coordinates for their target. If a player\nhits their opponent's boat then this is recorded as a hit. If they miss then this is\nrecorded as a miss.";
+                        string s4 = "The game ends when a player's fleet of boats have been sunk. The winner is the player with\nboats remaining at the end of the game.";
+                        string s5 = "Note: By selecting menu option 1 (Start new game) any existing save files will be cleared.";
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(s1)
+                        Console.WriteLine(s1);
                         Thread.Sleep(6250);
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine(s2.WordWrap(85));
+                        Console.WriteLine(s2);
                         Thread.Sleep(6500);
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(s3.WordWrap(80));
+                        Console.WriteLine(s3);;
                         Thread.Sleep(6550);
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine(s4.WordWrap(85));
+                        Console.WriteLine(s4);
                         Thread.Sleep(5550);
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(s5.WordWrap(80));
-                        Thread.Sleep(6550);
+                        Console.WriteLine(s5);
+                        Thread.Sleep(2050);
 
                         Thread.Sleep(550);
                         Console.WriteLine("");
