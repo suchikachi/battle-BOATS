@@ -172,7 +172,10 @@ namespace Boats
                             // input is fine, append values to the array
                             intcoords1.Add(x);
                             intcoords1.Add(y);
-                            DisplayUserGrid(primarygrid, intcoords1, intcoords1, intcoords1, intcoords1, intcoords1);
+
+                            // display grid with updated coordinates
+                            DisplayUserGrid(primarygrid, intcoords1);
+
                             break;
 
                         } while (true);
@@ -198,7 +201,8 @@ namespace Boats
                             }
                             intcoords2.Add(x);
                             intcoords2.Add(y);
-                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords1, intcoords1, intcoords1);
+
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2);
                             break;
 
                         } while (true);
@@ -222,7 +226,7 @@ namespace Boats
                             }
                             intcoords3.Add(x);
                             intcoords3.Add(y);
-                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords1, intcoords1);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3);
                             break;
 
                         } while (true);
@@ -246,7 +250,7 @@ namespace Boats
                             }
                             intcoords4.Add(x);
                             intcoords4.Add(y);
-                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords1);
+                            DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords4);
                             break;
 
                         } while (true);
@@ -270,6 +274,7 @@ namespace Boats
                             }
                             intcoords5.Add(x);
                             intcoords5.Add(y);
+                            
                             DisplayUserGrid(primarygrid, intcoords1, intcoords2, intcoords3, intcoords4, intcoords5);
                             break;
 
@@ -991,7 +996,7 @@ namespace Boats
             }
         }
 
-        static void DisplayUserGrid(string[, ] basegrid, List<int> coord1, List<int> coord2, List<int> coord3, List<int> coord4, List<int> coord5) // displays starter grid to user after each coordinate input
+        static void DisplayUserGrid(string[,] basegrid, params List<int>[] coords)
         {
             // nested for-loop matrix for base grid
             Console.WriteLine("");
@@ -1003,10 +1008,25 @@ namespace Boats
                 Console.Write(i + 1);
                 for (int j = 0; j < 8; j++)
                 {
-                    // make it look pretty
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(". ");
+                    // assign values to the basegrid array
+                    bool placed = false;
+                    foreach (List<int> coord in coords)
+                    {
+                        if (coord[0] == j+1 && coord[1] == i+1)
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            Console.Write("▢ ");
+                            placed = true;
+                            break;
+                        }
+                    }
+                    if (!placed)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.Write(". ");
+                    }
                 }
 
                 // new line between each row
@@ -1014,12 +1034,7 @@ namespace Boats
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
             }
-
-            basegrid[coord1[1] - 1, coord1[0] - 1] = "▢";
-            basegrid[coord2[1] - 1, coord2[0] - 1] = "▢";
-            basegrid[coord3[1] - 1, coord3[0] - 1] = "▢";
-            basegrid[coord4[1] - 1, coord4[0] - 1] = "▢";
-            basegrid[coord5[1] - 1, coord5[0] - 1] = "▢";
+            Console.WriteLine("");
         }
 
         static void ResetColors() // resets terminal colors
