@@ -464,14 +464,8 @@ namespace Boats
                             ResetColors();
                             Console.WriteLine("");
 
-                            computercoords1 = precomputercoords1;
-                            computercoords2 = precomputercoords2;
-                            computercoords3 = precomputercoords3;
-                            computercoords4 = precomputercoords4;
-                            computercoords5 = precomputercoords5;
-
                             // run game logic with all the variables defined beforehand
-                            PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, computercoords1, computercoords2, computercoords3, computercoords4, computercoords5, userguesses, computerguesses);
+                            PlayGame(preprimarygrid, presecondarygrid, preintcoords1, preintcoords2, preintcoords3, preintcoords4, preintcoords5, precomputercoords1, precomputercoords2, precomputercoords3, precomputercoords4, precomputercoords5, userguesses, computerguesses);
                         }
                         catch // erroneous data read from file
                         {
