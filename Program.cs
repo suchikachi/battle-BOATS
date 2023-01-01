@@ -301,6 +301,10 @@ namespace Boats
                         // try read variable data from the file, if not display error message
                         try
                         {
+                            // loading animation
+                            LoadingAnimation("Reading save file", 500);
+                            Console.WriteLine("");
+                            
                             string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
                             int lineIndex = 0;
 
@@ -415,10 +419,6 @@ namespace Boats
                             lineIndex++;
                             int computerguesses = int.Parse(fileLines[lineIndex].Split(':')[1]);
                             lineIndex++;
-
-                            // loading animation
-                            LoadingAnimation("Reading save file", 500);
-                            Console.WriteLine("");
 
                             // looping through array
                             Console.ForegroundColor = ConsoleColor.DarkRed;
