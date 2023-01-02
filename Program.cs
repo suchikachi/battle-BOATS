@@ -304,7 +304,7 @@ namespace Boats
                             // loading animation
                             LoadingAnimation("Reading save file", 500);
                             Console.WriteLine("");
-                            
+
                             string[] fileLines = File.ReadAllLines("47495645204d4520414e2041.dat");
                             int lineIndex = 0;
 
@@ -489,15 +489,15 @@ namespace Boats
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s2);
-                        Thread.Sleep(6500);
+                        Thread.Sleep(6250);
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s3);;
-                        Thread.Sleep(6550);
+                        Thread.Sleep(6250);
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine(s4);
-                        Thread.Sleep(5550);
+                        Thread.Sleep(6250);
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(s5);
@@ -767,9 +767,6 @@ namespace Boats
                 }
                 else
                 {
-                    // the computer is guessing again
-                    ComputerIsGuessing();
-
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(" The computer misses!\n");
                     Thread.Sleep(500);
