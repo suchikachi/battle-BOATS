@@ -1003,6 +1003,7 @@ namespace Boats
                 "The computer braces itself",
                 "The computer begins measuring change in potential energy",
                 "The computer is thinking",
+                "The computer prompts you take a closer look at what the game savefile translates to",
                 "The AI is racking its cache",
                 "The computer prepares for its turn",
                 "The computer begins profusely increasing in clock speed",
@@ -1014,7 +1015,8 @@ namespace Boats
                 "Smells like solder around here",
                 "The computer is appending its plans to its internal database",
                 "Something is brewing in the Level 1 cache",
-                "The computer begins murmuring something in machine code"
+                "The computer begins murmuring something in machine code",
+                "The computer recommends you convert the savefile name from hexadecimal to text"
             };
 
             // define random object
