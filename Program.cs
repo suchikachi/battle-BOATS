@@ -705,7 +705,7 @@ namespace Boats
                 computerguess[1] = r.Next(1, 8);
 
                 // check if the computer has hit a previously referenced position, and if so then generate new coordinates. if not then continue
-                while ((primarygrid[computerguess[1], computerguess[0]] == "M") || (primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
+                while ((primarygrid[computerguess[1], computerguess[0]] == "H") || usedcoordinates.Contains(computerguess))
                 {
                     // generate new coordinates
                     computerguess[0] = r.Next(1, 8);
